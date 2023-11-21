@@ -187,13 +187,13 @@
                         </a>
                         <ul class="collapse submenu list-unstyled" id="users" data-bs-parent="#accordionExample">
                             <li>
-                                <a href="javascript:void(0);"> Create Users </a>
+                                <a href="/users/create"> Create Users </a>
                             </li>
                             <li>
-                                <a href="javascript:void(0);"> Manage Users </a>
+                                <a href="/users/index"> Manage Users </a>
                             </li>
                             <li>
-                                <a href="javascript:void(0);"> Parameters </a>
+                                <a href="/users/parameters"> Parameters </a>
                             </li>
                         </ul>
                     </li>
