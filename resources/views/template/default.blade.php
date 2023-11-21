@@ -30,6 +30,9 @@
     <link href="{!! asset('template/src/plugins/css/dark/table/datatable/dt-global_style.css') !!}" rel="stylesheet" type="text/css" />
     <link href="{!! asset('template/src/assets/css/light/apps/invoice-list.css') !!}" rel="stylesheet" type="text/css" />
     <link href="{!! asset('template/src/assets/css/dark/apps/invoice-list.css') !!}" rel="stylesheet" type="text/css" />
+
+    <link href="{!! asset('template/src/assets/css/light/users/account-setting.css') !!}" rel="stylesheet" type="text/css" />
+
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
     
     <style>
@@ -83,6 +86,13 @@
     <script src="{!! asset('template/src/plugins/src/table/datatable/datatables.js') !!}"></script>
     <script src="{!! asset('template/src/plugins/src/table/datatable/button-ext/dataTables.buttons.min.js') !!}"></script>
     <script src="{!! asset('template/src/assets/js/apps/invoice-list.js') !!}"></script>
+
+
+    <script src="{!! asset('template/src/assets/js/users/account-settings.js') !!}"></script>
+    <script src="{!! asset('template/src/assets/css/light/components/tabs.css') !!}"></script>
+    <script src="{!! asset('template/src/assets/css/light/forms/switches.css') !!}"></script>
+    <script src="{!! asset('template/src/assets/css/light/components/list-group.css') !!}"></script>
+    <script src="{!! asset('template/src/plugins/css/light/filepond/custom-filepond.css') !!}"></script>
 
     <!-- <script>
         $('#zero-config').DataTable({

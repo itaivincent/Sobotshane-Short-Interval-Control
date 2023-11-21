@@ -30,12 +30,12 @@
                     <thead>
                         <tr>
                             <th class="checkbox-column"> Record no. </th>
-                            <th>Invoice Id</th>
+                            <th>Username</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Status</th>
-                            <th>Amount</th>
-                            <th>Date</th>
+                            <th>Role</th>
+                            <th>Experience</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
