@@ -28,6 +28,8 @@
     <link href="{!! asset('template/src/plugins/src/table/datatable/datatables.css') !!}" rel="stylesheet" type="text/css" />
     <link href="{!! asset('template/src/plugins/css/light/table/datatable/dt-global_style.css') !!}" rel="stylesheet" type="text/css" />
     <link href="{!! asset('template/src/plugins/css/dark/table/datatable/dt-global_style.css') !!}" rel="stylesheet" type="text/css" />
+    <link href="{!! asset('template/src/assets/css/light/apps/invoice-list.css') !!}" rel="stylesheet" type="text/css" />
+    <link href="{!! asset('template/src/assets/css/dark/apps/invoice-list.css') !!}" rel="stylesheet" type="text/css" />
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
     
     <style>
@@ -76,9 +78,13 @@
     <script src="{!! asset('template/src/assets/js/custom.js') !!}"></script>
     <script src="{!! asset('template/src/plugins/src/apex/apexcharts.min.js') !!}"></script>
     <script src="{!! asset('template/src/assets/js/dashboard/dash_1.js') !!}"></script>
-    <script src="{!! asset('template/src/assets/js/dashboard/dash_1.js') !!}"></script>
+    <script src="{!! asset('template/src/plugins/src/table/datatable/datatables.js') !!}"></script>
 
-    <script>
+    <script src="{!! asset('template/src/plugins/src/table/datatable/datatables.js') !!}"></script>
+    <script src="{!! asset('template/src/plugins/src/table/datatable/button-ext/dataTables.buttons.min.js') !!}"></script>
+    <script src="{!! asset('template/src/assets/js/apps/invoice-list.js') !!}"></script>
+
+    <!-- <script>
         $('#zero-config').DataTable({
             "dom": "<'dt--top-section'<'row'<'col-12 col-sm-6 d-flex justify-content-sm-start justify-content-center'l><'col-12 col-sm-6 d-flex justify-content-sm-end justify-content-center mt-sm-0 mt-3'f>>>" +
         "<'table-responsive'tr>" +
@@ -94,7 +100,7 @@
             "lengthMenu": [7, 10, 20, 50],
             "pageLength": 10 
         });
-    </script>
+    </script> -->
     <!-- END GLOBAL MANDATORY SCRIPTS -->
 
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
