@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\View\View;
+use App\Models\Userrole;
+use App\Models\User;
+
 
 use Illuminate\Http\Request;
 
@@ -41,13 +44,31 @@ class UserController extends Controller
     public function store(Request $request)
     {
         dd($request->name);
+
+        $user = auth()->user();
+
+        $userrole = new User();
+        $userrole->Name = $request->Name;
+        $userrole->Description = $request->Description;
+        $userrole->CreatedBy = $user->name;
+        $userrole->save();
+
+        return response()->json(['message' => 'Data saved successfully'], 201);
     }
 
 
 
     public function userRole(Request $request) 
     {
-        dd($request->name);
+        $user = auth()->user();
+
+        $userrole = new Userrole();
+        $userrole->Name = $request->Name;
+        $userrole->Description = $request->Description;
+        $userrole->CreatedBy = $user->name;
+        $userrole->save();
+
+        return response()->json(['message' => 'Data saved successfully'], 201);
     }
 
     /**

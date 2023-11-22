@@ -31,8 +31,10 @@
                             
                                 <div class="tab-panel" id="animated-underline-profile" role="tabpanel" aria-labelledby="animated-underline-profile-tab">
                                     <div class="row">
+                                    <form method="post" action="{{ route('users.store') }}">
+                                      @csrf   
     
-                                        <div class="col-xl-6 col-lg-12 col-md-12 layout-spacing">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
                                             <div class="section general-info payment-info">
                                                 <div class="info">
                                                     <h6 class="">Add Personal Details</h6>                              
@@ -41,46 +43,38 @@
                                                         <div class="col-md-6">
                                                             <div class="mb-3">
                                                                 <label class="form-label">Name</label>
-                                                                <input type="text" class="form-control add-billing-address-input">
+                                                                <input type="text" name="name" class="form-control add-billing-address-input">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="mb-3">
                                                                 <label class="form-label">Surname</label>
-                                                                <input type="email" class="form-control">
+                                                                <input type="text" name="surname" class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="col-12">
                                                             <div class="mb-3">
                                                                 <label class="form-label">Address</label>
-                                                                <input type="text" class="form-control">
+                                                                <input type="text" name="address"  class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
                                                                 <label class="form-label">City</label>
-                                                                <input type="text" class="form-control">
+                                                                <input type="text"  name="city" class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
-                                                                <label class="form-label">Country</label>
-                                                                <select class="form-select">
-                                                                    <option selected="">Choose...</option>
-                                                                    <option value="united-states">United States</option>
-                                                                    <option value="brazil">Brazil</option>
-                                                                    <option value="indonesia">Indonesia</option>
-                                                                    <option value="turkey">Turkey</option>
-                                                                    <option value="russia">Russia</option>
-                                                                    <option value="india">India</option>
-                                                                    <option value="germany">Germany</option>
-                                                                </select>                                                            
+                                                                <label class="form-label">Country</label>                                              
+                                                                <input type="text"  name="country" class="form-control">
+                                                                                                                      
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
                                                                 <label class="form-label">Age</label>
-                                                                <input type="tel" class="form-control">
+                                                                <input type="text"  name="age"  class="form-control">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -90,7 +84,7 @@
                                             </div>
                                         </div>
     
-                                        <div class="col-xl-6 col-lg-12 col-md-12 layout-spacing">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
                                             <div class="section general-info payment-info">
                                                 <div class="info">
                                                     <h6 class="">Add Company Details</h6>                                     
@@ -101,13 +95,15 @@
                                                                 <label class="form-label">Department</label>
                                                                 <div class="invoice-action-currency">
                                                                     <div class="dropdown selectable-dropdown cardName-select">
-                                                                        <a id="cardBrandDropdown" href="javascript:void(0);" class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../src/assets/img/card-mastercard.svg" class="flag-width" alt="flag"> <span class="selectable-text">Mastercard</span> <span class="selectable-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
-                                                                        <div class="dropdown-menu" aria-labelledby="cardBrandDropdown">
-                                                                            <a class="dropdown-item" data-img-value="../src/assets/img/card-mastercard.svg" data-value="GBP - British Pound" href="javascript:void(0);"><img src="../src/assets/img/card-mastercard.svg" class="flag-width" alt="flag"> Mastercard</a>
-                                                                            <a class="dropdown-item" data-img-value="../src/assets/img/card-americanexpress.svg" data-value="IDR - Indonesian Rupiah" href="javascript:void(0);"><img src="../src/assets/img/card-americanexpress.svg" class="flag-width" alt="flag"> American Express</a>
-                                                                            <a class="dropdown-item" data-img-value="../src/assets/img/card-visa.svg" data-value="USD - US Dollar" href="javascript:void(0);"><img src="../src/assets/img/card-visa.svg" class="flag-width" alt="flag"> Visa</a>
-                                                                            <a class="dropdown-item" data-img-value="../src/assets/img/card-discover.svg" data-value="INR - Indian Rupee" href="javascript:void(0);"><img src="../src/assets/img/card-discover.svg" class="flag-width" alt="flag"> Discover</a>
-                                                                        </div>
+                                                                    <select name="department" class="form-select">
+                                                                    <option selected="">Choose...</option>
+                                                                    <option value="united-states">IT</option>
+                                                                    <option value="brazil">Operations</option>
+                                                                    <option value="indonesia">Accounts</option>
+                                                                    <option value="turkey">Management</option>
+                                                                    <option value="russia">Security</option>
+                                                                    <option value="india">HR</option>                                                          
+                                                                   </select>  
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -116,25 +112,25 @@
                                                          <div class="col-md-6">
                                                             <div class="mb-3">
                                                                 <label class="form-label">Email Address</label>
-                                                                <input type="text" class="form-control add-payment-method-input">
+                                                                <input type="email" name="email"  class="form-control add-payment-method-input">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="mb-3">
                                                                 <label class="form-label">Phone Number</label>
-                                                                <input type="text" class="form-control">
+                                                                <input type="text" name="phoneNumber"  class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="mb-3">
                                                                 <label class="form-label">Employee Number</label>
-                                                                <input type="text" class="form-control">
+                                                                <input type="text" name="employeeNumber"  class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="mb-3">
                                                                 <label class="form-label">User Name</label>
-                                                                <input type="text" class="form-control">
+                                                                <input type="text"  name="userName"  class="form-control">
                                                             </div>
                                                         </div>
 
@@ -149,9 +145,9 @@
                                                 </div>
                                                 
                                             </div>
-                                            <button class="btn btn-primary  float-end mt-3">Create User</button>
+                                            <button type="submit" class="btn btn-primary  float-end mt-3">Create User</button>
                                         </div>
-                                        
+                                    </form>
                                     </div>
                                 </div>
     

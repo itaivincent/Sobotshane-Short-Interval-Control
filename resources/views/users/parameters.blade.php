@@ -161,13 +161,13 @@
                                                                 <div class="col-md-6">
                                                                     <div class="mb-3">
                                                                         <label class="form-label">User Role</label>
-                                                                        <input type="text" name="name" class="form-control add-billing-address-input">
+                                                                        <input type="text" name="Name" class="form-control add-billing-address-input">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <div class="mb-3">
                                                                         <label class="form-label">Description</label>
-                                                                        <input type="text"  name="description" class="form-control">
+                                                                        <input type="text"  name="Description" class="form-control">
                                                                     </div>
                                                                 </div>                                                          
                                                             </div>        
