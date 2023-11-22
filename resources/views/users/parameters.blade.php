@@ -87,7 +87,7 @@
                                                 </a>
 
                                                 <div class="dropdown-menu left" aria-labelledby="expenses" style="will-change: transform;">
-                                                    <a class="dropdown-item" href="javascript:void(0);">Create User Role</a>
+                                                    <a class="dropdown-item"  data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg" href="javascript:void(0);">Create User Role</a>
                                                     <a class="dropdown-item" href="javascript:void(0);">View All Roles</a>                                              
                                                 </div>
                                             </div>
@@ -134,10 +134,54 @@
                 
             </div>
             <!--  END FOOTER  -->
+        </div>        
         </div>
 
-        
 
-            
-        </div>
+          
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="myLargeModalLabel"></h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                      <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                <div class="row">    
+                                                <form method="post" action="{{ route('users.userRole') }}">
+                                                     @csrf                                        
+                                                <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+                                                    <div class="section general-info payment-info">
+                                                        <div class="info">
+                                                            <h6 class="">Add User Role</h6>                              
+
+                                                            <div class="row mt-4">
+                                                                <div class="col-md-6">
+                                                                    <div class="mb-3">
+                                                                        <label class="form-label">User Role</label>
+                                                                        <input type="text" name="name" class="form-control add-billing-address-input">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="mb-3">
+                                                                        <label class="form-label">Description</label>
+                                                                        <input type="text"  name="description" class="form-control">
+                                                                    </div>
+                                                                </div>                                                          
+                                                            </div>        
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-light-dark" data-bs-dismiss="modal">Discard</button>
+                                                    <button type="submit" class="btn btn-primary">Save</button>
+                                                </div>
+                                            </form>
+                                            </div>
+                                        </div>
+                                    </div>
 @endsection

@@ -40,7 +40,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->name);
+    }
+
+
+
+    public function userRole(Request $request) 
+    {
+        dd($request->name);
     }
 
     /**
