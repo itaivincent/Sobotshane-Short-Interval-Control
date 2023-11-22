@@ -48,9 +48,19 @@ class UserController extends Controller
         $user = auth()->user();
 
         $userrole = new User();
-        $userrole->Name = $request->Name;
-        $userrole->Description = $request->Description;
-        $userrole->CreatedBy = $user->name;
+        $userrole->name = $request->name;
+        $userrole->userName = $request->userName;
+        $userrole->createdBy = $user->createdBy;
+        $userrole->address = $request->address;
+        $userrole->email = $request->email;
+        $userrole->city = $user->city;
+        $userrole->country = $request->country;
+        $userrole->age = $request->age;
+        $userrole->phoneNumber = $user->phoneNumber;
+        $userrole->department = $request->department;
+        $userrole->userRole = $request->userRole;
+        $userrole->employeeNumber = $user->employeeNumber;
+        $userrole->password = $request->password;
         $userrole->save();
 
         return response()->json(['message' => 'Data saved successfully'], 201);

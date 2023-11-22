@@ -136,7 +136,20 @@
 
                                                         <div class="col-md-6">
                                                             <div  class="mb-3">
-                                                            
+                                                            <label class="form-label">User Role</label>
+                                                                <div class="invoice-action-currency">
+                                                                    <div class="dropdown selectable-dropdown cardName-select">
+                                                                    <select name="userRole" class="form-select">
+                                                                    <option selected="">Choose...</option>
+                                                                    <option value="1">Administrator</option>
+                                                                    <option value="2">Operations Manager</option>
+                                                                    <option value="3">Accounts Manager</option>
+                                                                    <option value="4">Super User</option>
+                                                                    <option value="5">User</option>
+                                                                                                                          
+                                                                   </select>  
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
