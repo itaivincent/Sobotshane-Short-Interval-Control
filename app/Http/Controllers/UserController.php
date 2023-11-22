@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\View\View;
 use App\Models\Userrole;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
 
 
 use Illuminate\Http\Request;
@@ -16,7 +18,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('users.index');
+        $users = User::all();
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -43,24 +46,23 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->name);
 
         $user = auth()->user();
 
         $userrole = new User();
         $userrole->name = $request->name;
         $userrole->userName = $request->userName;
-        $userrole->createdBy = $user->createdBy;
+        $userrole->createdBy =  $user->name;;
         $userrole->address = $request->address;
         $userrole->email = $request->email;
-        $userrole->city = $user->city;
+        $userrole->city = $request->city;
         $userrole->country = $request->country;
         $userrole->age = $request->age;
-        $userrole->phoneNumber = $user->phoneNumber;
+        $userrole->phoneNumber = $request->phoneNumber;
         $userrole->department = $request->department;
         $userrole->userRole = $request->userRole;
-        $userrole->employeeNumber = $user->employeeNumber;
-        $userrole->password = $request->password;
+        $userrole->employeeNumber = $request->employeeNumber;
+        $userrole->password = Hash::make(12345678);
         $userrole->save();
 
         return response()->json(['message' => 'Data saved successfully'], 201);
