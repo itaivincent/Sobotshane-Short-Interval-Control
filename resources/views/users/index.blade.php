@@ -39,6 +39,7 @@
                             <th>Actions</th>
                         </tr>
                     </thead>
+                    
                     <tbody>
                         <tr>
                             <td class="checkbox-column"> 1 </td>
