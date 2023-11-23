@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AssetController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +35,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
     Route::post('/users/store', [UserController::class, 'store'])->name('users.store');
     Route::post('/users/userRole', [UserController::class, 'userRole'])->name('users.userRole');
+
+
+    //Assets Routes
+    Route::get('/assets/parameters', [AssetController::class, 'parameters'])->name('assets.parameters');
+    Route::get('/assets/index', [AssetController::class, 'index'])->name('assets.index');
+    Route::get('/assets/create', [AssetController::class, 'create'])->name('assets.create');
+    Route::post('/assets/store', [AssetController::class, 'store'])->name('assets.store');
 });
 
 require __DIR__.'/auth.php';

@@ -48,11 +48,14 @@
                             </div>
                         </a>
                         <ul class="collapse submenu list-unstyled" id="asset" data-bs-parent="#accordionExample">
-                            <li>
-                                <a href="javascript:void(0);"> Manage Assets </a>
+                        <li>
+                                <a href="/assets/create"> Create Assets </a>
                             </li>
                             <li>
-                                <a href="javascript:void(0);"> Parameters</a>
+                                <a href="/assets/index"> Manage Assets </a>
+                            </li>
+                            <li>
+                                <a href="/assets/parameters"> Parameters</a>
                             </li>
                         </ul>
                     </li>

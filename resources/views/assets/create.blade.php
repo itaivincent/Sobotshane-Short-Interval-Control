@@ -22,7 +22,7 @@
                         <div class="account-content">
                             <div class="row mb-3">
                                 <div class="col-md-12">
-                                    <h2>Create a User</h2>
+                                    <h2>Create an Asset</h2>
 
                                 </div>
                             </div>
@@ -31,50 +31,50 @@
                             
                                 <div class="tab-panel" id="animated-underline-profile" role="tabpanel" aria-labelledby="animated-underline-profile-tab">
                                     <div class="row">
-                                    <form method="post" action="{{ route('users.store') }}">
+                                    <form method="post" action="{{ route('assets.store') }}">
                                       @csrf   
     
                                         <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
                                             <div class="section general-info payment-info">
                                                 <div class="info">
-                                                    <h6 class="">Add Personal Details</h6>                              
+                                                    <h6 class="">Add Asset Details</h6>                              
     
                                                     <div class="row mt-4">
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-4">
                                                             <div class="mb-3">
-                                                                <label class="form-label">Name</label>
-                                                                <input type="text" name="name" class="form-control add-billing-address-input">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="mb-3">
-                                                                <label class="form-label">Surname</label>
-                                                                <input type="text" name="surname" class="form-control">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <div class="mb-3">
-                                                                <label class="form-label">Address</label>
-                                                                <input type="text" name="address"  class="form-control">
+                                                                <label class="form-label">Make</label>
+                                                                <input type="text" name="make" class="form-control add-billing-address-input">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
-                                                                <label class="form-label">City</label>
-                                                                <input type="text"  name="city" class="form-control">
+                                                                <label class="form-label">Registration</label>
+                                                                <input type="text" name="registration" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Description</label>
+                                                                <input type="text" name="assetDescription"  class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
-                                                                <label class="form-label">Country</label>                                              
-                                                                <input type="text"  name="country" class="form-control">
+                                                                <label class="form-label">Vin Number</label>
+                                                                <input type="text"  name="vinNumber" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Payload Capacity(Tons)</label>                                              
+                                                                <input type="text"  name="payloadCapacity" class="form-control">
                                                                                                                       
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
-                                                                <label class="form-label">Age</label>
-                                                                <input type="text"  name="age"  class="form-control">
+                                                                <label class="form-label">Asset Weight</label>
+                                                                <input type="text"  name="weight"  class="form-control">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -87,75 +87,57 @@
                                         <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
                                             <div class="section general-info payment-info">
                                                 <div class="info">
-                                                    <h6 class="">Add Company Details</h6>                                     
+                                                    <h6 class="">Add More Details</h6>                                     
     
                                                     <div class="row mt-4">
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-4">
                                                             <div class="mb-3">
-                                                                <label class="form-label">Department</label>
+                                                                <label class="form-label">Asset Type</label>
                                                                 <div class="invoice-action-currency">
                                                                     <div class="dropdown selectable-dropdown cardName-select">
-                                                                    <select name="department" class="form-select">
+                                                                    <select name="assetType" class="form-select">
                                                                     <option selected="">Choose...</option>
-                                                                    <option value="united-states">IT</option>
-                                                                    <option value="brazil">Operations</option>
-                                                                    <option value="indonesia">Accounts</option>
-                                                                    <option value="turkey">Management</option>
-                                                                    <option value="russia">Security</option>
-                                                                    <option value="india">HR</option>                                                          
+                                                                    <option value="Trailer">Trailer</option>
+                                                                    <option value="Head">Head</option>
+                                                                    <option value="Bucket">Bucket</option>                                                                                                              
                                                                    </select>  
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
     
-                                                         <div class="col-md-6">
+                                                         <div class="col-md-4">
                                                             <div class="mb-3">
-                                                                <label class="form-label">Email Address</label>
-                                                                <input type="email" name="email"  class="form-control add-payment-method-input">
+                                                                <label class="form-label">License Number</label>
+                                                                <input type="email" name="licenseNumber"  class="form-control add-payment-method-input">
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-4">
                                                             <div class="mb-3">
-                                                                <label class="form-label">Phone Number</label>
-                                                                <input type="text" name="phoneNumber"  class="form-control">
+                                                                <label class="form-label">Mileage (Kms)</label>
+                                                                <input type="text" name="mileage"  class="form-control">
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-4">
                                                             <div class="mb-3">
-                                                                <label class="form-label">Employee Number</label>
-                                                                <input type="text" name="employeeNumber"  class="form-control">
+                                                                <label class="form-label">Fuel Type</label>
+                                                                <input type="text" name="fueltype"  class="form-control">
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-4">
                                                             <div class="mb-3">
-                                                                <label class="form-label">User Name</label>
-                                                                <input type="text"  name="userName"  class="form-control">
+                                                                <label class="form-label">Registration Expiration Date</label>
+                                                                <input type="text"  name="registrationExpireDate"  class="form-control">
                                                             </div>
                                                         </div>
-
-                                                        <div class="col-md-6">
-                                                            <div  class="mb-3">
-                                                            <label class="form-label">User Role</label>
-                                                                <div class="invoice-action-currency">
-                                                                    <div class="dropdown selectable-dropdown cardName-select">
-                                                                    <select name="userRole" class="form-select">
-                                                                    <option selected="">Choose...</option>
-                                                                    @foreach ($roles as $role)  
-                                                                    <option value="{{ $role->id }}">{{$role->Name}}</option>
-                                                                    @endforeach                                                   
-                                                                   </select>  
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                   
                                                     </div>
     
                                                   
                                                 </div>
                                                 
                                             </div>
-                                            <button type="submit" class="btn btn-primary  float-end mt-3">Create User</button>
+                                            <button type="submit" class="btn btn-primary  float-end mt-3">Create Asset</button>
                                         </div>
                                     </form>
                                     </div>

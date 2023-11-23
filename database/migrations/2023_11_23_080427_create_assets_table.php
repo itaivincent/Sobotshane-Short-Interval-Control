@@ -13,6 +13,25 @@ return new class extends Migration
     {
         Schema::create('assets', function (Blueprint $table) {
             $table->id();
+            $table->string('make')->nullable();
+            $table->string('registration')->nullable();
+            $table->string('assetDescription')->nullable();
+            $table->string('vinNumber')->nullable();
+            $table->string('description')->nullable();
+            $table->string('assetType')->nullable();
+            $table->integer('weight')->nullable();
+            $table->integer('tonnage')->nullable();
+            $table->integer('driverId')->nullable();
+            $table->string('type')->nullable();
+            $table->integer('routeId')->nullable();
+            $table->string('licenseNumber')->nullable();
+            $table->integer('payloadCapacity')->nullable();
+            $table->string('status')->nullable();
+            $table->integer('mileage')->nullable();
+            $table->string('fueltype')->nullable();
+            $table->date('registrationExpireDate')->nullable();
+            $table->string('updatedBy')->nullable();
+            $table->string('createdBy');
             $table->timestamps();
         });
     }

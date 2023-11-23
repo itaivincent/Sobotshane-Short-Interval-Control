@@ -8,4 +8,29 @@ use Illuminate\Database\Eloquent\Model;
 class Asset extends Model
 {
     use HasFactory;
+
+
+    protected $fillable = [
+
+        'make',
+        'registration',
+        'assetDescription',
+        'vinNumber',
+        'assetType',
+        'weight',
+        'tonnage',
+        'driverId',
+        'type',
+        'routeId',
+        'licenseNumber',
+        'payloadCapacity',
+        'status',
+        'mileage',
+        'fueltype',
+        'registrationExpireDate',
+        'createdBy',
+        'updatedBy',
+
+       
+    ];
 }
