@@ -109,7 +109,7 @@
                                                          <div class="col-md-4">
                                                             <div class="mb-3">
                                                                 <label class="form-label">License Number</label>
-                                                                <input type="email" name="licenseNumber"  class="form-control add-payment-method-input">
+                                                                <input type="text" name="licenseNumber"  class="form-control add-payment-method-input">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
@@ -127,7 +127,7 @@
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
                                                                 <label class="form-label">Registration Expiration Date</label>
-                                                                <input type="text"  name="registrationExpireDate"  class="form-control">
+                                                                <input type="date"  name="registrationExpireDate"  class="form-control">
                                                             </div>
                                                         </div>
                                                    

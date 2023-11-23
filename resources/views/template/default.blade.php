@@ -32,6 +32,11 @@
     <link href="{!! asset('template/src/assets/css/dark/apps/invoice-list.css') !!}" rel="stylesheet" type="text/css" />
 
     <link href="{!! asset('template/src/assets/css/light/users/account-setting.css') !!}" rel="stylesheet" type="text/css" />
+    <link href="{!! asset('template/src/plugins/css/dark/flatpickr/custom-flatpickr.css') !!}" rel="stylesheet" type="text/css" />
+    <link href="{!! asset('template/src/assets/css/dark/apps/invoice-edit.css') !!}" rel="stylesheet" type="text/css" />
+
+    <link href="{!! asset('template/src/plugins/css/light/flatpickr/custom-flatpickr.css') !!}" rel="stylesheet" type="text/css" />
+    <link href="{!! asset('template/src/assets/css/light/apps/invoice-edit.css') !!}" rel="stylesheet" type="text/css" />
 
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
     
@@ -95,6 +100,9 @@
     <script src="{!! asset('template/src/assets/css/light/forms/switches.css') !!}"></script>
     <script src="{!! asset('template/src/assets/css/light/components/list-group.css') !!}"></script>
     <script src="{!! asset('template/src/plugins/css/light/filepond/custom-filepond.css') !!}"></script>
+
+    <script src="{!! asset('template/src/assets/js/apps/invoice-edit.js') !!}"></script>
+    <script src="{!! asset('template/src/plugins/src/flatpickr/flatpickr.js') !!}"></script>
 
 
     <!-- <script>

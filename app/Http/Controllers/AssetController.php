@@ -1,6 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Userrole;
+use App\Models\User;
+use App\Models\Asset;
+use Alert;
 
 use Illuminate\Http\Request;
 
@@ -11,7 +15,11 @@ class AssetController extends Controller
      */
     public function index()
     {
-        return view('assets.index');
+        $users = User::all();
+        $roles = Userrole::all();
+        $assets = Asset::all();
+
+        return view('assets.index', compact('assets','users'));
     }
 
     /**
@@ -27,7 +35,30 @@ class AssetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $user = auth()->user();
+
+        $userrole = new Asset();
+        $userrole->make = $request->make;
+        $userrole->registration = $request->registration;
+        $userrole->assetDescription =  $request->assetDescription;
+        $userrole->vinNumber = $request->vinNumber;
+        $userrole->payloadCapacity = $request->payloadCapacity;
+        $userrole->weight = $request->weight;
+        $userrole->assetType = $request->assetType;
+        $userrole->licenseNumber = $request->licenseNumber;
+        $userrole->mileage = $request->mileage;
+        $userrole->fueltype = $request->fueltype;
+        $userrole->registrationExpireDate = $request->registrationExpireDate;
+        $userrole->CreatedBy = $user->name;
+
+        $userrole->save();
+
+        if($userrole){
+            return redirect()->route('assets.create')->with('success', 'Asset created successfully!');
+        }
+          return redirect()->route('assets.create')->with('error', 'Asset created successfully!');
+        
     }
 
     /**
@@ -43,7 +74,9 @@ class AssetController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $asset = Asset::where('id', $id)->first();
+
+        return view('assets.edit', compact('asset'));
     }
 
     /**
