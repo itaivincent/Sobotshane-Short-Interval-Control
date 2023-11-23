@@ -7,6 +7,8 @@ use App\Models\Userrole;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
+use Alert;
+
 
 
 use Illuminate\Http\Request;
@@ -19,7 +21,8 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('users.index', compact('users'));
+        $roles = Userrole::all();
+        return view('users.index', compact('users','roles'));
     }
 
     /**
@@ -27,7 +30,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        $roles = Userrole::all();
+        return view('users.create', compact('roles'));
     }
 
 
@@ -36,7 +40,8 @@ class UserController extends Controller
      */
     public function parameters()
     {
-        return view('users.parameters');
+        $roles = Userrole::all();
+        return view('users.parameters', compact('roles'));
     }
 
 
@@ -46,7 +51,6 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-
         $user = auth()->user();
 
         $userrole = new User();
@@ -65,7 +69,10 @@ class UserController extends Controller
         $userrole->password = Hash::make(12345678);
         $userrole->save();
 
-        return response()->json(['message' => 'Data saved successfully'], 201);
+
+        //Alert::success('Success Title', 'Success Message');
+
+        return redirect()->route('users.create')->with('success', 'User created successfully!');
     }
 
 
@@ -80,7 +87,7 @@ class UserController extends Controller
         $userrole->CreatedBy = $user->name;
         $userrole->save();
 
-        return response()->json(['message' => 'Data saved successfully'], 201);
+        return redirect()->route('users.parameters')->with('success', 'role created successfully!');
     }
 
     /**

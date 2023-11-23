@@ -141,12 +141,9 @@
                                                                     <div class="dropdown selectable-dropdown cardName-select">
                                                                     <select name="userRole" class="form-select">
                                                                     <option selected="">Choose...</option>
-                                                                    <option value="1">Administrator</option>
-                                                                    <option value="2">Operations Manager</option>
-                                                                    <option value="3">Accounts Manager</option>
-                                                                    <option value="4">Super User</option>
-                                                                    <option value="5">User</option>
-                                                                                                                          
+                                                                    @foreach ($roles as $role)  
+                                                                    <option value="{{ $role->id }}">{{$role->Name}}</option>
+                                                                    @endforeach                                                   
                                                                    </select>  
                                                                     </div>
                                                                 </div>

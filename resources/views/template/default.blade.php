@@ -57,6 +57,8 @@
     <!--  BEGIN MAIN CONTAINER  -->
     <div class="main-container " id="container">
 
+    @include('sweetalert::alert')
+
         <div class="overlay"></div>
         <div class="search-overlay"></div>
 
@@ -93,6 +95,7 @@
     <script src="{!! asset('template/src/assets/css/light/forms/switches.css') !!}"></script>
     <script src="{!! asset('template/src/assets/css/light/components/list-group.css') !!}"></script>
     <script src="{!! asset('template/src/plugins/css/light/filepond/custom-filepond.css') !!}"></script>
+
 
     <!-- <script>
         $('#zero-config').DataTable({

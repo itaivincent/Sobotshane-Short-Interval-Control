@@ -88,7 +88,7 @@
 
                                                 <div class="dropdown-menu left" aria-labelledby="expenses" style="will-change: transform;">
                                                     <a class="dropdown-item"  data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg" href="javascript:void(0);">Create User Role</a>
-                                                    <a class="dropdown-item" href="javascript:void(0);">View All Roles</a>                                              
+                                                    <a class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#allusers">View All Roles</a>                                              
                                                 </div>
                                             </div>
                                         </div>
@@ -139,7 +139,7 @@
 
 
           
-        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-lg" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -181,6 +181,57 @@
                                                     <button type="submit" class="btn btn-primary">Save</button>
                                                 </div>
                                             </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+                                    
+                                  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="allusers"></h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                      <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                <div class="row layout-top-spacing">
+                    
+                                                    <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
+                                                        <div class="widget-content widget-content-area br-8">
+                                                            <table id="zero-config" class="table dt-table-hover" style="width:100%">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Role Name</th>
+                                                                        <th>Description</th>
+                                                                        <th>Created By</th>
+                                                                    
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                @foreach ($roles as $user) 
+                                                                    <tr>
+                                                                        <td>{{ $user->Name }}</td>
+                                                                        <td>{{ $user->Description }}</td>
+                                                                        <td>{{ $user->CreatedBy }}</td>
+                                                                    
+                                                                    </tr>             
+                                                                @endforeach
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                
+                                                </div>
+
+                                               </div>                                       
+                                        
                                             </div>
                                         </div>
                                     </div>
