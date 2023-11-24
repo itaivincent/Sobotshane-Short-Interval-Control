@@ -31,6 +31,55 @@
                         </a>
                     </li>
                     
+                    <li class="menu menu-heading">
+                        <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg><span>SIC Modules</span></div>
+                    </li>
+
+                    
+                    <li class="menu">
+                    
+                        <a href="#plan" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                            <div class="">
+                                <span>Planning</span>
+                            </div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </div>
+                        </a>
+                        <ul class="collapse submenu list-unstyled" id="plan" data-bs-parent="#accordionExample">
+                            <li>
+                                <a href="javascript:void(0);"> Plans </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);"> Parameters </a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+
+
+                    
+                    <li class="menu">
+                        <a href="#schedule" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                            <div class="">
+                                <span>Scheduling</span>
+                            </div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </div>
+                        </a>
+                        <ul class="collapse submenu list-unstyled" id="schedule" data-bs-parent="#accordionExample">
+                            <li>
+                                <a href="javascript:void(0);"> Schedules </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);"> Parameters</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    
                     <li class="menu">
 
                     <li class="menu menu-heading">
@@ -124,53 +173,6 @@
                     </li>
 
 
-                     <li class="menu menu-heading">
-                        <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg><span>SIC Modules</span></div>
-                    </li>
-
-                    
-                    <li class="menu">
-                    
-                        <a href="#plan" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                            <div class="">
-                                <span>Planning</span>
-                            </div>
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                            </div>
-                        </a>
-                        <ul class="collapse submenu list-unstyled" id="plan" data-bs-parent="#accordionExample">
-                            <li>
-                                <a href="javascript:void(0);"> Plans </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);"> Parameters </a>
-                            </li>
-                        </ul>
-                    </li>
-
-
-
-
-                    
-                    <li class="menu">
-                        <a href="#schedule" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                            <div class="">
-                                <span>Scheduling</span>
-                            </div>
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                            </div>
-                        </a>
-                        <ul class="collapse submenu list-unstyled" id="schedule" data-bs-parent="#accordionExample">
-                            <li>
-                                <a href="javascript:void(0);"> Schedules </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);"> Parameters</a>
-                            </li>
-                        </ul>
-                    </li>
 
 
 

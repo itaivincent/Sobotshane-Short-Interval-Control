@@ -28,8 +28,8 @@
                                 <div class="w-chart">
                                     <div class="w-chart-section">
                                         <div class="w-detail">
-                                            <p class="w-title">Total Visits</p>
-                                            <p class="w-stats">423,964</p>
+                                            <p class="w-title">Total Users</p>
+                                            <p class="w-stats">4</p>
                                         </div>
                                         <div class="w-chart-render-one">
                                             <div id="total-users"></div>
@@ -38,8 +38,8 @@
 
                                     <div class="w-chart-section">
                                         <div class="w-detail">
-                                            <p class="w-title">Operation Visits</p>
-                                            <p class="w-stats">7,929</p>
+                                            <p class="w-title">Site Visits</p>
+                                            <p class="w-stats">79</p>
                                         </div>
                                         <div class="w-chart-render-one">
                                             <div id="paid-visits"></div>
@@ -75,7 +75,7 @@
                                     <div class="w-content">
 
                                         <div class="w-info">
-                                            <p class="value">$ 45,141 <span>this week</span> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trending-up"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg></p>
+                                            <p class="value">14 <span> this week</span> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trending-up"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg></p>
                                         </div>
                                         
                                     </div>
@@ -109,8 +109,8 @@
                                             </div>
 
                                             <div class="balance-info">
-                                                <h6>Total Balance</h6>
-                                                <p>$41,741.42</p>
+                                                <h6>Total Capacity (Tonnes)</h6>
+                                                <p>4175</p>
                                             </div>
                                         </div>
 

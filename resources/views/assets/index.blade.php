@@ -48,12 +48,14 @@
                          
                             <td><span class="inv-amount"> <p class="align-self-center mb-0 user-name">{{ $asset->make }}</p></span></td>
                             <td><span class="inv-email"> {{ $asset->payloadCapacity }}</span></td>
-                            <td>     @if ($asset->status == 1)
-                                                                        <span class="badge badge-light-success inv-status">Available</span> 
-                                                                        @else
-                                                                        <span class="badge badge-light-danger inv-status">Not Available</span>   
-                                                                        @endif
-                                                                 </td>                                           
+                            <td>@if ($asset->status == 1)
+                           <span class="badge badge-light-success inv-status">Available</span> 
+                            @elseif ($asset->status == 2)
+                            <span class="badge badge-light-danger inv-status">Not Available</span>   
+                            @else
+                            <span class="badge badge-light-info inv-status">Not Assigned</span>   
+                            @endif
+                             </td>                                           
                             <td>
                             <span class="inv-amount">{{ $asset->assetType }}</span>
                            </td>  
