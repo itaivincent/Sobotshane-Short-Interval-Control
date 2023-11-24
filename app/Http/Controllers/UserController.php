@@ -87,7 +87,7 @@ class UserController extends Controller
         $userrole->CreatedBy = $user->name;
         $userrole->save();
 
-        return redirect()->route('users.parameters')->with('success', 'role created successfully!');
+        return redirect()->route('users.parameters')->with('success', ' User Role created successfully!');
     }
 
     /**

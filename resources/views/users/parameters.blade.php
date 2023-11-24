@@ -58,15 +58,8 @@
                                     </div>
 
                                     <div class="w-progress-stats">                                            
-                                        <div class="progress">
-                                            <div class="progress-bar bg-gradient-secondary" role="progressbar" style="width: 57%" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-
-                                        <div class="">
-                                            <div class="w-icon">
-                                                <p>57%</p>
-                                            </div>
-                                        </div>
+                                     
+                                  
                                         
                                     </div>
                                 </div>
@@ -103,15 +96,9 @@
                                     </div>
 
                                     <div class="w-progress-stats">                                            
-                                        <div class="progress">
-                                            <div class="progress-bar bg-gradient-secondary" role="progressbar" style="width: 57%" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
+                                   
 
-                                        <div class="">
-                                            <div class="w-icon">
-                                                <p>57%</p>
-                                            </div>
-                                        </div>
+                                   
                                         
                                     </div>
                                 </div>
