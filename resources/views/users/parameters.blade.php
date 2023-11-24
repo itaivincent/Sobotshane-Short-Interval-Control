@@ -86,9 +86,9 @@
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
                                                 </a>
 
-                                                <div class="dropdown-menu left" aria-labelledby="expenses" style="will-change: transform;">
-                                                    <a class="dropdown-item"  data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg" href="javascript:void(0);">Create User Role</a>
-                                                    <a class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#allusers">View All Roles</a>                                              
+                                                <div class="dropdown-menu left" aria-labelledby="expenses" style="will-change: transform;">                                                
+                                                    <a class="dropdown-item"  data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg">View All Roles</a>      
+                                                    <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#inputFormModal">Create User Role</a>                                            
                                                 </div>
                                             </div>
                                         </div>
@@ -139,63 +139,13 @@
 
 
           
+
+                                   
                                   <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-lg" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="myLargeModalLabel"></h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                                      <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                <div class="row">    
-                                                <form method="post" action="{{ route('users.userRole') }}">
-                                                     @csrf                                        
-                                                <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
-                                                    <div class="section general-info payment-info">
-                                                        <div class="info">
-                                                            <h6 class="">Add User Role</h6>                              
-
-                                                            <div class="row mt-4">
-                                                                <div class="col-md-6">
-                                                                    <div class="mb-3">
-                                                                        <label class="form-label">User Role</label>
-                                                                        <input type="text" name="Name" class="form-control add-billing-address-input">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <div class="mb-3">
-                                                                        <label class="form-label">Description</label>
-                                                                        <input type="text"  name="Description" class="form-control">
-                                                                    </div>
-                                                                </div>                                                          
-                                                            </div>        
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button class="btn btn-light-dark" data-bs-dismiss="modal">Discard</button>
-                                                    <button type="submit" class="btn btn-primary">Save</button>
-                                                </div>
-                                            </form>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
-
-
-
-                                    
-                                  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="allusers"></h5>
+                                                    <h5 class="modal-title" id="bd-example-modal-lg"></h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                                       <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                                                     </button>
@@ -233,6 +183,56 @@
                                                </div>                                       
                                         
                                             </div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="modal fade inputForm-modal" id="inputFormModal" tabindex="-1" role="dialog" aria-labelledby="inputFormModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                          <div class="modal-content">
+  
+                                            <div class="modal-header" id="inputFormModalLabel">
+                                                <h5 class="modal-title">Create a <b>User Role</b></h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+                                            </div>
+                                                                                       
+                                            <div class="modal-body">
+                                                <form  method="post" action="{{ route('users.userRole') }}"class="mt-0">
+                                                @csrf  
+                                                    <div class="form-group">
+                                                        <div class="input-group mb-3">
+                                                            <span class="input-group-text">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                                    <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                                                                    <polyline points="3 7 12 13 21 7"></polyline>
+                                                                </svg>
+                                                            </span>
+                                                            <input type="text"  name="Name" class="form-control" placeholder="name" aria-label="name    ">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="input-group mb-3">
+                                                            <span class="input-group-text">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-lock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                                    <rect x="5" y="11" width="14" height="10" rx="2"></rect>
+                                                                    <circle cx="12" cy="16" r="1"></circle>
+                                                                    <path d="M8 11v-4a4 4 0 0 1 8 0v4"></path>
+                                                                </svg>
+                                                            </span>
+                                                            <input type="text" name="Description" class="form-control" placeholder="description" aria-label="password">
+                                                        </div>
+                                                    </div>                                                                                                                                   
+  
+                                            </div>
+                                            <div class="modal-footer">                                            
+                                                <button type="submit" class="btn btn-primary mt-2 mb-2 btn-no-effect" data-bs-dismiss="modal">Create Role</button>
+                                            </div>
+                                            </form>
+                                          </div>
                                         </div>
                                     </div>
 @endsection

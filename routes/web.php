@@ -43,7 +43,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/assets/create', [AssetController::class, 'create'])->name('assets.create');
     Route::post('/assets/store', [AssetController::class, 'store'])->name('assets.store');
     Route::get('/assets/edit/{id}', [AssetController::class, 'edit'])->name('assets.edit');
-    Route::post('/assets/update/{id}', [AssetController::class, 'update'])->name('assets.update');
+    Route::put('/assets/update/{id}', [AssetController::class, 'update'])->name('assets.update');
 });
 
 require __DIR__.'/auth.php';

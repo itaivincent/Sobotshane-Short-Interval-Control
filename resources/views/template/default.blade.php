@@ -31,6 +31,9 @@
     <link href="{!! asset('template/src/assets/css/light/apps/invoice-list.css') !!}" rel="stylesheet" type="text/css" />
     <link href="{!! asset('template/src/assets/css/dark/apps/invoice-list.css') !!}" rel="stylesheet" type="text/css" />
 
+    <link href="{!! asset('template/src/assets/css/light/components/modal.css') !!}" rel="stylesheet" type="text/css" />
+    <link href="{!! asset('template/src/assets/css/dark/components/modal.css') !!}" rel="stylesheet" type="text/css" />
+
     <link href="{!! asset('template/src/assets/css/light/users/account-setting.css') !!}" rel="stylesheet" type="text/css" />
     <link href="{!! asset('template/src/plugins/css/dark/flatpickr/custom-flatpickr.css') !!}" rel="stylesheet" type="text/css" />
     <link href="{!! asset('template/src/assets/css/dark/apps/invoice-edit.css') !!}" rel="stylesheet" type="text/css" />

@@ -22,7 +22,7 @@ return new class extends Migration
             $table->integer('weight')->nullable();
             $table->integer('tonnage')->nullable();
             $table->integer('driverId')->nullable();
-            $table->string('type')->nullable();
+            $table->string('statusReason')->nullable();
             $table->integer('routeId')->nullable();
             $table->string('licenseNumber')->nullable();
             $table->integer('payloadCapacity')->nullable();

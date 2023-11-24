@@ -20,7 +20,7 @@ class Asset extends Model
         'weight',
         'tonnage',
         'driverId',
-        'type',
+        'statusReason',
         'routeId',
         'licenseNumber',
         'payloadCapacity',

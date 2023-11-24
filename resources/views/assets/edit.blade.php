@@ -57,8 +57,9 @@
     
                                                             <h4>Asset Details:</h4>
     
-                                                            <form method="post" action="{{ route('assets.update') }}">
+                                                            <form method="post" action="/assets/update/{{$asset->id}}">
                                                             @csrf 
+                                                            @method('put')
                                                             <div class="invoice-address-company-fields">
     
                                                                 <div class="form-group row">
@@ -87,7 +88,21 @@
                                                                     <div class="col-sm-9">
                                                                         <input type="text" class="form-control form-control-sm"  name="vinNumber" id="company-phone" placeholder="(123) 456 789" value="{{$asset->vinNumber}}">
                                                                     </div>
+                                                                </div>
+                                                                    
+                                                                
+                                                                <div class="form-group row">
+                                                                    <label for="company-phone" class="col-sm-3 col-form-label col-form-label-sm">Status</label>
+                                                                    <div class="col-sm-9">
+                                                                        @if ($asset->status == 1)
+                                                                        <span class="badge badge-light-success inv-status">Available</span> 
+                                                                        @else
+                                                                        <span class="badge badge-light-danger inv-status">Not Available</span>   
+                                                                        @endif
+                                                                 
+                                                                    </div>
                                                                 </div>                                                                
+                                                                
                                                                 
                                                             </div>
                                                             
@@ -186,12 +201,10 @@
                                                 <div class="form-group mb-0">
                                                     <label>Status</label>
                                                     <div class="dropdown selectable-dropdown invoice-select">                              
-                                                                    <select name="assetType" class="form-select">
+                                                                    <select name="status" class="form-select">
                                                                     <option selected="">Choose...</option>
                                                                     <option value="1">Available</option>
-                                                                    <option value="2">Not Available</option>
-                                                              
-                                                                                                                                                                                  
+                                                                    <option value="2">Not Available</option>                                                                                                                                                                                                              
                                                                    </select>                               
                                                     </div>
                                                 </div>
@@ -213,11 +226,12 @@
                                                                 <div class="dropdown selectable-dropdown invoice-select">
                                                                  
                                                           
-                                                                    <select name="assetType" class="form-select">
+                                                                    <select name="statusReason" class="form-select">
                                                                     <option selected="">Choose...</option>
                                                                     <option value="Broken down">Broken down</option>
                                                                     <option value="Under Maintenance">Under Maintenance</option>
-                                                                    <option value="Involved in Accident">Involved in Accident</option>                                                                                                              
+                                                                    <option value="Involved in Accident">Involved in Accident</option> 
+                                                                    <option value="Repaired">Repaired</option>                                                                                                                 
                                                                    </select>  
                                                                  
                                                                 </div>

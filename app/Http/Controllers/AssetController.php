@@ -5,6 +5,7 @@ use App\Models\Userrole;
 use App\Models\User;
 use App\Models\Asset;
 use Alert;
+use Auth;
 
 use Illuminate\Http\Request;
 
@@ -57,7 +58,7 @@ class AssetController extends Controller
         if($userrole){
             return redirect()->route('assets.create')->with('success', 'Asset created successfully!');
         }
-          return redirect()->route('assets.create')->with('error', 'Asset created successfully!');
+          return redirect()->route('assets.create')->with('error', 'Failed to create Asset!');
         
     }
 
@@ -84,7 +85,34 @@ class AssetController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+       // dd($request->make,$id);
+
+        $assetUpdate = Asset::where('id',$id)->update([
+
+            'make'    =>$request->make, 
+            'registration'    =>$request->registration, 
+            'assetDescription'    =>$request->assetDescription, 
+            'vinNumber'    =>$request->vinNumber, 
+            'assetType'    =>$request->assetType, 
+            'weight'    =>$request->weight,    
+            'statusReason'    =>$request->statusReason,     
+            'licenseNumber'    =>$request->licenseNumber, 
+            'payloadCapacity'    =>$request->payloadCapacity, 
+            'status'    =>$request->status, 
+            'mileage'    =>$request->mileage, 
+            'fueltype'    =>$request->fueltype, 
+            'registrationExpireDate'    =>$request->registrationExpireDate, 
+            'updatedBy'   =>Auth::user()->name,               
+
+        ]);
+
+        if($assetUpdate){
+
+            return back()->with('success', 'Asset updated successfully!'); 
+        }
+
+        return back()->with('error', 'Failed to update Asset!'); 
+
     }
 
     /**
