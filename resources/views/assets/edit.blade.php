@@ -65,28 +65,28 @@
                                                                 <div class="form-group row">
                                                                     <label for="company-name" class="col-sm-3 col-form-label col-form-label-sm">Make</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" class="form-control form-control-sm" name="make" id="company-name" placeholder="Business Name" value="{{$asset->make}}">
+                                                                        <input type="text" class="form-control form-control-sm" name="make" id="company-name" placeholder="" value="{{$asset->make}}">
                                                                     </div>
                                                                 </div>
     
                                                                 <div class="form-group row">
                                                                     <label for="company-email" class="col-sm-3 col-form-label col-form-label-sm">Registration</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" class="form-control form-control-sm" name="registration" id="company-email" placeholder="name@company.com" value="{{$asset->registration}}">
+                                                                        <input type="text" class="form-control form-control-sm" name="registration" id="company-email" placeholder="" value="{{$asset->registration}}">
                                                                     </div>
                                                                 </div>
     
                                                                 <div class="form-group row">
                                                                     <label for="company-address" class="col-sm-3 col-form-label col-form-label-sm">Description</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" class="form-control form-control-sm"  name="assetDescription" id="company-address" placeholder="XYZ Street" value="{{$asset->assetDescription}}">
+                                                                        <input type="text" class="form-control form-control-sm"  name="assetDescription" id="company-address" placeholder="" value="{{$asset->assetDescription}}">
                                                                     </div>
                                                                 </div>
     
                                                                 <div class="form-group row">
                                                                     <label for="company-phone" class="col-sm-3 col-form-label col-form-label-sm">Vin Number</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" class="form-control form-control-sm"  name="vinNumber" id="company-phone" placeholder="(123) 456 789" value="{{$asset->vinNumber}}">
+                                                                        <input type="text" class="form-control form-control-sm"  name="vinNumber" id="company-phone" placeholder="" value="{{$asset->vinNumber}}">
                                                                     </div>
                                                                 </div>
                                                                     
@@ -118,30 +118,36 @@
                                                                 <div class="form-group row">
                                                                     <label for="client-name" class="col-sm-3 col-form-label col-form-label-sm"> Capacity (Tons)</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" class="form-control form-control-sm" name="payloadCapacity" id="client-name" placeholder="Client Name" value="{{$asset->payloadCapacity}}">
+                                                                        <input type="text" class="form-control form-control-sm" name="payloadCapacity" id="client-name" placeholder="" value="{{$asset->payloadCapacity}}">
                                                                     </div>
                                                                 </div>
     
                                                                 <div class="form-group row">
                                                                     <label for="client-email" class="col-sm-3 col-form-label col-form-label-sm"> Weight</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" class="form-control form-control-sm" name="weight" id="client-email" placeholder="name@company.com" value="{{$asset->weight}}">
+                                                                        <input type="text" class="form-control form-control-sm" name="weight" id="client-email" placeholder="" value="{{$asset->weight}}">
                                                                     </div>
                                                                 </div>
     
                                                                 <div class="form-group row">
                                                                     <label for="client-address" class="col-sm-3 col-form-label col-form-label-sm"> Type</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" class="form-control form-control-sm" name="assetType" id="client-address" placeholder="XYZ Street" value="{{$asset->assetType}}">
+                                                                        <input type="text" class="form-control form-control-sm" name="assetType" id="client-address" placeholder="" value="{{$asset->assetType}}">
                                                                     </div>
                                                                 </div>
     
                                                                 <div class="form-group row">
                                                                     <label for="client-phone" class="col-sm-3 col-form-label col-form-label-sm">License Number</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" class="form-control form-control-sm" name="licenseNumber" id="client-phone" placeholder="(123) 456 789" value="{{$asset->licenseNumber}}">
+                                                                        <input type="text" class="form-control form-control-sm" name="licenseNumber" id="client-phone" placeholder="" value="{{$asset->licenseNumber}}">
                                                                     </div>
                                                                 </div>
+                                                                <div class="form-group row">
+                                                                    <label for="client-phone" class="col-sm-3 col-form-label col-form-label-sm">Status Reason</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type="text" class="form-control form-control-sm" name="licenseNumber" id="client-phone"  value="{{$asset->statusReason}}">
+                                                                    </div>
+                                                                </div> 
                                                                 
                                                             </div> 
                                                             
