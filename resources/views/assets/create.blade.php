@@ -54,8 +54,8 @@
                                                         </div>
                                                         <div class="col-4">
                                                             <div class="mb-3">
-                                                                <label class="form-label">Description</label>
-                                                                <input type="text" name="assetDescription"  class="form-control">
+                                                                <label class="form-label">Model</label>
+                                                                <input type="text" name="model"  class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
@@ -66,8 +66,18 @@
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
-                                                                <label class="form-label">Payload Capacity(Tons)</label>                                              
-                                                                <input type="text"  name="payloadCapacity" class="form-control">
+                                                            <label class="form-label">Asset Type</label>
+                                                                <div class="invoice-action-currency">
+                                                                    <div class="dropdown selectable-dropdown cardName-select">
+                                                                    <select name="assetType"  id="assetType" class="form-select">
+                                                                    <option selected="">Choose...</option>
+                                                                    <option value="Trailer">Trailer</option>
+                                                                    <option value="Head">Horse</option>
+                                                                                                                                                                 
+                                                                   </select>  
+                                                                    </div>
+                                                                </div>                                            
+                                                         
                                                                                                                       
                                                             </div>
                                                         </div>
@@ -84,6 +94,54 @@
                                             </div>
                                         </div>
     
+                                        <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+                                            <div class="section general-info payment-info">
+                                                <div class="info">
+                                                    <h6 class="">Add More Details</h6>                                     
+    
+                                                    <div class="row mt-4">
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">                                                            
+                                                                <label class="form-label">Payload Capacity(Tons)</label>  
+                                                                <input type="text"  name="payloadCapacity" class="form-control">
+                                                            </div>
+                                                        </div>
+    
+                                                         <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">License Number</label>
+                                                                <input type="text" name="licenseNumber"  class="form-control add-payment-method-input">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Mileage (Kms)</label>
+                                                                <input type="text" name="mileage"  class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Fuel Type</label>
+                                                                <input type="text" name="fueltype"  class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Registration Expiration Date</label>
+                                                                <input type="date"  name="registrationExpireDate"  class="form-control">
+                                                            </div>
+                                                        </div>
+                                                   
+                                                    </div>
+    
+                                                  
+                                                </div>
+                                                
+                                            </div>
+                                           
+                                        </div>
+
+
                                         <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
                                             <div class="section general-info payment-info">
                                                 <div class="info">

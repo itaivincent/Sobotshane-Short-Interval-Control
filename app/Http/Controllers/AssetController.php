@@ -42,7 +42,7 @@ class AssetController extends Controller
         $userrole = new Asset();
         $userrole->make = $request->make;
         $userrole->registration = $request->registration;
-        $userrole->assetDescription =  $request->assetDescription;
+        $userrole->model =  $request->model;
         $userrole->vinNumber = $request->vinNumber;
         $userrole->payloadCapacity = $request->payloadCapacity;
         $userrole->weight = $request->weight;
