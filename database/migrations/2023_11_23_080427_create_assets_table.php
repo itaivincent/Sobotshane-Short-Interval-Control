@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('expectedFuelConsumption')->nullable();
             $table->string('truckType')->nullable();
             $table->string('trailerType')->nullable();
+            $table->string('gearType')->nullable();
 
 
             $table->integer('tonnage')->nullable();

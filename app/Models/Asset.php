@@ -28,6 +28,7 @@ class Asset extends Model
         'mileage',
         'fueltype',
         'model',
+        'gearType',
         'registrationYear',
         'engineCapacity',
         'expectedFuelConsumption',
