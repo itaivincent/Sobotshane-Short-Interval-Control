@@ -20,6 +20,17 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->string('assetType')->nullable();
             $table->integer('weight')->nullable();
+
+
+            $table->string('assetType')->nullable();
+            $table->string('model')->nullable();
+            $table->string('registrationYear')->nullable();
+            $table->string('engineCapacity')->nullable();
+            $table->string('expectedFuelConsumption')->nullable();
+            $table->string('truckType')->nullable();
+            $table->string('trailerType')->nullable();
+
+
             $table->integer('tonnage')->nullable();
             $table->integer('driverId')->nullable();
             $table->string('statusReason')->nullable();
