@@ -108,6 +108,15 @@ class AssetController extends Controller
             'status'    =>$request->status, 
             'mileage'    =>$request->mileage, 
             'fueltype'    =>$request->fueltype, 
+
+            'truckType'      =>$request->truckType,
+            'trailerType'    =>$request->trailerType,
+            'model'           =>$request->model,
+            'registrationYear'    =>$request->registrationYear,
+            'engineCapacity'    =>$request->engineCapacity,
+            'expectedFuelConsumption'    =>$request->expectedFuelConsumption,
+            'gearType'    =>$request->gearType,
+
             'registrationExpireDate'    =>$request->registrationExpireDate, 
             'updatedBy'   =>Auth::user()->name,               
 
