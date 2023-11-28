@@ -82,6 +82,7 @@ class AssetController extends Controller
     public function edit(string $id)
     {
         $asset = Asset::where('id', $id)->first();
+      //  dd($asset);
 
         return view('assets.edit', compact('asset'));
     }

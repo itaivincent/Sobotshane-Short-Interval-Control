@@ -77,9 +77,9 @@
                                                                 </div>
     
                                                                 <div class="form-group row">
-                                                                    <label for="company-address" class="col-sm-3 col-form-label col-form-label-sm">Description</label>
+                                                                    <label for="company-address" class="col-sm-3 col-form-label col-form-label-sm">Asset Type</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" class="form-control form-control-sm"  name="assetDescription" id="company-address" placeholder="" value="{{$asset->assetDescription}}">
+                                                                        <input type="text" class="form-control form-control-sm"  name="assetType" id="company-address" placeholder="" value="{{$asset->assetType}}">
                                                                     </div>
                                                                 </div>
     
@@ -96,8 +96,10 @@
                                                                     <div class="col-sm-9">
                                                                         @if ($asset->status == 1)
                                                                         <span class="badge badge-light-success inv-status">Available</span> 
+                                                                        @elseif($asset->status == 2)
+                                                                        <span class="badge badge-light-danger inv-status">Not Available</span> 
                                                                         @else
-                                                                        <span class="badge badge-light-danger inv-status">Not Available</span>   
+                                                                        <span class="badge badge-light-info inv-status">Not Assigned</span>  
                                                                         @endif
                                                                  
                                                                     </div>
@@ -116,9 +118,9 @@
                                                             <div class="invoice-address-client-fields">
     
                                                                 <div class="form-group row">
-                                                                    <label for="client-name" class="col-sm-3 col-form-label col-form-label-sm"> Capacity (Tons)</label>
+                                                                    <label for="client-name" class="col-sm-3 col-form-label col-form-label-sm">Model</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" class="form-control form-control-sm" name="payloadCapacity" id="client-name" placeholder="" value="{{$asset->payloadCapacity}}">
+                                                                        <input type="text" class="form-control form-control-sm" name="model" id="client-name" placeholder="" value="{{$asset->model}}">
                                                                     </div>
                                                                 </div>
     
@@ -130,9 +132,9 @@
                                                                 </div>
     
                                                                 <div class="form-group row">
-                                                                    <label for="client-address" class="col-sm-3 col-form-label col-form-label-sm"> Type</label>
+                                                                    <label for="client-address" class="col-sm-3 col-form-label col-form-label-sm"> Year</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" class="form-control form-control-sm" name="assetType" id="client-address" placeholder="" value="{{$asset->assetType}}">
+                                                                        <input type="text" class="form-control form-control-sm" name="registrationYear" id="client-address" placeholder="" value="{{$asset->registrationYear}}">
                                                                     </div>
                                                                 </div>
     
@@ -145,7 +147,7 @@
                                                                 <div class="form-group row">
                                                                     <label for="client-phone" class="col-sm-3 col-form-label col-form-label-sm">Status Reason</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" class="form-control form-control-sm" name="licenseNumber" id="client-phone"  value="{{$asset->statusReason}}">
+                                                                        <input type="text" class="form-control form-control-sm" name="statusReason" id="client-phone"  value="{{$asset->statusReason}}">
                                                                     </div>
                                                                 </div> 
                                                                 
@@ -160,19 +162,16 @@
     
                                                 <div class="invoice-detail-terms">
     
-                                                    <div class="row justify-content-between">
-    
-                                                        <div class="col-md-3">
-    
+                                                @if ($asset->assetType == 'Horse')
+                                                <div class="row justify-content-between">
+                                                        <div class="col-md-3"> 
                                                             <div class="form-group mb-4">
                                                                 <label for="number">Mileage</label>
                                                                 <input type="text" class="form-control form-control-sm" name="mileage" id="number" placeholder="#0001" value="{{$asset->mileage}}">
                                                             </div>
-    
                                                         </div>
     
-                                                        <div class="col-md-3">
-    
+                                                        <div class="col-md-3"> 
                                                             <div class="form-group mb-4">
                                                                 <label for="date">Fuel Type</label>
                                                                 <input type="text" class="form-control form-control-sm"  name="fueltype" id="date" placeholder="Add date picker" value="{{$asset->fueltype}}">
@@ -182,12 +181,55 @@
                                                         <div class="col-md-3">
                                                             <div class="form-group mb-4">
                                                                 <label for="due">Registration Expiration Date</label>
-                                                                <input type="text" class="form-control form-control-sm"  name="registrationExpireDate" id="due" placeholder="None" value="{{$asset->registrationExpireDate}}">
+                                                                <input type="date" class="form-control form-control-sm"  name="registrationExpireDate" id="due" placeholder="None" value="{{$asset->registrationExpireDate}}">
+                                                            </div>       
+                                                        </div> 
+                                                    </div>  
+
+                                                    <div class="row justify-content-between">
+                                                        <div class="col-md-3"> 
+                                                            <div class="form-group mb-4">
+                                                                <label for="number">Engine Capacity</label>
+                                                                <input type="text" class="form-control form-control-sm" name="engineCapacity" id="number"  value="{{$asset->engineCapacity}}">
                                                             </div>
-                                                            
                                                         </div>
     
-                                                    </div>
+                                                        <div class="col-md-3"> 
+                                                            <div class="form-group mb-4">
+                                                                <label for="date">Expected Fuel Consumption</label>
+                                                                <input type="text" class="form-control form-control-sm"  name="expectedFuelConsumption" id="date"  value="{{$asset->expectedFuelConsumption}}">
+                                                            </div>
+                                                        </div>
+    
+                                                        <div class="col-md-3">
+                                                            <div class="form-group mb-4">
+                                                                <label for="due">Gear Model</label>
+                                                                <input type="text" class="form-control form-control-sm"  name="gearType" id="due" value="{{$asset->gearType }}">
+                                                            </div>       
+                                                        </div> 
+                                                    </div>  
+                                                @else
+                                                <div class="row justify-content-between">
+                                                        <div class="col-md-3"> 
+                                                            <div class="form-group mb-4">
+                                                                <label for="number">Payload Capacity (Tons)</label>
+                                                                <input type="text" class="form-control form-control-sm" name="mileage" id="number" placeholder="#0001" value="{{$asset->payloadCapacity}}">
+                                                            </div>
+                                                        </div>
+    
+                                                        <div class="col-md-3"> 
+                                                            <div class="form-group mb-4">
+                                                                <label for="date">Trailer Type </label>
+                                                                <input type="text" class="form-control form-control-sm"  name="trailerType" id="date" placeholder="Add date picker" value="{{$asset->trailerType}}">
+                                                            </div>
+                                                        </div>
+    
+                                                        <div class="col-md-3">
+                                                          
+                                                        </div> 
+                                                    </div> 
+                                                @endif
+                                               
                                                     
                                                 </div>
 
@@ -232,7 +274,7 @@
                                                                 <div class="dropdown selectable-dropdown invoice-select">
                                                                  
                                                           
-                                                                    <select name="statusReason" class="form-select" required />
+                                                                    <select name="statusReason" class="form-select"  />
                                                                     <option value="">Choose...</option>
                                                                     <option value="Broken down">Broken down</option>
                                                                     <option value="Under Maintenance">Under Maintenance</option>
