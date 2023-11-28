@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AssetController;
+use App\Http\Controllers\ContractController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,6 +45,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/assets/store', [AssetController::class, 'store'])->name('assets.store');
     Route::get('/assets/edit/{id}', [AssetController::class, 'edit'])->name('assets.edit');
     Route::put('/assets/update/{id}', [AssetController::class, 'update'])->name('assets.update');
+
+    //Contracts
+    Route::resource('contracts', ContractController::class);
 });
 
 require __DIR__.'/auth.php';

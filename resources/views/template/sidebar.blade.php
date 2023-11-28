@@ -144,10 +144,13 @@
                         </a>
                         <ul class="collapse submenu list-unstyled" id="contract" data-bs-parent="#accordionExample">
                             <li>
-                                <a href="javascript:void(0);"> Manage Contracts </a>
+                                <a href="/contracts/create"> Create Contract </a>
                             </li>
                             <li>
-                                <a href="javascript:void(0);"> Parameters </a>
+                                <a href="/contracts/index"> Manage Contracts </a>
+                            </li>
+                            <li>
+                                <a href="/contracts/parameters"> Parameters </a>
                             </li>
                         </ul>
                     </li>
