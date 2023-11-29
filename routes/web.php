@@ -48,6 +48,7 @@ Route::middleware('auth')->group(function () {
 
     //Contracts
     Route::resource('contracts', ContractController::class);
+    Route::get('/contracts/parameters', [ContractController::class, 'parameters'])->name('contract.parameters');
 });
 
 require __DIR__.'/auth.php';

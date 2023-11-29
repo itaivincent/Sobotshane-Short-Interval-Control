@@ -19,7 +19,7 @@ class ContractController extends Controller
      */
     public function create()
     {
-        //
+        return view('contracts.create');
     }
 
     /**
@@ -28,6 +28,13 @@ class ContractController extends Controller
     public function store(Request $request)
     {
         //
+    }
+
+
+    public function parameters()
+    {
+        $roles = Userrole::all();
+        return view('contracts.parameters', compact('roles'));
     }
 
     /**
