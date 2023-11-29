@@ -58,9 +58,7 @@
                                     </div>
 
                                     <div class="w-progress-stats">                                            
-                                     
-                                  
-                                        
+                                                                                                      
                                     </div>
                                 </div>
                             </div>
