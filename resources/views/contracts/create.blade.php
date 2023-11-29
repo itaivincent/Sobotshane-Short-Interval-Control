@@ -40,19 +40,139 @@
                                                     <h6 class="">Add Personal Details</h6>                              
     
                                                     <div class="row mt-4">
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-4">
                                                             <div class="mb-3">
                                                                 <label class="form-label">Name</label>
                                                                 <input type="text" name="name" class="form-control add-billing-address-input">
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-4">
                                                             <div class="mb-3">
                                                                 <label class="form-label">Surname</label>
                                                                 <input type="text" name="surname" class="form-control">
                                                             </div>
                                                         </div>
-                                                        <div class="col-12">
+                                                        <div class="col-4">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Address</label>
+                                                                <input type="text" name="address"  class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">City</label>
+                                                                <input type="text"  name="city" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Country</label>                                              
+                                                                <input type="text"  name="country" class="form-control">
+                                                                                                                      
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Age</label>
+                                                                <input type="text"  name="age"  class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">City</label>
+                                                                <input type="text"  name="city" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Country</label>                                              
+                                                                <input type="text"  name="country" class="form-control">
+                                                                                                                      
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Age</label>
+                                                                <input type="text"  name="age"  class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <hr/>
+                                                    <div class="row mt-4">
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Name</label>
+                                                                <input type="text" name="name" class="form-control add-billing-address-input">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Surname</label>
+                                                                <input type="text" name="surname" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Address</label>
+                                                                <input type="text" name="address"  class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">City</label>
+                                                                <input type="text"  name="city" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Country</label>                                              
+                                                                <input type="text"  name="country" class="form-control">
+                                                                                                                      
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Age</label>
+                                                                <input type="text"  name="age"  class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">City</label>
+                                                                <input type="text"  name="city" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Country</label>                                              
+                                                                <input type="text"  name="country" class="form-control">
+                                                                                                                      
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Age</label>
+                                                                <input type="text"  name="age"  class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <hr/>
+                                                    <div class="row mt-4">
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Name</label>
+                                                                <input type="text" name="name" class="form-control add-billing-address-input">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Surname</label>
+                                                                <input type="text" name="surname" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-4">
                                                             <div class="mb-3">
                                                                 <label class="form-label">Address</label>
                                                                 <input type="text" name="address"  class="form-control">
@@ -79,10 +199,12 @@
                                                         </div>
                                                     </div>
     
+    
                                                 
                                                 </div>
                                             </div>
                                         </div>
+                                        
 
                                         <button type="submit" class="btn btn-primary  float-end mt-3">Create Contract</button>
 
