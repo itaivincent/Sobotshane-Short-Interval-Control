@@ -47,8 +47,8 @@ Route::middleware('auth')->group(function () {
     Route::put('/assets/update/{id}', [AssetController::class, 'update'])->name('assets.update');
 
     //Contracts
+    Route::get('/contracts/parameters', [ContractController::class, 'parameters'])->name('contracts.parameters');
     Route::resource('contracts', ContractController::class);
-    Route::get('/contracts/parameters', [ContractController::class, 'parameters'])->name('contract.parameters');
 });
 
 require __DIR__.'/auth.php';

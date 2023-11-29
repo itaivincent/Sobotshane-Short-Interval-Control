@@ -2,6 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Userrole;
+use App\Models\User;
+use App\Models\Asset;
+use Alert;
+use Auth;
+
+
 use Illuminate\Http\Request;
 
 class ContractController extends Controller
