@@ -24,6 +24,8 @@ class Route extends Model
         'rate',
         'formulaId',
         'type',
+        'status',
+        'resourcePoolStatus',
         'routeCategory',
         'createdBy',
         'updatedBy',

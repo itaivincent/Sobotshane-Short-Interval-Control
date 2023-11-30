@@ -6,6 +6,7 @@ use App\Models\Userrole;
 use App\Models\User;
 use App\Models\Asset;
 use App\Models\Contract;
+use App\Models\Route;
 use Alert;
 use Auth;
 use Illuminate\Support\Facades\Storage;
@@ -93,7 +94,25 @@ class ContractController extends Controller
 
     public function routeStore(Request $request)
     {
-        dd($request->unit);
+        $user = auth()->user();
+
+        $userrole = new Route();
+        $userrole->from = $request->from;
+        $userrole->to = $request->to;
+        $userrole->activity = $request->activity;
+        $userrole->distance =  $request->distance;
+        $userrole->unit = $request->unit;
+        $userrole->routeCategory = $request->routeCategory;
+        $userrole->type = $request->type;
+        $userrole->createdBy = $user->name;
+        $userrole->save();
+
+        if($userrole){
+
+            return redirect()->route('contracts.parameters')->with('success', 'Route created successfully!');
+        }
+          return redirect()->route('contracts.parameters')->with('error', 'Failed to create Route!');
+       
     }
 
     /**

@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('unit')->nullable();
             $table->string('Type')->nullable();
             $table->string('routeCategory')->nullable();
+            $table->string('resourcePoolStatus')->nullable();
+            $table->string('status')->nullable();
             $table->string('createdBy')->nullable();
             $table->string('updatedBy')->nullable();
             $table->timestamps();

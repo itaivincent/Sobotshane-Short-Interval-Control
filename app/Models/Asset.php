@@ -34,6 +34,7 @@ class Asset extends Model
         'expectedFuelConsumption',
         'truckType',
         'trailerType',
+        'resourcePoolStatus',
         'registrationExpireDate',
         'createdBy',
         'updatedBy',
