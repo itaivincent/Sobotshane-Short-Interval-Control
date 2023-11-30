@@ -8,4 +8,25 @@ use Illuminate\Database\Eloquent\Model;
 class Route extends Model
 {
     use HasFactory;
+
+
+    protected $fillable = [
+
+        'name',
+        'contractId',
+        'from',
+        'to',
+        'activity',
+        'distance',
+        'totalQuantity',
+        'estimatedmonthQuantity',
+        'unit',
+        'rate',
+        'formulaId',
+        'type',
+        'routeCategory',
+        'createdBy',
+        'updatedBy',
+       
+    ];
 }

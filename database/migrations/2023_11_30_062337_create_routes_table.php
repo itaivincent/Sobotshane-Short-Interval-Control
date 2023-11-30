@@ -13,6 +13,18 @@ return new class extends Migration
     {
         Schema::create('routes', function (Blueprint $table) {
             $table->id();
+            $table->integer('contractId')->nullable();
+            $table->string('from')->nullable();
+            $table->string('to')->nullable();
+            $table->string('activity')->nullable();
+            $table->double('distance')->nullable();
+            $table->bigInteger('totalQuantity')->nullable();
+            $table->bigInteger('estimatedmonthQuantity')->nullable();
+            $table->string('unit')->nullable();
+            $table->string('Type')->nullable();
+            $table->string('routeCategory')->nullable();
+            $table->string('createdBy')->nullable();
+            $table->string('updatedBy')->nullable();
             $table->timestamps();
         });
     }

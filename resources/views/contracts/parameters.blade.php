@@ -27,7 +27,7 @@
                     <div class="row layout-top-spacing">
                     
                         
-                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 layout-spacing">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
                             <div class="widget widget-card-four">
                                 <div class="widget-content">
                                     <div class="w-header">
@@ -64,46 +64,9 @@
                             </div>
                         </div>  
 
-                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 layout-spacing">
-                            <div class="widget widget-card-four">
-                                <div class="widget-content">
-                                    <div class="w-header">
-                                        <div class="w-info">
-                                            <h6 class="value">Contract Types</h6>
-                                        </div>
-                                        <div class="task-action">
-                                            <div class="dropdown">
-                                                <a class="dropdown-toggle" href="#" role="button" id="expenses" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
-                                                </a>
+                    
 
-                                                <div class="dropdown-menu left" aria-labelledby="expenses" style="will-change: transform;">                                                
-                                                    <a class="dropdown-item"  data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg">View All Types</a>      
-                                                    <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#inputFormModal">Create Contract Type</a>                                            
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="w-content">
-
-                                        <div class="w-info">
-                                            <p class="value"><span></span> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trending-up"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg></p>
-                                        </div>
-                                        
-                                    </div>
-
-                                    <div class="w-progress-stats">                                            
-                                   
-
-                                   
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>  
-
-                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 layout-spacing">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
                             <div class="widget widget-card-four">
                                 <div class="widget-content">
                                     <div class="w-header">
@@ -212,42 +175,87 @@
                                           <div class="modal-content">
   
                                             <div class="modal-header" id="inputFormModalLabel">
-                                                <h5 class="modal-title">Create a <b>User Role</b></h5>
+                                                <h5 class="modal-title">Create a <b>Route</b></h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
                                             </div>
                                                                                        
                                             <div class="modal-body">
-                                                <form  method="post" action="{{ route('users.userRole') }}"class="mt-0">
+                                                <form  method="post" action="{{ route('contracts.routeStore') }}"class="mt-0">
                                                 @csrf  
                                                     <div class="form-group">
                                                         <div class="input-group mb-3">
                                                             <span class="input-group-text">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                                    <rect x="3" y="5" width="18" height="14" rx="2"></rect>
-                                                                    <polyline points="3 7 12 13 21 7"></polyline>
-                                                                </svg>
+                                                           
                                                             </span>
-                                                            <input type="text"  name="Name" class="form-control" placeholder="name" aria-label="name    ">
+                                                            <input type="text"  name="from" class="form-control" placeholder="From" aria-label="name">
                                                         </div>
                                                     </div>
+
                                                     <div class="form-group">
                                                         <div class="input-group mb-3">
                                                             <span class="input-group-text">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-lock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                                    <rect x="5" y="11" width="14" height="10" rx="2"></rect>
-                                                                    <circle cx="12" cy="16" r="1"></circle>
-                                                                    <path d="M8 11v-4a4 4 0 0 1 8 0v4"></path>
-                                                                </svg>
+                                                     
                                                             </span>
-                                                            <input type="text" name="Description" class="form-control" placeholder="description" aria-label="password">
+                                                            <input type="text" name="to" class="form-control" placeholder="To" aria-label="password">
                                                         </div>
-                                                    </div>                                                                                                                                   
+                                                    </div>   
+                                                    
+                                                    <div class="form-group">
+                                                        <div class="input-group mb-3">
+                                                            <span class="input-group-text">
+                                                   
+                                                            </span>
+                                                            <input type="text" name="activity" class="form-control" placeholder="Activity" aria-label="password">
+                                                        </div>
+                                                    </div> 
+
+                                                    <div class="form-group">
+                                                        <div class="input-group mb-3">
+                                                            <span class="input-group-text">
+                                                     
+                                                            </span>
+                                                            <input type="text" name="distance" class="form-control" placeholder="Distance" aria-label="password">
+                                                        </div>
+                                                    </div> 
+                                                    <div class="form-group">
+                                                        <div class="input-group mb-3">
+                                                            <span class="input-group-text">
+                                              
+                                                            </span>
+                                                            <input type="text" name="unit" class="form-control" placeholder="Unit" aria-label="password">
+                                                        </div>
+                                                    </div> 
+
+                                                    <div class="form-group">
+                                                        <div class="input-group mb-3">
+                                                           
+                                                                    <select name="routeCategory" class="form-select">
+                                                                    <option selected="">Choose Type</option>
+                                                                    <option value="Standard">Standard</option>
+                                                                    <option value="Adhoc">Adhoc</option>
+                                                                                                                                                                            
+                                                                   </select>  
+                                                                  
+                                                        </div>
+                                                    </div> 
+
+                                                    <div class="form-group">
+                                                        <div class="input-group mb-3">
+                                                           
+                                                                    <select name="type" class="form-select">
+                                                                    <option selected="">Choose Category</option>
+                                                                    <option value="Less than 1km">Less than 1km</option>
+                                                                    <option value="Short Haul">Short Haul</option>
+                                                                    <option value="Medium Haul">Medium Haul</option>  
+                                                                    <option value="Long Haul">Long Haul</option>                                                                                                                  
+                                                                   </select>  
+                                                                  
+                                                        </div>
+                                                    </div>
   
                                             </div>
                                             <div class="modal-footer">                                            
-                                                <button type="submit" class="btn btn-primary mt-2 mb-2 btn-no-effect" data-bs-dismiss="modal">Create Role</button>
+                                                <button type="submit" class="btn btn-primary mt-2 mb-2 btn-no-effect" data-bs-dismiss="modal">Create Route</button>
                                             </div>
                                             </form>
                                           </div>

@@ -89,6 +89,13 @@ class ContractController extends Controller
         //
     }
 
+
+
+    public function routeStore(Request $request)
+    {
+        dd($request->unit);
+    }
+
     /**
      * Show the form for editing the specified resource.
      */
