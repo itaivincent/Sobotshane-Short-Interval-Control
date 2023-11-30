@@ -13,7 +13,7 @@ class Contract extends Model
     protected $fillable = [
 
         'number',
-        'serviceProvider',
+        'provider',
         'client',
         'clientTwo',
         'activity',
@@ -24,13 +24,11 @@ class Contract extends Model
         'requiredMonthlyDistance',
         'requiredMonthlyVolume',
         'requiredMonthlyQuantity',
-        'forecastWeeklyVolumes',
-        'forecastDailyVolumes',
         'commodity',
         'RouteType',
         'RouteId',
         'rate',
-        'date',
+        'effectiveDate',
         'formula',
         'contractValue',
         'price',

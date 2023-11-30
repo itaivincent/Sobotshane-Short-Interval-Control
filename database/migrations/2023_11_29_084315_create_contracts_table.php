@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('contracts', function (Blueprint $table) {
             $table->id();
             $table->string('number')->nullable();
-            $table->date('serviceProvider')->nullable();
+            $table->string('provider')->nullable();
             $table->string('client')->nullable();
             $table->string('clientTwo')->nullable();
             $table->string('activity')->nullable();
@@ -31,7 +31,7 @@ return new class extends Migration
             $table->string('RouteType')->nullable();
             $table->string('RouteId')->nullable();
             $table->string('rate')->nullable();
-            $table->string('date')->nullable();
+            $table->string('effectiveDate')->nullable();
             $table->string('formula')->nullable();
             $table->string('contractValue')->nullable();
             $table->string('price')->nullable();
