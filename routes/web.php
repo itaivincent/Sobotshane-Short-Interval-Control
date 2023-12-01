@@ -49,6 +49,7 @@ Route::middleware('auth')->group(function () {
     //Contracts
     Route::get('/contracts/parameters', [ContractController::class, 'parameters'])->name('contracts.parameters');
     Route::post('/contracts/routeStore', [ContractController::class, 'routeStore'])->name('contracts.routeStore');
+    Route::post('/contracts/formulaStore', [ContractController::class, 'formulaStore'])->name('contracts.formulaStore');
     Route::resource('contracts', ContractController::class);
 });
 

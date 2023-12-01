@@ -90,6 +90,11 @@ class ContractController extends Controller
         //
     }
 
+    public function formulaStore(Request $request)
+    {
+        dd($request->from);
+    }
+
 
 
     public function routeStore(Request $request)
