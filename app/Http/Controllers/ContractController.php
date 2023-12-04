@@ -22,7 +22,9 @@ class ContractController extends Controller
      */
     public function index()
     {
-        //
+        $contracts = Contract::all();
+
+        return view('contracts.index', compact('contracts'));
     }
 
     /**
@@ -81,7 +83,8 @@ class ContractController extends Controller
     {
         $roles = Userrole::all();
         $routes = Route::all();
-        return view('contracts.parameters', compact('roles', 'routes'));
+        $formulas = Formula::all();
+        return view('contracts.parameters', compact('roles', 'routes','forumlas'));
     }
 
     /**
@@ -106,7 +109,7 @@ class ContractController extends Controller
         $userrole->formula = $request->formula;
         $userrole->equation = $request->equation;
         $userrole->route = $request->route;
-        $userrole->result = $request->result;
+        $userrole->result = $result;
         $userrole->createdBy = $request->createdBy;
         $userrole->createdBy = $user->name;
         $userrole->save();

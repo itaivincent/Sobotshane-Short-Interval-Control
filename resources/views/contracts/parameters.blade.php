@@ -280,9 +280,27 @@
                                                 <form  method="post" action="{{ route('contracts.formulaStore') }}"class="mt-0">
                                                 @csrf  
                                                     <div class="form-group">
+                                                      <div class="input-group mb-3">                                                        
+                                                            <textarea   name="equation" rows="4" class="form-control" placeholder="please enter the rate equation..." aria-label="name"></textarea>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <div class="input-group mb-3">                                                        
+                                                            <textarea   name="formula" rows="4" class="form-control" placeholder="please enter your formula..." aria-label="name"></textarea>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
                                                         <div class="input-group mb-3">
-                                                         
-                                                            <textarea   name="formula" rows="4" class="form-control" placeholder="enter your formula..." aria-label="name"></textarea>
+                                                           
+                                                                    <select name="route" class="form-select">
+                                                                    <option selected="">Choose the route</option>
+                                                                    @foreach ($routes as $route)
+                                                                    <option value="{{$route->id}}">{{ $route->from }} - {{ $route->to }}</option>
+                                                                    @endforeach                                                                                                                                                                                                                                                                                                      
+                                                                   </select>  
+                                                                  
                                                         </div>
                                                     </div>
 
