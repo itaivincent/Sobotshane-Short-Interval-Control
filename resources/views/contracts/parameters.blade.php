@@ -80,7 +80,7 @@
                                                 </a>
 
                                                 <div class="dropdown-menu left" aria-labelledby="expenses" style="will-change: transform;">                                                
-                                                    <a class="dropdown-item"  data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg">View All Formula</a>      
+                                                    <a class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#inputFormulatableModal">View All Formula</a>      
                                                     <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#inputFormulaModal">Create a Formula</a>                                            
                                                 </div>
                                             </div>
@@ -263,9 +263,6 @@
                                     </div>
 
 
-
-
-
                                     
                                     <div class="modal fade inputForm-modal" id="inputFormulaModal" tabindex="-1" role="dialog" aria-labelledby="inputFormModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -313,5 +310,74 @@
                                             </form>
                                           </div>
                                         </div>
+                                    </div>
+
+
+
+
+                                    
+                                    <div class="modal fade bd-example-modal-xl" tabindex="-1"  id="inputFormulatableModal" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                                      <div class="modal-dialog modal-xl" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="myExtraLargeModalLabel">Extra Large</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                  <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                            <div class="col-xl-12 col-lg-12 col-sm-12 layout-top-spacing layout-spacing">
+            <div class="widget-content widget-content-area br-8">
+                <table id="invoice-list" class="table dt-table-hover" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th class="checkbox-column"> Record no. </th>
+                            <th>Service Provider</th>
+                            <th>Client</th>
+                            <th>Product</th>
+                            <th>status</th>
+                            <th>Duration</th>                    
+                            <th>Effective Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        @foreach ($contracts as $asset)                                         
+                        <tr>
+                            <td class="checkbox-column"> 1 </td>
+                            <td><a href="./app-invoice-preview.html"><span class="inv-number">{{ $asset->provider }}</span></a></td>
+                         
+                            <td><span class="inv-amount"> <p class="align-self-center mb-0 user-name">{{ $asset->client }}</p></span></td>
+                            <td><span class="inv-email"> {{ $asset->commodity }}</span></td>
+                            <td>@if ($asset->activity == 1)
+                           <span class="badge badge-light-success inv-status">Available</span> 
+                            @elseif ($asset->activity == 2)
+                            <span class="badge badge-light-danger inv-status">Not Available</span>   
+                            @else
+                            <span class="badge badge-light-info inv-status">Ongoing</span>   
+                            @endif
+                             </td>                                           
+                            <td>
+                            <span class="inv-amount">{{ $asset->duration }}</span>
+                           </td>  
+                            <td><span class="inv-date"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> {{ $asset->effectiveDate }}</span></td>
+                            <td>
+                                <a class="badge badge-light-primary text-start me-2 action-edit" href="/contracts/edit/{{$asset->id}}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-3"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></a>
+                                <a class="badge badge-light-danger text-start action-delete" href="javascript:void(0);"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-light-dark" data-bs-dismiss="modal">Discard</button>
+                                                <button type="button" class="btn btn-primary">Save</button>
+                                            </div>
+                                        </div>
+                                      </div>
                                     </div>
 @endsection

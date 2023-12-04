@@ -84,7 +84,8 @@ class ContractController extends Controller
         $roles = Userrole::all();
         $routes = Route::all();
         $formulas = Formula::all();
-        return view('contracts.parameters', compact('roles', 'routes','forumlas'));
+        $contracts = Contract::all();
+        return view('contracts.parameters', compact('roles', 'routes','formulas','contracts'));
     }
 
     /**
