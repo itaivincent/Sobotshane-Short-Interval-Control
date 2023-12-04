@@ -16,6 +16,7 @@ class Formula extends Model
         'contract',
         'route',
         'formula',
+        'equation',
         'result',
         'createdBy',
         'updatedBy',

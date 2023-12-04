@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('route')->nullable();
             $table->double('result')->nullable();           
             $table->text('formula')->nullable();
+            $table->text('equation')->nullable();
             $table->string('updatedBy')->nullable();
             $table->string('createdBy')->nullable();
             $table->timestamps();

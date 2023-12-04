@@ -104,6 +104,8 @@ class ContractController extends Controller
 
         $userrole = new Formula();
         $userrole->formula = $request->formula;
+        $userrole->equation = $request->equation;
+        $userrole->route = $request->route;
         $userrole->result = $request->result;
         $userrole->createdBy = $request->createdBy;
         $userrole->createdBy = $user->name;
