@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('formulas', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->nullable();
+            $table->string('contract')->nullable();
+            $table->string('route')->nullable();
+            $table->double('result')->nullable();           
+            $table->text('formula')->nullable();
+            $table->string('updatedBy')->nullable();
+            $table->string('createdBy')->nullable();
             $table->timestamps();
         });
     }

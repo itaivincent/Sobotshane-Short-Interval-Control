@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Formula extends Model
 {
     use HasFactory;
+
+    
+    protected $fillable = [
+
+        'name',
+        'contract',
+        'route',
+        'formula',
+        'result',
+        'createdBy',
+        'updatedBy',
+       
+    ];
 }

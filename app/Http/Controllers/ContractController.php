@@ -6,6 +6,7 @@ use App\Models\Userrole;
 use App\Models\User;
 use App\Models\Asset;
 use App\Models\Contract;
+use App\Models\Formula;
 use App\Models\Route;
 use Alert;
 use Auth;
@@ -79,7 +80,8 @@ class ContractController extends Controller
     public function parameters()
     {
         $roles = Userrole::all();
-        return view('contracts.parameters', compact('roles'));
+        $routes = Route::all();
+        return view('contracts.parameters', compact('roles', 'routes'));
     }
 
     /**
@@ -92,7 +94,40 @@ class ContractController extends Controller
 
     public function formulaStore(Request $request)
     {
-        dd($request->from);
+        $user = auth()->user();
+        $expression = $request->formula;
+        $result = $this->calculateResult($expression);
+        if($result == null){
+
+            return back()->with('warning', 'You make a mistake in your formula! Try again');
+        }
+
+        $userrole = new Formula();
+        $userrole->formula = $request->formula;
+        $userrole->result = $request->result;
+        $userrole->createdBy = $request->createdBy;
+        $userrole->createdBy = $user->name;
+        $userrole->save();
+
+        if($userrole){
+
+            return back()->with('success', 'Formula calculated and your rate is '.$result.'');
+        }
+          return back()->with('error', 'Failed to calculate formula!');
+     
+    }
+
+    private function calculateResult($expression)
+    {
+        // Use a library or a safe method to evaluate the mathematical expression
+        // For example, using the eval() function (be cautious with user input)
+        try {
+            $result = eval("return $expression;");
+            return $result;
+        } catch (\Throwable $e) {
+            // Handle errors (e.g., invalid expressions)
+            return null;
+        }
     }
 
 

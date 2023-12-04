@@ -281,78 +281,16 @@
                                                 @csrf  
                                                     <div class="form-group">
                                                         <div class="input-group mb-3">
-                                                            <span class="input-group-text">
-                                                           
-                                                            </span>
-                                                            <input type="text"  name="from" class="form-control" placeholder="From" aria-label="name">
+                                                         
+                                                            <textarea   name="formula" rows="4" class="form-control" placeholder="enter your formula..." aria-label="name"></textarea>
                                                         </div>
                                                     </div>
 
-                                                    <div class="form-group">
-                                                        <div class="input-group mb-3">
-                                                            <span class="input-group-text">
-                                                     
-                                                            </span>
-                                                            <input type="text" name="to" class="form-control" placeholder="To" aria-label="password">
-                                                        </div>
-                                                    </div>   
-                                                    
-                                                    <div class="form-group">
-                                                        <div class="input-group mb-3">
-                                                            <span class="input-group-text">
-                                                   
-                                                            </span>
-                                                            <input type="text" name="activity" class="form-control" placeholder="Activity" aria-label="password">
-                                                        </div>
-                                                    </div> 
-
-                                                    <div class="form-group">
-                                                        <div class="input-group mb-3">
-                                                            <span class="input-group-text">
-                                                     
-                                                            </span>
-                                                            <input type="text" name="distance" class="form-control" placeholder="Distance" aria-label="password">
-                                                        </div>
-                                                    </div> 
-                                                    <div class="form-group">
-                                                        <div class="input-group mb-3">
-                                                            <span class="input-group-text">
-                                              
-                                                            </span>
-                                                            <input type="text" name="unit" class="form-control" placeholder="Unit" aria-label="password">
-                                                        </div>
-                                                    </div> 
-
-                                                    <div class="form-group">
-                                                        <div class="input-group mb-3">
-                                                           
-                                                                    <select name="routeCategory" class="form-select">
-                                                                    <option selected="">Choose Type</option>
-                                                                    <option value="Standard">Standard</option>
-                                                                    <option value="Adhoc">Adhoc</option>
-                                                                                                                                                                            
-                                                                   </select>  
-                                                                  
-                                                        </div>
-                                                    </div> 
-
-                                                    <div class="form-group">
-                                                        <div class="input-group mb-3">
-                                                           
-                                                                    <select name="type" class="form-select">
-                                                                    <option selected="">Choose Category</option>
-                                                                    <option value="Less than 1km">Less than 1km</option>
-                                                                    <option value="Short Haul">Short Haul</option>
-                                                                    <option value="Medium Haul">Medium Haul</option>  
-                                                                    <option value="Long Haul">Long Haul</option>                                                                                                                  
-                                                                   </select>  
-                                                                  
-                                                        </div>
-                                                    </div>
+                                    
   
                                             </div>
                                             <div class="modal-footer">                                            
-                                                <button type="submit" class="btn btn-primary mt-2 mb-2 btn-no-effect" data-bs-dismiss="modal">Create Formula</button>
+                                                <button type="submit" class="btn btn-primary mt-2 mb-2 btn-no-effect" data-bs-dismiss="modal">Calculate Formula</button>
                                             </div>
                                             </form>
                                           </div>
