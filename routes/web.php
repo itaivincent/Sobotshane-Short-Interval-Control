@@ -46,11 +46,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/assets/edit/{id}', [AssetController::class, 'edit'])->name('assets.edit');
     Route::put('/assets/update/{id}', [AssetController::class, 'update'])->name('assets.update');
 
+
     //Contracts
     Route::get('/contracts/index', [ContractController::class, 'index'])->name('contracts.index');
     Route::get('/contracts/parameters', [ContractController::class, 'parameters'])->name('contracts.parameters');
     Route::post('/contracts/routeStore', [ContractController::class, 'routeStore'])->name('contracts.routeStore');
     Route::post('/contracts/formulaStore', [ContractController::class, 'formulaStore'])->name('contracts.formulaStore');
+    Route::get('/contracts/edit/{id}', [ContractController::class, 'edit'])->name('contracts.edit');
+    Route::put('/contracts/update/{id}', [ContractController::class, 'update'])->name('contracts.update');
+    Route::get('/download-pdf/{id}', [ContractController::class, 'pdf'])->name('contracts.pdf');
     Route::resource('contracts', ContractController::class);
 });
 

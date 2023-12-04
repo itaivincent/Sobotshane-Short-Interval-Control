@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Response;
 use App\Models\Userrole;
 use App\Models\User;
 use App\Models\Asset;
@@ -10,6 +10,7 @@ use App\Models\Formula;
 use App\Models\Route;
 use Alert;
 use Auth;
+
 use Illuminate\Support\Facades\Storage;
 
 
@@ -85,6 +86,7 @@ class ContractController extends Controller
         $routes = Route::all();
         $formulas = Formula::all();
         $contracts = Contract::all();
+
         return view('contracts.parameters', compact('roles', 'routes','formulas','contracts'));
     }
 
@@ -166,7 +168,22 @@ class ContractController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $contract = Contract::where('id',$id)->first();
+
+        return view('contracts.edit', compact('contract'));
+    }
+
+
+    public function pdf(string $id)
+    {
+       
+        $path = public_path('storage/contracts/' . $id);
+       // dd(file_exists($path));
+        if (file_exists($path)) {
+            return Response::download($path, $id, ['Content-Type' => 'application/pdf']);
+        } else {
+            return back()->with('error', 'Could not down contract!');
+        }
     }
 
     /**

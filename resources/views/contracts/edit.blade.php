@@ -99,7 +99,7 @@
                                                                         @elseif($contract->status == 2)
                                                                         <span class="badge badge-light-danger inv-status">Not Available</span> 
                                                                         @else
-                                                                        <span class="badge badge-light-info inv-status">Not Assigned</span>  
+                                                                        <span class="badge badge-light-info inv-status">Ongoing</span>  
                                                                         @endif
                                                                  
                                                                     </div>
@@ -187,28 +187,17 @@
                                                     </div>  
 
                                                     <div class="row justify-content-between">
-                                                        <div class="col-md-3"> 
+                                                        <div class="col-md-4"> 
                                                             <div class="form-group mb-4">
-                                                                <label for="number">Engine Capacity</label>
-                                                                <input type="text" class="form-control form-control-sm" name="engineCapacity" id="number"  value="{{$contract->engineCapacity}}">
+                                                            <label class="form-label">Upload Contract</label>                                              
+                                                            <input type="file" id="contractImage" name="contractImage" class="form-control">
                                                             </div>
                                                         </div>
-    
-                                                        <div class="col-md-3"> 
-                                                            <div class="form-group mb-4">
-                                                                <label for="date">Expected Fuel Consumption</label>
-                                                                <input type="text" class="form-control form-control-sm"  name="expectedFuelConsumption" id="date"  value="{{$contract->expectedFuelConsumption}}">
-                                                            </div>
-                                                        </div>
-    
-                                                        <div class="col-md-3">
-                                                            <div class="form-group mb-4">
-                                                                <label for="due">Gear Model</label>
-                                                                <input type="text" class="form-control form-control-sm"  name="gearType" id="due" value="{{$contract->gearType }}">
-                                                            </div>       
-                                                        </div> 
-                                                    </div>  
-                                               
+                                                        <div class="col-xl-12 col-md-4">
+                                                        <a href="{{ url('/download-pdf/'. $contract->image) }}" class="btn btn-primary btn-send">Download Contract</a>
+                                                    </div>                                   
+                                             
+                                                    </div>                                                
                                                     
                                                 </div>
 
@@ -220,60 +209,7 @@
                                     </div>
     
                                     <div class="col-xl-3">
-                                        
-                                        <div class="invoice-actions">
-    
-                                            <div class="invoice-action-currency">
-                                            
-                                                <div class="form-group mb-0">
-                                                    <label>Status</label>
-                                                    <div class="dropdown selectable-dropdown invoice-select">                              
-                                                                    <select name="status" class="form-select"  />
-                                                                    <option value="{{ $contract->id}}">Choose...</option>
-                                                                    <option value="1">Available</option>
-                                                                    <option value="2">Not Available</option>                                                                                                                                                                                                              
-                                                                   </select>                               
-                                                    </div>
-                                                </div>
-    
-                                            </div>
-    
-                                            <div class="invoice-action-tax">
-                                            
-                                                <h5>Reason for Change</h5>
-    
-                                                <div class="invoice-action-tax-fields">
-    
-                                                    <div class="row">
-                                                
-                                                        <div class="col-12">
-    
-                                                            <div class="form-group mb-0">
-                                                            
-                                                                <div class="dropdown selectable-dropdown invoice-select">
-                                                                 
-                                                          
-                                                                    <select name="statusReason" class="form-select"  />
-                                                                    <option value="">Choose...</option>
-                                                                    <option value="Broken down">Broken down</option>
-                                                                    <option value="Under Maintenance">Under Maintenance</option>
-                                                                    <option value="Involved in Accident">Involved in Accident</option> 
-                                                                    <option value="Repaired">Repaired</option>                                                                                                                 
-                                                                   </select>  
-                                                                 
-                                                                </div>
-    
-                                                            </div>
-    
-                                                        </div>
-                                                   
-                                                    </div>
-                                                </div>
-    
-                                            </div> 
-    
-                                        </div>
-    
+                                    
                                         <div class="invoice-actions-btn">
     
                                             <div class="invoice-action-btn">
