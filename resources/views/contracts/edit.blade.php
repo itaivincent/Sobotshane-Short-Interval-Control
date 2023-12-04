@@ -11,8 +11,8 @@
                                <div class="page-meta">
                         <nav class="breadcrumb-style-one" aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Assets</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Update Status</li>
+                                <li class="breadcrumb-item"><a href="#">Contracts</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Update Details</li>
                             </ol>
                         </nav>
                     </div>
@@ -40,7 +40,7 @@
                                                             // properties to JavaScript -->
                                         
                                                             <div class="invoice-title">
-                                                        <input type="text" class="form-control" placeholder="Invoice Label" value="Update Asset Record">
+                                                        <input type="text" class="form-control" placeholder="Invoice Label" value="Update Contract Record">
                                                     </div>
                                         
                                                         </div>
@@ -55,38 +55,38 @@
                                                     <div class="row justify-content-between">
                                                         <div class="col-xl-5 invoice-address-company">
     
-                                                            <h4>Asset Details:</h4>
+                                                            <h4>contract Details:</h4>
     
-                                                            <form method="post" action="/assets/update/{{$asset->id}}">
+                                                            <form method="post" action="/contracts/update/{{$contract->id}}">
                                                             @csrf 
                                                             @method('put')
                                                             <div class="invoice-address-company-fields">
     
                                                                 <div class="form-group row">
-                                                                    <label for="company-name" class="col-sm-3 col-form-label col-form-label-sm">Make</label>
+                                                                    <label for="company-name" class="col-sm-3 col-form-label col-form-label-sm">Number</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" class="form-control form-control-sm" name="make" id="company-name" placeholder="" value="{{$asset->make}}">
+                                                                        <input type="text" class="form-control form-control-sm" name="make" id="company-name" placeholder="" value="{{$contract->number}}">
                                                                     </div>
                                                                 </div>
     
                                                                 <div class="form-group row">
-                                                                    <label for="company-email" class="col-sm-3 col-form-label col-form-label-sm">Registration</label>
+                                                                    <label for="company-email" class="col-sm-3 col-form-label col-form-label-sm">Provider</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" class="form-control form-control-sm" name="registration" id="company-email" placeholder="" value="{{$asset->registration}}">
+                                                                        <input type="text" class="form-control form-control-sm" name="registration" id="company-email" placeholder="" value="{{$contract->provider}}">
                                                                     </div>
                                                                 </div>
     
                                                                 <div class="form-group row">
-                                                                    <label for="company-address" class="col-sm-3 col-form-label col-form-label-sm">Asset Type</label>
+                                                                    <label for="company-address" class="col-sm-3 col-form-label col-form-label-sm">Client</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" class="form-control form-control-sm"  name="assetType" id="company-address" placeholder="" value="{{$asset->assetType}}">
+                                                                        <input type="text" class="form-control form-control-sm"  name="contractType" id="company-address" placeholder="" value="{{$contract->client}}">
                                                                     </div>
                                                                 </div>
     
                                                                 <div class="form-group row">
-                                                                    <label for="company-phone" class="col-sm-3 col-form-label col-form-label-sm">Vin Number</label>
+                                                                    <label for="company-phone" class="col-sm-3 col-form-label col-form-label-sm">Product</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" class="form-control form-control-sm"  name="vinNumber" id="company-phone" placeholder="" value="{{$asset->vinNumber}}">
+                                                                        <input type="text" class="form-control form-control-sm"  name="commodity" id="company-phone" placeholder="" value="{{$contract->commodity}}">
                                                                     </div>
                                                                 </div>
                                                                     
@@ -94,9 +94,9 @@
                                                                 <div class="form-group row">
                                                                     <label for="company-phone" class="col-sm-3 col-form-label col-form-label-sm">Status</label>
                                                                     <div class="col-sm-9">
-                                                                        @if ($asset->status == 1)
+                                                                        @if ($contract->status == 1)
                                                                         <span class="badge badge-light-success inv-status">Available</span> 
-                                                                        @elseif($asset->status == 2)
+                                                                        @elseif($contract->status == 2)
                                                                         <span class="badge badge-light-danger inv-status">Not Available</span> 
                                                                         @else
                                                                         <span class="badge badge-light-info inv-status">Not Assigned</span>  
@@ -118,36 +118,36 @@
                                                             <div class="invoice-address-client-fields">
     
                                                                 <div class="form-group row">
-                                                                    <label for="client-name" class="col-sm-3 col-form-label col-form-label-sm">Model</label>
+                                                                    <label for="client-name" class="col-sm-3 col-form-label col-form-label-sm">Duration</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" class="form-control form-control-sm" name="model" id="client-name" placeholder="" value="{{$asset->model}}">
+                                                                        <input type="text" class="form-control form-control-sm" name="duration" id="client-name" placeholder="" value="{{$contract->duration}}">
                                                                     </div>
                                                                 </div>
     
                                                                 <div class="form-group row">
-                                                                    <label for="client-email" class="col-sm-3 col-form-label col-form-label-sm"> Weight</label>
+                                                                    <label for="client-email" class="col-sm-3 col-form-label col-form-label-sm">Effective Date</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" class="form-control form-control-sm" name="weight" id="client-email" placeholder="" value="{{$asset->weight}}">
+                                                                        <input type="date" class="form-control form-control-sm" name="effectiveDate" id="client-email" placeholder="" value="{{$contract->effectiveDate}}">
                                                                     </div>
                                                                 </div>
     
                                                                 <div class="form-group row">
-                                                                    <label for="client-address" class="col-sm-3 col-form-label col-form-label-sm"> Year</label>
+                                                                    <label for="client-address" class="col-sm-3 col-form-label col-form-label-sm">Required Monthly Distance</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" class="form-control form-control-sm" name="registrationYear" id="client-address" placeholder="" value="{{$asset->registrationYear}}">
+                                                                        <input type="text" class="form-control form-control-sm" name="createdBy" id="client-address" placeholder="" value="{{$contract->requiredMonthlyDistance}}">
                                                                     </div>
                                                                 </div>
     
                                                                 <div class="form-group row">
-                                                                    <label for="client-phone" class="col-sm-3 col-form-label col-form-label-sm">License Number</label>
+                                                                    <label for="client-phone" class="col-sm-3 col-form-label col-form-label-sm">Required Monthly Quantity</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" class="form-control form-control-sm" name="licenseNumber" id="client-phone" placeholder="" value="{{$asset->licenseNumber}}">
+                                                                        <input type="text" class="form-control form-control-sm" name="requiredMonthlyQuantity" id="client-phone" placeholder="" value="{{$contract->requiredMonthlyQuantity}}">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
-                                                                    <label for="client-phone" class="col-sm-3 col-form-label col-form-label-sm">Status Reason</label>
+                                                                    <label for="client-phone" class="col-sm-3 col-form-label col-form-label-sm">Required Monthly Volume</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" class="form-control form-control-sm" name="statusReason" id="client-phone"  value="{{$asset->statusReason}}">
+                                                                        <input type="text" class="form-control form-control-sm" name="requiredMonthlyVolume" id="client-phone"  value="{{$contract->requiredMonthlyVolume}}">
                                                                     </div>
                                                                 </div> 
                                                                 
@@ -162,26 +162,26 @@
     
                                                 <div class="invoice-detail-terms">
     
-                                                @if ($asset->assetType == 'Horse')
+                 
                                                 <div class="row justify-content-between">
                                                         <div class="col-md-3"> 
                                                             <div class="form-group mb-4">
-                                                                <label for="number">Mileage</label>
-                                                                <input type="text" class="form-control form-control-sm" name="mileage" id="number" placeholder="#0001" value="{{$asset->mileage}}">
+                                                                <label for="number">Forecast Monthly Volume</label>
+                                                                <input type="text" class="form-control form-control-sm" name="mileage" id="number" placeholder="#0001" value="{{$contract->forecastMonthlyVolume}}">
                                                             </div>
                                                         </div>
     
                                                         <div class="col-md-3"> 
                                                             <div class="form-group mb-4">
-                                                                <label for="date">Fuel Type</label>
-                                                                <input type="text" class="form-control form-control-sm"  name="fueltype" id="date" placeholder="Add date picker" value="{{$asset->fueltype}}">
+                                                                <label for="date">Forecast Weekly Volume</label>
+                                                                <input type="text" class="form-control form-control-sm"  name="fueltype" id="date" placeholder="Add date picker" value="{{$contract->forecastWeeklyVolume}}">
                                                             </div>
                                                         </div>
     
                                                         <div class="col-md-3">
                                                             <div class="form-group mb-4">
-                                                                <label for="due">Registration Expiration Date</label>
-                                                                <input type="date" class="form-control form-control-sm"  name="registrationExpireDate" id="due" placeholder="None" value="{{$asset->registrationExpireDate}}">
+                                                                <label for="due">Forecast Daily Volume</label>
+                                                                <input type="text" class="form-control form-control-sm"  name="registrationExpireDate" id="due" placeholder="None" value="{{$contract->forecastDailyVolume}}">
                                                             </div>       
                                                         </div> 
                                                     </div>  
@@ -190,45 +190,24 @@
                                                         <div class="col-md-3"> 
                                                             <div class="form-group mb-4">
                                                                 <label for="number">Engine Capacity</label>
-                                                                <input type="text" class="form-control form-control-sm" name="engineCapacity" id="number"  value="{{$asset->engineCapacity}}">
+                                                                <input type="text" class="form-control form-control-sm" name="engineCapacity" id="number"  value="{{$contract->engineCapacity}}">
                                                             </div>
                                                         </div>
     
                                                         <div class="col-md-3"> 
                                                             <div class="form-group mb-4">
                                                                 <label for="date">Expected Fuel Consumption</label>
-                                                                <input type="text" class="form-control form-control-sm"  name="expectedFuelConsumption" id="date"  value="{{$asset->expectedFuelConsumption}}">
+                                                                <input type="text" class="form-control form-control-sm"  name="expectedFuelConsumption" id="date"  value="{{$contract->expectedFuelConsumption}}">
                                                             </div>
                                                         </div>
     
                                                         <div class="col-md-3">
                                                             <div class="form-group mb-4">
                                                                 <label for="due">Gear Model</label>
-                                                                <input type="text" class="form-control form-control-sm"  name="gearType" id="due" value="{{$asset->gearType }}">
+                                                                <input type="text" class="form-control form-control-sm"  name="gearType" id="due" value="{{$contract->gearType }}">
                                                             </div>       
                                                         </div> 
                                                     </div>  
-                                                @else
-                                                <div class="row justify-content-between">
-                                                        <div class="col-md-3"> 
-                                                            <div class="form-group mb-4">
-                                                                <label for="number">Payload Capacity (Tons)</label>
-                                                                <input type="text" class="form-control form-control-sm" name="mileage" id="number" placeholder="#0001" value="{{$asset->payloadCapacity}}">
-                                                            </div>
-                                                        </div>
-    
-                                                        <div class="col-md-3"> 
-                                                            <div class="form-group mb-4">
-                                                                <label for="date">Trailer Type </label>
-                                                                <input type="text" class="form-control form-control-sm"  name="trailerType" id="date" placeholder="Add date picker" value="{{$asset->trailerType}}">
-                                                            </div>
-                                                        </div>
-    
-                                                        <div class="col-md-3">
-                                                          
-                                                        </div> 
-                                                    </div> 
-                                                @endif
                                                
                                                     
                                                 </div>
@@ -250,7 +229,7 @@
                                                     <label>Status</label>
                                                     <div class="dropdown selectable-dropdown invoice-select">                              
                                                                     <select name="status" class="form-select"  />
-                                                                    <option value="{{ $asset->status}}">Choose...</option>
+                                                                    <option value="{{ $contract->status}}">Choose...</option>
                                                                     <option value="1">Available</option>
                                                                     <option value="2">Not Available</option>                                                                                                                                                                                                              
                                                                    </select>                               
@@ -302,7 +281,7 @@
                                                 <div class="row">
                                             
                                                     <div class="col-xl-12 col-md-4">
-                                                        <button type="submit" class="btn btn-success btn-download">Update Asset Record</button>
+                                                        <button type="submit" class="btn btn-success btn-download">Update contract Record</button>
                                                     </div>
                                                     </form>
                                                 </div>
