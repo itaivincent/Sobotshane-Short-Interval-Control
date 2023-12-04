@@ -229,7 +229,7 @@
                                                     <label>Status</label>
                                                     <div class="dropdown selectable-dropdown invoice-select">                              
                                                                     <select name="status" class="form-select"  />
-                                                                    <option value="{{ $contract->status}}">Choose...</option>
+                                                                    <option value="{{ $contract->id}}">Choose...</option>
                                                                     <option value="1">Available</option>
                                                                     <option value="2">Not Available</option>                                                                                                                                                                                                              
                                                                    </select>                               
