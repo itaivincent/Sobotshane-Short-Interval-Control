@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('gender')->nullable();
             $table->string('routeType')->nullable();
             $table->string('phoneNumber')->nullable();
-            $table->string('status')->nullable();
             $table->string('licenseNumber')->nullable();
             $table->string('availability')->nullable();
             $table->string('resourcePoolStatus')->nullable();

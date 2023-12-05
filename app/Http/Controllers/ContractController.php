@@ -150,6 +150,7 @@ class ContractController extends Controller
         $userrole->activity = $request->activity;
         $userrole->distance =  $request->distance;
         $userrole->unit = $request->unit;
+        $userrole->rate = $request->rate;
         $userrole->routeCategory = $request->routeCategory;
         $userrole->type = $request->type;
         $userrole->createdBy = $user->name;

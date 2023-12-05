@@ -220,6 +220,14 @@
                                                     <div class="form-group">
                                                         <div class="input-group mb-3">
                                                             <span class="input-group-text">
+                                                     
+                                                            </span>
+                                                            <input type="text" name="rate" class="form-control" placeholder="Rate" aria-label="password">
+                                                        </div>
+                                                    </div> 
+                                                    <div class="form-group">
+                                                        <div class="input-group mb-3">
+                                                            <span class="input-group-text">
                                               
                                                             </span>
                                                             <input type="text" name="unit" class="form-control" placeholder="Unit" aria-label="password">
