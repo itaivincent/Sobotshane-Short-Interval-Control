@@ -13,6 +13,20 @@ return new class extends Migration
     {
         Schema::create('drivers', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->nullable();
+            $table->string('surname')->nullable();
+            $table->date('dob')->nullable();
+            $table->string('group')->nullable();
+            $table->string('gender')->nullable();
+            $table->string('routeType')->nullable();
+            $table->string('phoneNumber')->nullable();
+            $table->string('status')->nullable();
+            $table->string('licenseNumber')->nullable();
+            $table->string('availability')->nullable();
+            $table->string('resourcePoolStatus')->nullable();
+            $table->string('status')->nullable();
+            $table->string('updatedBy')->nullable();
+            $table->string('createdBy')->nullable();
             $table->timestamps();
         });
     }

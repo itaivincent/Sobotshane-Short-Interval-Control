@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AssetController;
 use App\Http\Controllers\ContractController;
+use App\Http\Controllers\DriverController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -56,6 +57,13 @@ Route::middleware('auth')->group(function () {
     Route::put('/contracts/update/{id}', [ContractController::class, 'update'])->name('contracts.update');
     Route::get('/download-pdf/{id}', [ContractController::class, 'pdf'])->name('contracts.pdf');
     Route::resource('contracts', ContractController::class);
+
+
+    //Drivers
+    Route::get('/drivers/create', [DriverController::class, 'create'])->name('drivers.create');
+    Route::get('/drivers/index', [DriverController::class, 'index'])->name('drivers.index');
+    Route::post('/drivers/store', [DriverController::class, 'store'])->name('drivers.store');
+
 });
 
 require __DIR__.'/auth.php';

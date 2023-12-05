@@ -122,10 +122,13 @@
                         </a>
                         <ul class="collapse submenu list-unstyled" id="driver" data-bs-parent="#accordionExample">
                             <li>
-                                <a href="javascript:void(0);"> Manage Drivers</a>
+                                <a href="/drivers/create"> Create Driver</a>
                             </li>
                             <li>
-                                <a href="javascript:void(0);"> Parameters </a>
+                                <a href="/drivers/index"> Manage Drivers</a>
+                            </li>
+                            <li>
+                                <a href="/drivers/parameters"> Parameters </a>
                             </li>
                         </ul>
                     </li>

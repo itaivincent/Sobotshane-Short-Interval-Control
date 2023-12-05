@@ -21,7 +21,9 @@ class DriverController extends Controller
      */
     public function index()
     {
-        //
+        $drivers = Driver::all();
+
+        return view('drivers.index', compact('drivers'));
     }
 
     /**
@@ -29,7 +31,7 @@ class DriverController extends Controller
      */
     public function create()
     {
-        //
+        return view('drivers.create');
     }
 
     /**
@@ -37,7 +39,21 @@ class DriverController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = auth()->user();
+
+        $userrole = new Driver();
+        $userrole->number = $request->number;
+        $userrole->provider = $request->provider;
+        $userrole->client = $request->client;
+        $userrole->duration =  $request->duration;
+        $userrole->commodity = $request->commodity;
+        $userrole->effectiveDate = $request->date;
+        $userrole->save();
+
+        if($userrole){
+            return redirect()->route('drivers.create')->with('success', 'Driver created successfully!');
+        }
+          return redirect()->route('drivers.create')->with('error', 'Failed to create Driver!');
     }
 
     /**
@@ -53,7 +69,9 @@ class DriverController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $driver = Driver::where('id',$id)->first();
+
+        return view('drivers.edit', compact('driver'));
     }
 
     /**
