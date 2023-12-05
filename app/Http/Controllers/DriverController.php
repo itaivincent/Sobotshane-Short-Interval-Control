@@ -1,6 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Response;
+use App\Models\Userrole;
+use App\Models\User;
+use App\Models\Asset;
+use App\Models\Contract;
+use App\Models\Formula;
+use App\Models\Route;
+use App\Models\Driver;
+use Alert;
+use Auth;
 
 use Illuminate\Http\Request;
 
