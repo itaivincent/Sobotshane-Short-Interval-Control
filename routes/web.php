@@ -52,6 +52,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/contracts/index', [ContractController::class, 'index'])->name('contracts.index');
     Route::get('/contracts/parameters', [ContractController::class, 'parameters'])->name('contracts.parameters');
     Route::post('/contracts/routeStore', [ContractController::class, 'routeStore'])->name('contracts.routeStore');
+    Route::post('/contracts/formulaStores', [ContractController::class, 'formulaStores'])->name('contracts.formulaStores');
+    Route::post('/contracts/formulaStoress', [ContractController::class, 'formulaStoress'])->name('contracts.formulaStoress');
     Route::post('/contracts/formulaStore', [ContractController::class, 'formulaStore'])->name('contracts.formulaStore');
     Route::get('/contracts/edit/{id}', [ContractController::class, 'edit'])->name('contracts.edit');
     Route::put('/contracts/update/{id}', [ContractController::class, 'update'])->name('contracts.update');

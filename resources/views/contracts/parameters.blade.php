@@ -233,6 +233,19 @@
                                                             <input type="text" name="unit" class="form-control" placeholder="Unit" aria-label="password">
                                                         </div>
                                                     </div> 
+                                                    
+                                                    <div class="form-group">
+                                                        <div class="input-group mb-3">
+                                                           
+                                                                    <select name="contract" class="form-select">
+                                                                    <option selected="">Choose Type</option>
+                                                                    <option value="Standard">Standard</option>
+                                                                    <option value="Adhoc">Adhoc</option>
+                                                                                                                                                                            
+                                                                   </select>  
+                                                                  
+                                                        </div>
+                                                    </div> 
 
                                                     <div class="form-group">
                                                         <div class="input-group mb-3">
@@ -271,56 +284,158 @@
                                     </div>
 
 
-                                    
-                                    <div class="modal fade inputForm-modal" id="inputFormulaModal" tabindex="-1" role="dialog" aria-labelledby="inputFormModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                          <div class="modal-content">
-  
-                                            <div class="modal-header" id="inputFormModalLabel">
+
+                                                 
+                                    <!-- <div class="modal fade bd-example-modal-lg"  id="inputFormulaModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header" id="inputFormModalLabel">
+
+
+
                                                 <h5 class="modal-title">Create a <b>Formula</b></h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
                                             </div>
                                                                                        
                                             <div class="modal-body">
-                                                <form  method="post" action="{{ route('contracts.formulaStore') }}"class="mt-0">
-                                                @csrf  
-                                                    <div class="form-group">
-                                                      <div class="input-group mb-3">                                                        
-                                                            <textarea   name="equation" rows="4" class="form-control" placeholder="please enter the rate equation..." aria-label="name"></textarea>
+
+
+
+                                            <h2>Complex Calculator</h2>
+
+                                                <form action="{{ route('contracts.formulaStores') }}" method="post">
+                                                    @csrf
+
+                                                    <div class="row mt-4">
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">                                                            
+                                                            <div id="operands-container">
+                                                        <div class="operand">
+                                                            <label for="numbers[]">Number:</label>
+                                                            <select name="numbers[]"  class="form-control" required>
+                                                                <option value="Old Rate">Old Rate</option>
+                                                                <option value="LabourIndexattheenddate">Labour Index at the end date</option>
+                                                                <option value="LabourIndexatthebasedate">Labour Index at the base date</option>
+                                                                <option value=" FuelDieselIndexattheenddate"> Fuel (Diesel) Index at the end date</option>
+                                                            </select>
                                                         </div>
                                                     </div>
+                                                            </div>
+                                                        </div>
 
-                                                    <div class="form-group">
-                                                        <div class="input-group mb-3">                                                        
-                                                            <textarea   name="formula" rows="4" class="form-control" placeholder="please enter your formula..." aria-label="name"></textarea>
+                                                        <div class="col-md-6">
+                                                            <div class="mb-6">                                                            
+                                                          
+                                                    <div id="operations-container">
+                                                        <div class="operation">
+                                                            <label for="operations[]">Operation:</label>
+                                                            <select name="operations[]"   class="form-control"  required>
+                                                                <option value="add">Addition (+)</option>
+                                                                <option value="subtract">Subtraction (-)</option>
+                                                                <option value="multiply">Multiplication (*)</option>
+                                                                <option value="divide">Division (/)</option>
+                                                            </select>
                                                         </div>
                                                     </div>
-
-                                                    <div class="form-group">
-                                                        <div class="input-group mb-3">
-                                                           
-                                                                    <select name="route" class="form-select">
-                                                                    <option selected="">Choose the route</option>
-                                                                    @foreach ($routes as $route)
-                                                                    <option value="{{$route->id}}">{{ $route->from }} - {{ $route->to }}</option>
-                                                                    @endforeach                                                                                                                                                                                                                                                                                                      
-                                                                   </select>  
-                                                                  
+                                                            </div>
                                                         </div>
+                                                 
+                                              
                                                     </div>
+                                                    
+                                           
+                                                    <button type="button" onclick="addOperand()">Add Operand</button>
+                                                    <button type="button" onclick="addOperation()">Add Operation</button>
 
-                                    
-  
+                                                    <button type="submit">Calculate</button>
+                                                </form>
+
+                                                <script>
+                                                    function addOperand() {
+                                                        var container = document.getElementById('operands-container');
+                                                        var newOperand = document.createElement('div');
+                                                        newOperand.innerHTML = '  <label for="numbers[]">Number:</label><select name="numbers[]"  class="form-control" required><option value="Old Rate">Old Rate</option> <option value="LabourIndexattheenddate">Labour Index at the end date</option> <option value="LabourIndexatthebasedate">Labour Index at the base date</option> <option value=" FuelDieselIndexattheenddate"> Fuel (Diesel) Index at the end date</option> </select>';
+                                                        container.appendChild(newOperand);
+                                                    }
+
+                                                    function addOperation() {
+                                                        var container = document.getElementById('operations-container');
+                                                        var newOperation = document.createElement('div');
+                                                        newOperation.innerHTML = '<label for="operations[]">Operation:</label><select name="operations[]"  class="form-control" required><option value="add">Addition (+)</option><option value="subtract">Subtraction (-)</option><option value="multiply">Multiplication (*)</option><option value="divide">Division (/)</option></select>';
+                                                        container.appendChild(newOperation);
+                                                    }
+                                                </script>
+
+                                      
+                                          </div>
+                                        </div>
+                                    </div> -->
+
+
+                                                      <!-- This is for testing -->
+                                    <div class="modal fade bd-example-modal-lg"  id="inputFormulaModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header" id="inputFormModalLabel">
+                                                <div class="modal-body">
+                                                <h2>Complex Calculator</h2>
+
+                                                    <form id="calculatorForm" action="{{ route('contracts.formulaStoress') }}" method="post">
+                                                        @csrf
+
+                                                        <div id="inputContainer">
+                                                            <!-- Display the user input here -->
+                                                        </div>
+
+                                                        <button type="button" onclick="addToInput('1')">1</button>
+                                                        <button type="button" onclick="addToInput('2')">2</button>
+                                                        <button type="button" onclick="addToInput('3')">3</button>
+                                                        <button type="button" onclick="addToInput('+')">+</button>
+                                                        <button type="button" onclick="addToInput('4')">4</button>
+                                                        <button type="button" onclick="addToInput('5')">5</button>
+                                                        <button type="button" onclick="addToInput('6')">6</button>
+                                                        <button type="button" onclick="addToInput('-')">-</button>
+                                                        <button type="button" onclick="addToInput('7')">7</button>
+                                                        <button type="button" onclick="addToInput('8')">8</button>
+                                                        <button type="button" onclick="addToInput('9')">9</button>
+                                                        <button type="button" onclick="addToInput('*')">*</button>
+                                                        <button type="button" onclick="addToInput('0')">0</button>
+                                                        <button type="button" onclick="addToInput('.')">.</button>
+                                                        <button type="button" onclick="addToInput('/')">/</button>
+                                                        <button type="button" onclick="addToInput('(')">(</button>
+                                                        <button type="button" onclick="addToInput(')')">)</button>
+
+                                                        <button type="submit">Calculate</button>
+                                                    </form>
+
+                                                    <script>
+                                                        function addToInput(value) {
+                                                            var inputContainer = document.getElementById('inputContainer');
+                                                            var currentInput = document.createElement('span');
+                                                            currentInput.textContent = value;
+                                                            inputContainer.appendChild(currentInput);
+
+                                                            // Also, update a hidden input field to send the values to the controller
+                                                            var hiddenInput = document.createElement('input');
+                                                            hiddenInput.type = 'hidden';
+                                                            hiddenInput.name = 'userInput[]';
+                                                            hiddenInput.value = value;
+                                                            document.getElementById('calculatorForm').appendChild(hiddenInput);
+                                                        }
+                                                    </script>
+
+                                                <h5 class="modal-title">Create a <b>Formula</b></h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
                                             </div>
-                                            <div class="modal-footer">                                            
-                                                <button type="submit" class="btn btn-primary mt-2 mb-2 btn-no-effect" data-bs-dismiss="modal">Calculate Formula</button>
-                                            </div>
-                                            </form>
+                                                                                       
+                                        
+
+
+
+
                                           </div>
                                         </div>
                                     </div>
-
-
                                     
                                     <div class="modal fade bd-example-modal-xl" tabindex="-1"  id="inputFormulatableModal" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
                                       <div class="modal-dialog modal-xl" role="document">

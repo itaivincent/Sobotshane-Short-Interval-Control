@@ -164,6 +164,91 @@ class ContractController extends Controller
        
     }
 
+
+    public function formulaStores(Request $request)
+    {
+     
+        $LabourIndexattheenddate = 10;
+        $LabourIndexatthebasedate = 4;
+        $FuelDieselIndexattheenddate = 30;
+
+        $numbers = $request->input('numbers');
+        $operations = $request->input('operations');
+
+        foreach($numbers as $key => $number){
+
+          //  $getnumber = Parameters::where( $number, '!=' , null )->first();
+            $numbers[$key] = $LabourIndexattheenddate + $key;
+         //   dd($numbers[$key]);
+
+        }
+      //  dd($numbers);
+
+        if (count($numbers) < 2 || count($numbers) != count($operations) + 1) {
+            // Handle validation or error as needed
+            return back()->with('error', 'Invalid Input!');
+        }
+
+        $result = $numbers[0];
+
+        for ($i = 0; $i < count($operations); $i++) {
+            switch ($operations[$i]) {
+                case 'add':
+                    $result += $numbers[$i + 1];
+                    break;
+                case 'subtract':
+                    $result -= $numbers[$i + 1];
+                    break;
+                case 'multiply':
+                    $result *= $numbers[$i + 1];
+                    break;
+                case 'divide':
+                    // Check if the divisor is not zero to avoid division by zero
+                    $result = ($numbers[$i + 1] != 0) ? $result / $numbers[$i + 1] : 'Undefined (division by zero)';
+                    break;
+                default:
+                    // Handle invalid operation
+                    return back()->with('error', 'Failed to calculate formula!');
+            }
+        }
+
+            return back()->with('success', 'Formula calculated and your rate is '.$result.'');
+     
+    }
+
+
+    public function formulaStoress(Request $request)
+    {
+        $user = auth()->user();
+        $expression = $request->input('userInput');
+        $LabourIndexattheenddate = 10;
+      //  dd($expression);
+        foreach($expression as $key => $number){
+
+            //  $getnumber = Parameters::where( $number, '!=' , null )->first();
+            if($expression[$key] != '+' &  $expression[$key] != '-' & $expression[$key] != '*' & $expression[$key] != '/'  & $expression[$key] != '('  & $expression[$key] != ')'){
+                $expression[$key] = $LabourIndexattheenddate + $key;
+            }            
+             // dd($numbers[$key]);
+          }
+
+      //   dd($expression);
+
+       $expression = implode($expression);
+    //   dd($expression);
+       // dd($text);
+        $result = $this->calculateResult($expression);
+       
+       // dd($result);
+        if($result == null){
+
+            return back()->with('warning', 'You make a mistake in your formula! Try again');
+        }
+        return back()->with('success', 'Formula calculated and your rate is '.$result.'');
+
+    }
+
+
     /**
      * Show the form for editing the specified resource.
      */
