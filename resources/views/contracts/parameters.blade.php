@@ -238,10 +238,10 @@
                                                         <div class="input-group mb-3">
                                                            
                                                                     <select name="contract" class="form-select">
-                                                                    <option selected="">Choose Type</option>
-                                                                    <option value="Standard">Standard</option>
-                                                                    <option value="Adhoc">Adhoc</option>
-                                                                                                                                                                            
+                                                                    <option selected="">Choose Contract</option>
+                                                                    @foreach ($contracts as $contract)  
+                                                                    <option value="{{ $contract->id }}">{{$contract->provider}} - {{$contract->client}} - {{ $contract->number}} </option>
+                                                                    @endforeach                                                                                                                                                                             
                                                                    </select>  
                                                                   
                                                         </div>
@@ -404,6 +404,20 @@
                                                         <button type="button" onclick="addToInput('/')">/</button>
                                                         <button type="button" onclick="addToInput('(')">(</button>
                                                         <button type="button" onclick="addToInput(')')">)</button>
+
+
+                                                          </br>
+
+                                                              <div class="form-group">
+                                                                 <div class="input-group mb-3">                                                       
+                                                                    <select name="contract" class="form-select">
+                                                                    <option selected="">Choose Contract</option>
+                                                                    @foreach ($contracts as $contract)  
+                                                                    <option value="{{ $contract->id }}">{{$contract->provider}} - {{$contract->client}} - {{ $contract->number}} </option>
+                                                                    @endforeach                                                                                                                                                                             
+                                                                   </select>                                                                   
+                                                                 </div>
+                                                              </div> 
 
                                                         <button type="submit">Calculate</button>
                                                     </form>

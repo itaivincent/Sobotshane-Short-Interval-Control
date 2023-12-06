@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    
     /**
      * Run the migrations.
      */
@@ -22,6 +23,7 @@ return new class extends Migration
             $table->bigInteger('estimatedmonthQuantity')->nullable();
             $table->string('unit')->nullable();
             $table->string('Type')->nullable();
+            $table->string('rate')->nullable();
             $table->string('routeCategory')->nullable();
             $table->string('resourcePoolStatus')->nullable();
             $table->string('status')->nullable();

@@ -139,7 +139,6 @@ class ContractController extends Controller
     }
 
 
-
     public function routeStore(Request $request)
     {
         $user = auth()->user();
@@ -150,6 +149,7 @@ class ContractController extends Controller
         $userrole->activity = $request->activity;
         $userrole->distance =  $request->distance;
         $userrole->unit = $request->unit;
+        $userrole->contractId = $request->contract;
         $userrole->rate = $request->rate;
         $userrole->routeCategory = $request->routeCategory;
         $userrole->type = $request->type;
@@ -220,7 +220,9 @@ class ContractController extends Controller
     public function formulaStoress(Request $request)
     {
         $user = auth()->user();
+        $contract = $request->contract;
         $expression = $request->input('userInput');
+       // dd($contract,$expression);
         $LabourIndexattheenddate = 10;
       //  dd($expression);
         foreach($expression as $key => $number){
