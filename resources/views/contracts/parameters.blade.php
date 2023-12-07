@@ -115,7 +115,7 @@
                                                 </a>
 
                                                 <div class="dropdown-menu left" aria-labelledby="expenses" style="will-change: transform;">                                                
-                                                    <a class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#inputFormulatableModal">View All Formula</a>      
+                                                    <a class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#allformulas">View All Formula</a>      
                                                     <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#inputFormulaModal">Create a Formula</a>                                            
                                                 </div>
                                             </div>
@@ -157,53 +157,7 @@
         </div>        
         </div>
                         
-                                  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="bd-example-modal-lg"></h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                                      <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                <div class="row layout-top-spacing">
-                    
-                                                    <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
-                                                        <div class="widget-content widget-content-area br-8">
-                                                            <table id="zero-config" class="table dt-table-hover" style="width:100%">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>Role Name</th>
-                                                                        <th>Description</th>
-                                                                        <th>Created By</th>
-                                                                    
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                @foreach ($roles as $user) 
-                                                                    <tr>
-                                                                        <td>{{ $user->Name }}</td>
-                                                                        <td>{{ $user->Description }}</td>
-                                                                        <td>{{ $user->CreatedBy }}</td>
-                                                                    
-                                                                    </tr>             
-                                                                @endforeach
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                
-                                                </div>
-
-                                               </div>                                       
-                                        
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
+        
 
                                     <div class="modal fade inputForm-modal" id="inputFormModal" tabindex="-1" role="dialog" aria-labelledby="inputFormModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -499,102 +453,13 @@
                                           </div>
                                         </div>
                                     </div> -->
-
-                                                      <!-- This is for testing -->
-                                    <div class="modal fade bd-example-modal-lg"  id="inputFormulaModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header" id="inputFormModalLabel">
-                                                <div class="modal-body">
-                                                <h2>Commercial Formula</h2></br>
-
-                                                    <form id="calculatorForm" action="{{ route('contracts.formulaStoress') }}" method="post">
-                                                        @csrf
-
-                                                        <div class="card" >
-                                                        <div class="card-body" id="inputContainer">
-                                                            <!-- Display the user input here -->
-                                                            </div>
-                                                        </div><br/>
-
-                                                        <div class="card" style="width: 500px; height: 300px;  text-align: left; margin: auto;">
-                                                        <div class="card-body" >
-                                                        <button  class="btn btn-outline-primary mb-2 me-6 rounded bs-tooltip"  title="Old Rate" style="width:74px;" type="button" onclick="addToInput('OR')">OR  </button>
-                                                        <button  class="btn btn-outline-primary mb-2 me- rounded bs-tooltip" title="Labour Index at the end date" type="button" style="width:74px;"onclick="addToInput('L1')">L1</button>
-                                                        <button   class="btn btn-outline-primary mb-2 me- rounded bs-tooltip" title="Labour Index at the base date" type="button" style="width:74px;"onclick="addToInput('L0')">L0</button>
-                                                       
-                                                        <button  class="btn btn-outline-primary mb-2 me-  rounded bs-tooltip" title="Repair and Maintenance Index at the end date" type="button" onclick="addToInput('RM1')">RM1</button></br>
-                                                        <button   class="btn btn-outline-primary mb-2 me- rounded bs-tooltip" title="Fuel Diesel Index at the base date"type="button" style="width:78px;" onclick="addToInput('F0')">F0</button>
-                                                        <button  class="btn btn-outline-primary mb-2 me-  rounded bs-tooltip"  title="Capital Cost Index at the end date" type="button" onclick="addToInput('CC1')">CC1</button>
-                                                        <button   class="btn btn-outline-primary mb-2 me- rounded bs-tooltip" title="Capital Cost Index at the base date" type="button" onclick="addToInput('CC0')">CC0</button>
-                                                        <button   class="btn btn-outline-primary mb-2 me- rounded bs-tooltip" title="Fuel (Diesel) Index at the end date" type="button" style="width:78px;" onclick="addToInput('F1')">F1</button></br>
-                                                     
-                                                        <button  class="btn btn-outline-primary mb-2 me- rounded bs-tooltip" title="Repair and Maintenance Index at the base date" type="button"style="width:76px;" onclick="addToInput('RM0')">RM0</button>
-                                                        <button class="btn btn-outline-primary mb-2 me- rounded bs-tooltip" title="Other Cost Index at the end date" type="button" style="width:76px;" onclick="addToInput('OC1')">OC1</button>
-                                                        <button class="btn btn-outline-primary mb-2 me- rounded bs-tooltip" title="Other Cost Index at the base date" type="button" onclick="addToInput('OC0')">OC0</button>
-                                                        <button class="btn btn-outline-primary mb-2 me- rounded bs-tooltip" title="Labour Weightage (%)" type="button" onclick="addToInput('L(%)')">L(%)</button></br>
-             
-                                                        <button  class="btn btn-outline-primary mb-2 me- rounded bs-tooltip" title="Fuel Weightage (%)" type="button" onclick="addToInput('F(%)')">F(%)</button>
-                                                        <button   class="btn btn-outline-primary mb-2 me- rounded bs-tooltip"  title="Capital Weightage (%)"type="button" onclick="addToInput('C(%)')">C(%)</button> 
-                                                        <button   class="btn btn-outline-primary mb-2 me- rounded bs-tooltip" title="Repair Weightage (%)" type="button" onclick="addToInput('R(%)')">R(%)</button>
-                                                        <button  class="btn btn-outline-primary mb-2 me- rounded bs-tooltip" title="Other Cost Weightage (%)" type="button" onclick="addToInput('O(%)')">O(%)</button> </br>
-                                                        <button class="btn btn-outline-dark mb-2 me-" type="button" onclick="addToInput('(')">(</button>                                         
-                                                        <button  class="btn btn-outline-dark mb-2 me-"type="button" onclick="addToInput(')')">)</button>                                                     
-                                                        <button  class="btn btn-outline-dark mb-2 me-"type="button" onclick="addToInput('/')">/</button>
-                                                        <button  class="btn btn-outline-dark mb-2 me-"type="button" onclick="addToInput('*')">*</button>
-                                                        <button  class="btn btn-outline-dark mb-2 me-"type="button" onclick="addToInput('-')">-</button>                                        
-                                                        <button class="btn btn-outline-dark mb-2 me-" type="button" onclick="addToInput('+')">+</button>
-                                                        </div>
-                                                        </div>
-
-                                                          </br>
-                                                          </br>
-
-                                                              <div class="form-group">
-                                                                 <div class="input-group mb-3">                                                       
-                                                                    <select name="route" class="form-select" required>
-                                                                    <option selected="">Choose Route</option>
-                                                                    @foreach ($routes as $route)  
-                                                                    <option value="{{ $route->id }}">{{$route->from}} - {{$route->to}} - {{ $route->activity}} </option>
-                                                                    @endforeach                                                                                                                                                                             
-                                                                   </select>                                                                   
-                                                                 </div>
-                                                              </div> 
-
-                                                        <button class="btn btn-outline-success mb-2 me-4" type="submit">Calculate</button>
-                                                    </form>
-
-                                                    <script>
-                                                        function addToInput(value) {
-                                                            var inputContainer = document.getElementById('inputContainer');
-                                                            var currentInput = document.createElement('span');
-                                                            currentInput.textContent = value;
-                                                            inputContainer.appendChild(currentInput);
-
-                                                            // Also, update a hidden input field to send the values to the controller
-                                                            var hiddenInput = document.createElement('input');
-                                                            hiddenInput.type = 'hidden';
-                                                            hiddenInput.name = 'userInput[]';
-                                                            hiddenInput.value = value;
-                                                            document.getElementById('calculatorForm').appendChild(hiddenInput);
-                                                        }
-                                                    </script>
-                                            </div>
-                                                                                       
-                                        
-
-
-
-
-                                          </div>
-                                        </div>
-                                    </div>
+                         
                                     
-                                    <div class="modal fade bd-example-modal-xl" tabindex="-1"  id="inputFormulatableModal" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                                    <div class="modal fade bd-example-modal-xl" tabindex="-1"  id="allformulas" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="">
                                       <div class="modal-dialog modal-xl" role="document">
                                         <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="myExtraLargeModalLabel">All Formulas</h5>
+                                            <div class="modal-header" id="allformulas">
+                                                <h5 class="modal-title" id="allformulas">All Formulas</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                                   <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                                                 </button>
@@ -707,4 +572,100 @@
                                         </div>
                                       </div>
                                     </div>
+
+
+
+                                                                 <!-- This is for testing -->
+                                                      
+                                                                 <div class="modal fade bd-example-modal-lg"  id="inputFormulaModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header" id="inputFormModalLabel">
+                                                <div class="modal-body">
+                                                <h2>Commercial Formula</h2></br>
+
+                                                    <form id="calculatorForm" action="{{ route('contracts.formulaStoress') }}" method="post">
+                                                        @csrf
+
+                                                        <div class="card" >
+                                                        <div class="card-body" id="inputContainer">
+                                                            <!-- Display the user input here -->
+                                                            </div>
+                                                        </div><br/>
+
+                                                        <div class="card" style="width: 500px; height: 300px;  text-align: left; margin: auto;">
+                                                        <div class="card-body" >
+                                                        <button  class="btn btn-outline-primary mb-2 me-6 rounded bs-tooltip"  title="Old Rate" style="width:74px;" type="button" onclick="addToInput('OR')">OR  </button>
+                                                        <button  class="btn btn-outline-primary mb-2 me- rounded bs-tooltip" title="Labour Index at the end date" type="button" style="width:74px;"onclick="addToInput('L1')">L1</button>
+                                                        <button   class="btn btn-outline-primary mb-2 me- rounded bs-tooltip" title="Labour Index at the base date" type="button" style="width:74px;"onclick="addToInput('L0')">L0</button>
+                                                       
+                                                        <button  class="btn btn-outline-primary mb-2 me-  rounded bs-tooltip" title="Repair and Maintenance Index at the end date" type="button" onclick="addToInput('RM1')">RM1</button></br>
+                                                        <button   class="btn btn-outline-primary mb-2 me- rounded bs-tooltip" title="Fuel Diesel Index at the base date"type="button" style="width:78px;" onclick="addToInput('F0')">F0</button>
+                                                        <button  class="btn btn-outline-primary mb-2 me-  rounded bs-tooltip"  title="Capital Cost Index at the end date" type="button" onclick="addToInput('CC1')">CC1</button>
+                                                        <button   class="btn btn-outline-primary mb-2 me- rounded bs-tooltip" title="Capital Cost Index at the base date" type="button" onclick="addToInput('CC0')">CC0</button>
+                                                        <button   class="btn btn-outline-primary mb-2 me- rounded bs-tooltip" title="Fuel (Diesel) Index at the end date" type="button" style="width:78px;" onclick="addToInput('F1')">F1</button></br>
+                                                     
+                                                        <button  class="btn btn-outline-primary mb-2 me- rounded bs-tooltip" title="Repair and Maintenance Index at the base date" type="button"style="width:76px;" onclick="addToInput('RM0')">RM0</button>
+                                                        <button class="btn btn-outline-primary mb-2 me- rounded bs-tooltip" title="Other Cost Index at the end date" type="button" style="width:76px;" onclick="addToInput('OC1')">OC1</button>
+                                                        <button class="btn btn-outline-primary mb-2 me- rounded bs-tooltip" title="Other Cost Index at the base date" type="button" onclick="addToInput('OC0')">OC0</button>
+                                                        <button class="btn btn-outline-primary mb-2 me- rounded bs-tooltip" title="Labour Weightage (%)" type="button" onclick="addToInput('L(%)')">L(%)</button></br>
+             
+                                                        <button  class="btn btn-outline-primary mb-2 me- rounded bs-tooltip" title="Fuel Weightage (%)" type="button" onclick="addToInput('F(%)')">F(%)</button>
+                                                        <button   class="btn btn-outline-primary mb-2 me- rounded bs-tooltip"  title="Capital Weightage (%)"type="button" onclick="addToInput('C(%)')">C(%)</button> 
+                                                        <button   class="btn btn-outline-primary mb-2 me- rounded bs-tooltip" title="Repair Weightage (%)" type="button" onclick="addToInput('R(%)')">R(%)</button>
+                                                        <button  class="btn btn-outline-primary mb-2 me- rounded bs-tooltip" title="Other Cost Weightage (%)" type="button" onclick="addToInput('O(%)')">O(%)</button> </br>
+                                                        <button class="btn btn-outline-dark mb-2 me-" type="button" onclick="addToInput('(')">(</button>                                         
+                                                        <button  class="btn btn-outline-dark mb-2 me-"type="button" onclick="addToInput(')')">)</button>                                                     
+                                                        <button  class="btn btn-outline-dark mb-2 me-"type="button" onclick="addToInput('/')">/</button>
+                                                        <button  class="btn btn-outline-dark mb-2 me-"type="button" onclick="addToInput('*')">*</button>
+                                                        <button  class="btn btn-outline-dark mb-2 me-"type="button" onclick="addToInput('-')">-</button>                                        
+                                                        <button class="btn btn-outline-dark mb-2 me-" type="button" onclick="addToInput('+')">+</button>
+                                                        </div>
+                                                        </div>
+
+                                                          </br>
+                                                          </br>
+
+                                                              <div class="form-group">
+                                                                 <div class="input-group mb-3">                                                       
+                                                                    <select name="route" class="form-select" required>
+                                                                    <option selected="">Choose Route</option>
+                                                                    @foreach ($routes as $route)  
+                                                                    <option value="{{ $route->id }}">{{$route->from}} - {{$route->to}} - {{ $route->activity}} </option>
+                                                                    @endforeach                                                                                                                                                                             
+                                                                   </select>                                                                   
+                                                                 </div>
+                                                              </div> 
+
+                                                        <button class="btn btn-outline-success mb-2 me-4" type="submit">Calculate</button>
+                                                    </form>
+
+                                            </div>
+                                                                                       
+                                        
+
+
+
+
+                                          </div>
+                                        </div>
+                                    </div>
+
+
+                                    
+                                    <script>
+                                                        function addToInput(value) {
+                                                            var inputContainer = document.getElementById('inputContainer');
+                                                            var currentInput = document.createElement('span');
+                                                            currentInput.textContent = value;
+                                                            inputContainer.appendChild(currentInput);
+
+                                                            // Also, update a hidden input field to send the values to the controller
+                                                            var hiddenInput = document.createElement('input');
+                                                            hiddenInput.type = 'hidden';
+                                                            hiddenInput.name = 'userInput[]';
+                                                            hiddenInput.value = value;
+                                                            document.getElementById('calculatorForm').appendChild(hiddenInput);
+                                                        }
+                                                    </script>
 @endsection

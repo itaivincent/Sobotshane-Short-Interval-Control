@@ -355,6 +355,7 @@ class ContractController extends Controller
         $userrole->formula = $expression;
         $userrole->equation = $storeFormula;
         $userrole->contract = $contract;
+        $userrole->route = $route;
         $userrole->result = $result;
         $userrole->createdBy = $user->name;
         $userrole->save();
@@ -375,8 +376,9 @@ class ContractController extends Controller
     public function edit(string $id)
     {
         $contract = Contract::where('id',$id)->first();
+        $escalationformulas = Escalationformula::where('contract','=', $id)->first();
 
-        return view('contracts.edit', compact('contract'));
+        return view('contracts.edit', compact('contract','escalationformulas'));
     }
 
 
