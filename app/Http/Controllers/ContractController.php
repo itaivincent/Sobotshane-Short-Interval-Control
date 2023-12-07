@@ -221,7 +221,13 @@ class ContractController extends Controller
     public function formulaStoress(Request $request)
     {
         $user = auth()->user();
-        $contract = $request->contract;
+        $route = $request->route;
+        $routeDetails =  Route::where('id', '=' , $route )->first();
+        $contract = $routeDetails->contractId;
+        if($contract == null){
+
+            return back()->with('warning', 'This route is not linked to a contract!');  
+        }    
         $expression = $request->input('userInput');
         $explodedforumla =  $request->input('userInput');
         $storeFormula = implode($explodedforumla);
@@ -234,7 +240,7 @@ class ContractController extends Controller
             if($expression[$key] != '+' &  $expression[$key] != '-' & $expression[$key] != '*' & $expression[$key] != '/'  & $expression[$key] != '('  & $expression[$key] != ')'){
 
                 if($expression[$key] == 'OR'){
-                    $rate = Route::where('contractId', '=' , $contract )->first();
+                    $rate = Route::where('id', '=' , $route )->first();
                     $expression[$key] = $rate->rate;
                  //   dd($rate);
                 }elseif($expression[$key] == 'L1'){

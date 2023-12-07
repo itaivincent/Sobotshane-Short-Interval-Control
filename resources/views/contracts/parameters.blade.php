@@ -552,10 +552,10 @@
 
                                                               <div class="form-group">
                                                                  <div class="input-group mb-3">                                                       
-                                                                    <select name="contract" class="form-select" required>
-                                                                    <option selected="">Choose Contract</option>
-                                                                    @foreach ($contracts as $contract)  
-                                                                    <option value="{{ $contract->id }}">{{$contract->provider}} - {{$contract->client}} - {{ $contract->number}} </option>
+                                                                    <select name="route" class="form-select" required>
+                                                                    <option selected="">Choose Route</option>
+                                                                    @foreach ($routes as $route)  
+                                                                    <option value="{{ $route->id }}">{{$route->from}} - {{$route->to}} - {{ $route->activity}} </option>
                                                                     @endforeach                                                                                                                                                                             
                                                                    </select>                                                                   
                                                                  </div>
