@@ -58,6 +58,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/contracts/formulaStore', [ContractController::class, 'formulaStore'])->name('contracts.formulaStore');
     Route::get('/contracts/edit/{id}', [ContractController::class, 'edit'])->name('contracts.edit');
     Route::put('/contracts/update/{id}', [ContractController::class, 'update'])->name('contracts.update');
+    Route::put('/contracts/updateformula/{id}', [ContractController::class, 'updateformula'])->name('contracts.updateformula');
     Route::get('/download-pdf/{id}', [ContractController::class, 'pdf'])->name('contracts.pdf');
     Route::resource('contracts', ContractController::class);
 

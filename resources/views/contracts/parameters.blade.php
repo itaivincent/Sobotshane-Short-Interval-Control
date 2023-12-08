@@ -574,10 +574,8 @@
                                     </div>
 
 
-
-                                                                 <!-- This is for testing -->
-                                                      
-                                                                 <div class="modal fade bd-example-modal-lg"  id="inputFormulaModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                    <!-- This is for testing -->                                                    
+                                     <div class="modal fade bd-example-modal-lg"  id="inputFormulaModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-lg" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header" id="inputFormModalLabel">
@@ -653,7 +651,7 @@
 
 
                                     
-                                    <script>
+                                                    <script>
                                                         function addToInput(value) {
                                                             var inputContainer = document.getElementById('inputContainer');
                                                             var currentInput = document.createElement('span');

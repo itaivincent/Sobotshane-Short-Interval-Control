@@ -376,9 +376,30 @@ class ContractController extends Controller
     public function edit(string $id)
     {
         $contract = Contract::where('id',$id)->first();
-        $escalationformulas = Escalationformula::where('contract','=', $id)->first();
+        $escalationformulas = Escalationformula::where('contract','=', $id)->get();
+     //   dd($routes);
 
         return view('contracts.edit', compact('contract','escalationformulas'));
+    }
+
+
+    public function updateformula(Request $request, $id)
+    {
+      
+        $endIndices = $request->input('endIndices');
+        $costComponent = $request->input('costComponents');
+        $endDates = $request->input('endDates');
+
+        foreach ($costComponent as $key => $value) {
+
+            $updateCostComponent = Escalationformula::where('contract','=',$id)->where('costComponent','=', $costComponent[$key])->update([
+
+                'endIndices' => $endIndices[$key],
+                'endDate' => $endDates[$key]
+            ]);
+        }
+
+        dd('done');
     }
 
 
