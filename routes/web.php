@@ -67,6 +67,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/drivers/create', [DriverController::class, 'create'])->name('drivers.create');
     Route::get('/drivers/index', [DriverController::class, 'index'])->name('drivers.index');
     Route::post('/drivers/store', [DriverController::class, 'store'])->name('drivers.store');
+    Route::get('/drivers/edit/{id}', [DriverController::class, 'edit'])->name('drivers.edit');
+    Route::put('/drivers/update/{id}', [DriverController::class, 'update'])->name('drivers.update');
 
 });
 
