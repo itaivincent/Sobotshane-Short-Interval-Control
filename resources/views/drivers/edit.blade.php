@@ -147,7 +147,7 @@
                                                                 <div class="form-group row">
                                                                     <label for="client-phone" class="col-sm-3 col-form-label col-form-label-sm">Status Reason</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" class="form-control form-control-sm" name="statusReason" id="client-phone"  value="">
+                                                                        <input type="text" class="form-control form-control-sm" name="statusReason" id="client-phone"  value="{{$driver->statusReason}}">
                                                                     </div>
                                                                 </div> 
                                                                 

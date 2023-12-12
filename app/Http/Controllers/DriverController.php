@@ -83,7 +83,30 @@ class DriverController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        dd($id,$request->status,$request->statusReason);
+      //  dd($id,$request->status,$request->statusReason);
+
+        $driverUpdate = Driver::where('id',$id)->update([
+
+            'name'    =>$request->name, 
+            'surname'    =>$request->surname, 
+            'group'    =>$request->group, 
+            'gender'    =>$request->gender, 
+            'routeType'    =>$request->routeType, 
+            'licenseNumber'    =>$request->licenseNumber,    
+            'statusReason'    =>$request->statusReason,     
+            'vehicleType'    =>$request->vehicleType, 
+            'licenseExpireDate'    =>$request->licenseExpireDate, 
+            'status'    =>$request->status, 
+            'updatedBy'   =>Auth::user()->name,               
+
+        ]);
+
+        if($driverUpdate){
+
+            return back()->with('success', 'Asset updated successfully!'); 
+        }
+
+        return back()->with('error', 'Failed to update Asset!'); 
     }
 
     /**
