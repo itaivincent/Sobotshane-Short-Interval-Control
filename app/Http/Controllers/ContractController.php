@@ -400,6 +400,8 @@ class ContractController extends Controller
     }
 
 
+    
+
     public function updateformula(Request $request, $id)
     {
       
