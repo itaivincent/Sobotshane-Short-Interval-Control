@@ -18,6 +18,7 @@ class Routeratetracker extends Model
         'formula',
         'rateMonth',
         'status',
+        'activeMonth',
         'createdBy',
         'updatedBy',
        

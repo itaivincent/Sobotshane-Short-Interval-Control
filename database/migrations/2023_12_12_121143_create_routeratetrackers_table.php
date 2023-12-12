@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('contract')->nullable();
             $table->string('previousRate')->nullable();
             $table->string('formula')->nullable();
+            $table->string('activeMonth')->nullable();
             $table->date('rateMonth')->nullable();
             $table->integer('status')->nullable();
             $table->string('createdBy')->nullable();

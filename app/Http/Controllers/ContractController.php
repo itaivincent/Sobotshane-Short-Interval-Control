@@ -10,6 +10,7 @@ use App\Models\Formula;
 use App\Models\Escalationformula;
 use App\Models\Route;
 use App\Models\Routeratetracker;
+use Carbon\Carbon;
 use Alert;
 use Auth;
 
@@ -351,6 +352,7 @@ class ContractController extends Controller
        // dd($text);
         $result = $this->calculateResult($expression);
        
+        $currentDateTime = Carbon::now();
 
         $userrole = new Formula();
         $userrole->formula = $expression;
@@ -361,16 +363,17 @@ class ContractController extends Controller
         $userrole->createdBy = $user->name;
         $userrole->save();
 
-        // $routeratetracker = new Routeratetracket();
-        // $routeratetracker-> = ;
-        // $routeratetracker-> = ;
-        // $routeratetracker-> = ;
-        // $routeratetracker-> = ;
-        // $routeratetracker-> = ;
-        // $routeratetracker-> = ;
-        // $routeratetracker-> = ;
-        // $routeratetracker-> = ;
-        // $routeratetracker-> = ;
+        $routeratetracker = new Routeratetracker();
+        $routeratetracker->route = $route;
+        $routeratetracker->rate =  $result ;
+        $routeratetracker->previousRate = $routeDetails->rate ;
+        $routeratetracker->contract = $contract;
+        $routeratetracker->formula =  $storeFormula;
+        $routeratetracker->activeMonth = date('F')." ".date('Y');
+        $routeratetracker->status = 1;
+        $routeratetracker->createdBy = $user->name;
+        $routeratetracker->save();
+
 
         $updateRouteRate = Route::where('id', $route )->update([
 
@@ -400,7 +403,7 @@ class ContractController extends Controller
     }
 
 
-    
+
 
     public function updateformula(Request $request, $id)
     {
@@ -409,7 +412,7 @@ class ContractController extends Controller
         $endIndices = $request->input('endIndices');
         $costComponent = $request->input('costComponents');
         $endDates = $request->input('endDates');
-
+      
         foreach ($costComponent as $key => $value) {
 
             $updateCostComponent = Escalationformula::where('contract','=',$id)->where('costComponent','=', $costComponent[$key])->update([
@@ -428,6 +431,7 @@ class ContractController extends Controller
          $equation = $formulaYacho->equation;
          $expression = json_decode($equation, true);
          $storeFormula = json_encode($expression);
+         $theRate = Route::where('id', '=' , $formulaYacho->route )->first();
       //  dd($storeFormula);
            foreach($expression as $key => $number){
             //  $getnumber = Parameters::where( $number, '!=' , null )->first();
@@ -549,14 +553,23 @@ class ContractController extends Controller
             $userrole->createdBy = $user->name;
             $userrole->save();
 
+            
+            $routeratetracker = new Routeratetracker();
+            $routeratetracker->route = $formulaYacho->route;
+            $routeratetracker->rate =  $result ;
+            $routeratetracker->previousRate = $theRate->rate;
+            $routeratetracker->contract = $contract;
+            $routeratetracker->formula =  $storeFormula;
+            $routeratetracker->activeMonth = date('F')." ".date('Y');
+            $routeratetracker->status = 1;
+            $routeratetracker->createdBy = $user->name;
+            $routeratetracker->save();
+
 
             $updateRoute = Route::where('id', $formulaYacho->route )->update([
 
                 'rate' => $result,
             ]);
-
-
-            $routeratetrack = new Routeratetracket();
 
         }
 
