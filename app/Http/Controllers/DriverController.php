@@ -39,15 +39,19 @@ class DriverController extends Controller
      */
     public function store(Request $request)
     {
+     //   dd($request->gender,$request->routeType);
         $user = auth()->user();
-
         $userrole = new Driver();
-        $userrole->number = $request->number;
-        $userrole->provider = $request->provider;
-        $userrole->client = $request->client;
-        $userrole->duration =  $request->duration;
-        $userrole->commodity = $request->commodity;
-        $userrole->effectiveDate = $request->date;
+        $userrole->name = $request->name;
+        $userrole->surname = $request->surname;
+        $userrole->group = $request->group;
+        $userrole->dob =  $request->dob;
+        $userrole->gender = $request->gender;
+        $userrole->routeType = $request->routeType;
+        $userrole->licenseExpireDate = $request->licenseExpireDate;
+        $userrole->licenseNumber =  $request->licenseNumber;
+        $userrole->vehicleType = $request->vehicleType;
+        $userrole->createdBy = $user->name;
         $userrole->save();
 
         if($userrole){
