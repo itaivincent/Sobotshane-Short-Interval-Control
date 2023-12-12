@@ -123,8 +123,7 @@
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
                                                                 <label class="form-label">Upload Contract</label>                                              
-                                                                <input type="file" id="contractImage" name="contractImage" class="form-control">
-                                                                                                                      
+                                                                <input type="file" id="contractImage" name="contractImage" class="form-control">                                                                                                                  
                                                             </div>
                                                         </div>
 
