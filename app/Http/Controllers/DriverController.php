@@ -83,7 +83,7 @@ class DriverController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        dd($id,$request->status,$request->statusReason);
     }
 
     /**

@@ -208,10 +208,11 @@
                                                           
                                                                     <select name="statusReason" class="form-select"  />
                                                                     <option value="">Choose...</option>
-                                                                    <option value="Broken down">Broken down</option>
-                                                                    <option value="Under Maintenance">Under Maintenance</option>
-                                                                    <option value="Involved in Accident">Involved in Accident</option> 
-                                                                    <option value="Repaired">Repaired</option>                                                                                                                 
+                                                                    <option value="On Leave">On Leave</option>
+                                                                    <option value="Off">Off</option>
+                                                                    <option value="Sick">Sick</option> 
+                                                                    <option value="Retired">Retired</option>      
+                                                                    <option value="Resigned">Resigned</option>                                                                                                                                                                       
                                                                    </select>  
                                                                  
                                                                 </div>

@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('licenseNumber')->nullable();
             $table->string('availability')->nullable();
             $table->string('vehicleType')->nullable();
+            $table->string('statusReason')->nullable();
             $table->string('resourcePoolStatus')->nullable();
             $table->string('status')->nullable();
             $table->string('updatedBy')->nullable();
