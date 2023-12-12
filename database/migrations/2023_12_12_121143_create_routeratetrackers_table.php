@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('routeratetrackers', function (Blueprint $table) {
             $table->id();
+            $table->string('route')->nullable();
+            $table->string('rate')->nullable();
+            $table->string('contract')->nullable();
+            $table->string('previousRate')->nullable();
+            $table->string('formula')->nullable();
+            $table->date('rateMonth')->nullable();
+            $table->integer('status')->nullable();
+            $table->string('createdBy')->nullable();
+            $table->string('updatedBy')->nullable();
             $table->timestamps();
         });
     }

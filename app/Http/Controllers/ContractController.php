@@ -9,6 +9,7 @@ use App\Models\Contract;
 use App\Models\Formula;
 use App\Models\Escalationformula;
 use App\Models\Route;
+use App\Models\Routeratetracker;
 use Alert;
 use Auth;
 
@@ -360,6 +361,22 @@ class ContractController extends Controller
         $userrole->createdBy = $user->name;
         $userrole->save();
 
+        // $routeratetracker = new Routeratetracket();
+        // $routeratetracker-> = ;
+        // $routeratetracker-> = ;
+        // $routeratetracker-> = ;
+        // $routeratetracker-> = ;
+        // $routeratetracker-> = ;
+        // $routeratetracker-> = ;
+        // $routeratetracker-> = ;
+        // $routeratetracker-> = ;
+        // $routeratetracker-> = ;
+
+        $updateRouteRate = Route::where('id', $route )->update([
+
+            'rate' => $result,
+        ]);
+
        // dd($result);
         if($result == null){
 
@@ -530,13 +547,22 @@ class ContractController extends Controller
             $userrole->createdBy = $user->name;
             $userrole->save();
 
+
+            $updateRoute = Route::where('id', $formulaYacho->route )->update([
+
+                'rate' => $result,
+            ]);
+
+
+            $routeratetrack = new Routeratetracket();
+
         }
 
             if($result == null){
     
                 return back()->with('warning', 'You make a mistake in your formula! Try again');
             }
-            return back()->with('success', 'Parameters updated and the new rate is '.$result.'');
+            return back()->with('success', 'Parameters updated and new rate have been set');
     
 
     }

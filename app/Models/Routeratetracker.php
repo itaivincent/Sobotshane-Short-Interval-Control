@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Routeratetracker extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+
+        'route',
+        'rate',
+        'previousRate',  
+        'contract',
+        'formula',
+        'rateMonth',
+        'status',
+        'createdBy',
+        'updatedBy',
+       
+    ];
 }
