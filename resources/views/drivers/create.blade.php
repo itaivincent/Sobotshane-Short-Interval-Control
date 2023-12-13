@@ -110,7 +110,7 @@
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
-                                                                <label class="form-label">vehicle Type</label>
+                                                                <label class="form-label">Vehicle Type</label>
                                                                 <input type="text" name="vehicleType"  class="form-control add-payment-method-input">
                                                             </div>
                                                         </div>
