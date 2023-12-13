@@ -233,7 +233,8 @@ class ContractController extends Controller
         $expression = $request->input('userInput');
         $explodedforumla =  $request->input('userInput');
         $storeFormula = json_encode($explodedforumla);
-      // dd($expression);
+        $equationString =  implode($expression);
+      // dd($equationString);
         $dummy = 10;
       //  dd($expression);
         foreach($expression as $key => $number){
@@ -249,91 +250,91 @@ class ContractController extends Controller
 
                     $LabourIndexattheenddate = Escalationformula::where('costComponent', '=' ,'Labour')->where('contract','=', $contract)->first();
                   //  dd($LabourIndexatthebasedate);
-                    $expression[$key] = $LabourIndexattheenddate->endIndices;
+                    $expression[$key] = number_format($LabourIndexattheenddate->endIndices, 2);
                     
                 }elseif($expression[$key] == 'L0'){
 
                     $LabourIndexatthebasedate = Escalationformula::where('costComponent', '=' ,'Labour')->where('contract','=', $contract)->first();
                   //  dd($LabourIndexatthebasedate);
-                    $expression[$key] = $LabourIndexatthebasedate->baseIndices;
+                    $expression[$key] = number_format($LabourIndexatthebasedate->baseIndices, 2);
                     
                 }elseif($expression[$key] == 'F1'){
 
                     $FuelDieselIndexattheenddate = Escalationformula::where('costComponent', '=' ,'Fuel (Diesel)')->where('contract','=', $contract)->first();
                 //   dd($FuelDieselIndexattheenddate);
-                    $expression[$key] = $FuelDieselIndexattheenddate->endIndices;
+                    $expression[$key] = number_format($FuelDieselIndexattheenddate->endIndices, 2);
                     
                 }elseif($expression[$key] == 'F0'){
 
                     $FuelDieselIndexatthebasedate = Escalationformula::where('costComponent', '=' ,'Fuel (Diesel)')->where('contract','=', $contract)->first();
                   //  dd($LabourIndexatthebasedate);
-                    $expression[$key] = $FuelDieselIndexatthebasedate->baseIndices;
+                    $expression[$key] = number_format($FuelDieselIndexatthebasedate->baseIndices, 2);
                     
                 }elseif($expression[$key] == 'CC1'){
 
                     $CapitalCostIndexattheenddate = Escalationformula::where('costComponent', '=' ,'Capital Cost')->where('contract','=', $contract)->first();
                   //  dd($LabourIndexatthebasedate);
-                    $expression[$key] = $CapitalCostIndexattheenddate->endIndices;
+                    $expression[$key] = number_format($CapitalCostIndexattheenddate->endIndices, 2);
                     
                 }elseif($expression[$key] == 'CC0'){
 
                     $CapitalCostIndexatthebasedate = Escalationformula::where('costComponent', '=' ,'Capital Cost')->where('contract','=', $contract)->first();
                   //  dd($LabourIndexatthebasedate);
-                    $expression[$key] = $CapitalCostIndexatthebasedate->baseIndices;
+                    $expression[$key] = number_format($CapitalCostIndexatthebasedate->baseIndices, 2);
                     
                 }elseif($expression[$key] == 'RM1'){
 
                     $RepairandMaintenanceIndexattheenddate = Escalationformula::where('costComponent', '=' ,'Repair & Maintenance')->where('contract','=', $contract)->first();
                   //  dd($LabourIndexatthebasedate);
-                    $expression[$key] = $RepairandMaintenanceIndexattheenddate->endIndices;
+                    $expression[$key] = number_format($RepairandMaintenanceIndexattheenddate->endIndices, 2);
                     
                 }elseif($expression[$key] == 'RM0'){
 
                     $RepairandMaintenanceIndexatthebasedate = Escalationformula::where('costComponent', '=' ,'Repair & Maintenance')->where('contract','=', $contract)->first();
                   //  dd($LabourIndexatthebasedate);
-                    $expression[$key] = $RepairandMaintenanceIndexatthebasedate->baseIndices;
+                    $expression[$key] = number_format($RepairandMaintenanceIndexatthebasedate->baseIndices, 2);
                     
                 }elseif($expression[$key] == 'OC1'){
 
                     $OtherCostIndexattheenddate = Escalationformula::where('costComponent', '=' ,'Other Cost')->where('contract','=', $contract)->first();
                   //  dd($LabourIndexatthebasedate);
-                    $expression[$key] = $OtherCostIndexattheenddate->endIndices;
+                    $expression[$key] = number_format($OtherCostIndexattheenddate->endIndices, 2);
                     
                 }elseif($expression[$key] == 'OC0'){
 
                     $OtherCostIndexatthebasedate = Escalationformula::where('costComponent', '=' ,'Other Cost')->where('contract','=', $contract)->first();
                   //  dd($LabourIndexatthebasedate);
-                    $expression[$key] = $OtherCostIndexatthebasedate->baseIndices;
+                    $expression[$key] = number_format($OtherCostIndexatthebasedate->baseIndices, 2);
                     
                 }elseif($expression[$key] == 'L(%)'){
 
                     $LabourWeightage = Escalationformula::where('costComponent', '=' ,'Labour')->where('contract','=', $contract)->first();
                   //  dd($LabourIndexatthebasedate);
-                    $expression[$key] = $LabourWeightage->weightage;
+                    $expression[$key] = number_format($LabourWeightage->weightage, 2);
                     
                 }elseif($expression[$key] == 'F(%)'){
 
                     $FuelWeightage = Escalationformula::where('costComponent', '=' ,'Fuel (Diesel)')->where('contract','=', $contract)->first();
                   //  dd($LabourIndexatthebasedate);
-                    $expression[$key] = $FuelWeightage->weightage;
+                    $expression[$key] = number_format($FuelWeightage->weightage, 2);
                     
                 }elseif($expression[$key] == 'C(%)'){
 
                     $CapitalWeightage = Escalationformula::where('costComponent', '=' ,'Capital Cost')->where('contract','=', $contract)->first();
                   //  dd($LabourIndexatthebasedate);
-                    $expression[$key] = $CapitalWeightage->weightage;
+                    $expression[$key] = number_format($CapitalWeightage->weightage, 2);
                     
                 }elseif($expression[$key] == 'R(%)'){
 
                     $RepairWeightage = Escalationformula::where('costComponent', '=' ,'Repair & Maintenance')->where('contract','=', $contract)->first();
                   //  dd($LabourIndexatthebasedate);
-                    $expression[$key] = $RepairWeightage->weightage;
+                    $expression[$key] = number_format($RepairWeightage->weightage, 2);
                     
                 }elseif($expression[$key] == 'O(%)'){
 
                     $OtherCostWeightage = Escalationformula::where('costComponent', '=' ,'Other Cost')->where('contract','=', $contract)->first();
                   //  dd($LabourIndexatthebasedate);
-                    $expression[$key] = $OtherCostWeightage->weightage;
+                    $expression[$key] = number_format($OtherCostWeightage->weightage, 2);
                     
                 }else{
 
@@ -350,7 +351,13 @@ class ContractController extends Controller
        $expression = implode($expression);
     //  dd($expression);
        // dd($text);
-        $result = $this->calculateResult($expression);
+       $result = $this->calculateResult($expression);
+       if($result == null){
+
+        return back()->with('warning', 'You make a mistake in your formula! Try again');
+    }
+
+       
        
         $currentDateTime = Carbon::now();
 
@@ -360,6 +367,7 @@ class ContractController extends Controller
         $userrole->contract = $contract;
         $userrole->route = $route;
         $userrole->result = $result;
+        $userrole->equationString = $equationString;
         $userrole->createdBy = $user->name;
         $userrole->save();
 
@@ -381,10 +389,8 @@ class ContractController extends Controller
         ]);
 
        // dd($result);
-        if($result == null){
+     
 
-            return back()->with('warning', 'You make a mistake in your formula! Try again');
-        }
         return back()->with('success', 'Formula calculated and your rate is '.$result.'');
 
     }
@@ -431,8 +437,9 @@ class ContractController extends Controller
          $equation = $formulaYacho->equation;
          $expression = json_decode($equation, true);
          $storeFormula = json_encode($expression);
+         $equationString =  implode($expression);
          $theRate = Route::where('id', '=' , $formulaYacho->route )->first();
-      //  dd($storeFormula);
+       // dd($equationString);
            foreach($expression as $key => $number){
             //  $getnumber = Parameters::where( $number, '!=' , null )->first();
             if($expression[$key] != '+' &  $expression[$key] != '-' & $expression[$key] != '*' & $expression[$key] != '/'  & $expression[$key] != '('  & $expression[$key] != ')'){
@@ -445,93 +452,94 @@ class ContractController extends Controller
 
                     $LabourIndexattheenddate = Escalationformula::where('costComponent', '=' ,'Labour')->where('contract','=', $contract)->first();
                   //  dd($LabourIndexatthebasedate);
-                    $expression[$key] = $LabourIndexattheenddate->endIndices;
+                    $expression[$key] = number_format($LabourIndexattheenddate->endIndices, 2);
                     
                 }elseif($expression[$key] == 'L0'){
 
                     $LabourIndexatthebasedate = Escalationformula::where('costComponent', '=' ,'Labour')->where('contract','=', $contract)->first();
                   //  dd($LabourIndexatthebasedate);
-                    $expression[$key] = $LabourIndexatthebasedate->baseIndices;
+                    $expression[$key] = number_format($LabourIndexatthebasedate->baseIndices, 2);
                     
                 }elseif($expression[$key] == 'F1'){
 
                     $FuelDieselIndexattheenddate = Escalationformula::where('costComponent', '=' ,'Fuel (Diesel)')->where('contract','=', $contract)->first();
                 //   dd($FuelDieselIndexattheenddate);
-                    $expression[$key] = $FuelDieselIndexattheenddate->endIndices;
+                    $expression[$key] = number_format($FuelDieselIndexattheenddate->endIndices, 2);
                     
                 }elseif($expression[$key] == 'F0'){
 
                     $FuelDieselIndexatthebasedate = Escalationformula::where('costComponent', '=' ,'Fuel (Diesel)')->where('contract','=', $contract)->first();
                   //  dd($LabourIndexatthebasedate);
-                    $expression[$key] = $FuelDieselIndexatthebasedate->baseIndices;
+                    $expression[$key] = number_format($FuelDieselIndexatthebasedate->baseIndices, 2);
                     
                 }elseif($expression[$key] == 'CC1'){
 
                     $CapitalCostIndexattheenddate = Escalationformula::where('costComponent', '=' ,'Capital Cost')->where('contract','=', $contract)->first();
                   //  dd($LabourIndexatthebasedate);
-                    $expression[$key] = $CapitalCostIndexattheenddate->endIndices;
+                    $expression[$key] = number_format($CapitalCostIndexattheenddate->endIndices, 2);
                     
                 }elseif($expression[$key] == 'CC0'){
 
                     $CapitalCostIndexatthebasedate = Escalationformula::where('costComponent', '=' ,'Capital Cost')->where('contract','=', $contract)->first();
                   //  dd($LabourIndexatthebasedate);
-                    $expression[$key] = $CapitalCostIndexatthebasedate->baseIndices;
+                    $expression[$key] = number_format($CapitalCostIndexatthebasedate->baseIndices, 2);
                     
                 }elseif($expression[$key] == 'RM1'){
 
                     $RepairandMaintenanceIndexattheenddate = Escalationformula::where('costComponent', '=' ,'Repair & Maintenance')->where('contract','=', $contract)->first();
                   //  dd($LabourIndexatthebasedate);
-                    $expression[$key] = $RepairandMaintenanceIndexattheenddate->endIndices;
+                    $expression[$key] = number_format($RepairandMaintenanceIndexattheenddate->endIndices, 2);
                     
                 }elseif($expression[$key] == 'RM0'){
 
                     $RepairandMaintenanceIndexatthebasedate = Escalationformula::where('costComponent', '=' ,'Repair & Maintenance')->where('contract','=', $contract)->first();
                   //  dd($LabourIndexatthebasedate);
-                    $expression[$key] = $RepairandMaintenanceIndexatthebasedate->baseIndices;
+                    $expression[$key] = number_format($RepairandMaintenanceIndexatthebasedate->baseIndices, 2);
                     
                 }elseif($expression[$key] == 'OC1'){
 
                     $OtherCostIndexattheenddate = Escalationformula::where('costComponent', '=' ,'Other Cost')->where('contract','=', $contract)->first();
                   //  dd($LabourIndexatthebasedate);
-                    $expression[$key] = $OtherCostIndexattheenddate->endIndices;
+                    $expression[$key] = number_format($OtherCostIndexattheenddate->endIndices, 2);
                     
                 }elseif($expression[$key] == 'OC0'){
 
                     $OtherCostIndexatthebasedate = Escalationformula::where('costComponent', '=' ,'Other Cost')->where('contract','=', $contract)->first();
                   //  dd($LabourIndexatthebasedate);
-                    $expression[$key] = $OtherCostIndexatthebasedate->baseIndices;
+                    $expression[$key] = number_format($OtherCostIndexatthebasedate->baseIndices, 2);
                     
                 }elseif($expression[$key] == 'L(%)'){
 
                     $LabourWeightage = Escalationformula::where('costComponent', '=' ,'Labour')->where('contract','=', $contract)->first();
                   //  dd($LabourIndexatthebasedate);
-                    $expression[$key] = $LabourWeightage->weightage;
+                    $expression[$key] = number_format($LabourWeightage->weightage, 2);
                     
                 }elseif($expression[$key] == 'F(%)'){
 
                     $FuelWeightage = Escalationformula::where('costComponent', '=' ,'Fuel (Diesel)')->where('contract','=', $contract)->first();
                   //  dd($LabourIndexatthebasedate);
-                    $expression[$key] = $FuelWeightage->weightage;
+                    $expression[$key] = number_format($FuelWeightage->weightage, 2);
                     
                 }elseif($expression[$key] == 'C(%)'){
 
                     $CapitalWeightage = Escalationformula::where('costComponent', '=' ,'Capital Cost')->where('contract','=', $contract)->first();
                   //  dd($LabourIndexatthebasedate);
-                    $expression[$key] = $CapitalWeightage->weightage;
+                    $expression[$key] = number_format($CapitalWeightage->weightage, 2);
                     
                 }elseif($expression[$key] == 'R(%)'){
 
                     $RepairWeightage = Escalationformula::where('costComponent', '=' ,'Repair & Maintenance')->where('contract','=', $contract)->first();
                   //  dd($LabourIndexatthebasedate);
-                    $expression[$key] = $RepairWeightage->weightage;
+                    $expression[$key] = number_format($RepairWeightage->weightage, 2);
                     
                 }elseif($expression[$key] == 'O(%)'){
 
                     $OtherCostWeightage = Escalationformula::where('costComponent', '=' ,'Other Cost')->where('contract','=', $contract)->first();
                   //  dd($LabourIndexatthebasedate);
-                    $expression[$key] = $OtherCostWeightage->weightage;
+                    $expression[$key] = number_format($OtherCostWeightage->weightage, 2);
                     
                 }else{
+
 
                     $expression[$key] = null;
                 }
@@ -541,8 +549,14 @@ class ContractController extends Controller
              // dd($numbers[$key]);
           }
 
-            $expression = implode($expression);    
+            $expression = implode($expression);  
+          //  dd($expression);  
             $result = $this->calculateResult($expression);
+            
+            if($result == null){
+    
+                return back()->with('warning', 'You make a mistake in your formula! Try again');
+            }
            
             $userrole = new Formula();
             $userrole->formula = $expression;
@@ -550,6 +564,7 @@ class ContractController extends Controller
             $userrole->contract = $contract;
             $userrole->route = $formulaYacho->route;
             $userrole->result = $result;
+            $userrole->equationString = $equationString;
             $userrole->createdBy = $user->name;
             $userrole->save();
 
@@ -573,10 +588,6 @@ class ContractController extends Controller
 
         }
 
-            if($result == null){
-    
-                return back()->with('warning', 'You make a mistake in your formula! Try again');
-            }
             return back()->with('success', 'Parameters updated and new rate have been set');
     
 

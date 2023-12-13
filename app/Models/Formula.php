@@ -18,6 +18,7 @@ class Formula extends Model
         'formula',
         'equation',
         'result',
+        'equationString',
         'createdBy',
         'updatedBy',
        

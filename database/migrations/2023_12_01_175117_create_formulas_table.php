@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('contract')->nullable();
             $table->string('route')->nullable();
+            $table->string('equationString')->nullable();
             $table->double('result')->nullable();           
             $table->text('formula')->nullable();
             $table->text('equation')->nullable();

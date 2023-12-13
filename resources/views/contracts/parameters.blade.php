@@ -482,7 +482,7 @@
                                                         @foreach ($formulas as $asset)                                         
                                                         <tr>
                                                             <td class="checkbox-column"> 1 </td>
-                                                            <td><a href="./app-invoice-preview.html"><span class="inv-number">{{ $asset->equation }}</span></a></td>
+                                                            <td><a href="./app-invoice-preview.html"><span class="inv-number">{{ $asset->equationString }}</span></a></td>
                                                         
                                                             <td><span class="inv-amount"> <p class="align-self-center mb-0 user-name">{{ $asset->formula }}</p></span></td>
                                                             <td><span class="inv-email"> {{ number_format( $asset->result , 2) }}</span></td>
