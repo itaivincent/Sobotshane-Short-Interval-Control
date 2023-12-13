@@ -72,8 +72,7 @@
                                                                     <select name="gender"  id="gender" class="form-select" >
                                                                     <option selected="">Choose...</option>
                                                                     <option value="Male">Male</option>
-                                                                    <option value="Female">Female</option>
-                                                                                                                                                                 
+                                                                    <option value="Female">Female</option>                                                                                                                                                                
                                                                    </select>  
                                                                     </div>
                                                                 </div>                                                                                                                                                                                                                         

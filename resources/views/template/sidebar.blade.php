@@ -103,7 +103,7 @@
                                 <a href="/assets/index"> Manage Assets </a>
                             </li>
                             <li>
-                                <a href="/assets/parameters"> Parameters</a>
+                                <a href="#"> Parameters</a>
                             </li>
                         </ul>
                     </li>
@@ -128,7 +128,7 @@
                                 <a href="/drivers/index"> Manage Drivers</a>
                             </li>
                             <li>
-                                <a href="/drivers/parameters"> Parameters </a>
+                                <a href="#"> Parameters </a>
                             </li>
                         </ul>
                     </li>
