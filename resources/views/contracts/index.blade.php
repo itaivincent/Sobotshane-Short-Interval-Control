@@ -55,7 +55,8 @@
                             @else
                             <span class="badge badge-light-info inv-status">Ongoing</span>   
                             @endif
-                             </td>                                           
+                             </td>  
+                                                                      
                             <td>
                             <span class="inv-amount">{{ $asset->duration }}</span>
                            </td>  
