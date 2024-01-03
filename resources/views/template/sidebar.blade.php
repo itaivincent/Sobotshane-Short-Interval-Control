@@ -171,11 +171,14 @@
                             </div>
                         </a>
                         <ul class="collapse submenu list-unstyled" id="assignments" data-bs-parent="#accordionExample">
-                            <li>
-                                <a href="javascript:void(0);"> Manage Assignments </a>
+                             <li>
+                                <a href="assignments/create"> Create Assignments </a>
                             </li>
                             <li>
-                                <a href="javascript:void(0);"> Parameters </a>
+                                <a href="assignments/index"> Manage Assignments </a>
+                            </li>
+                            <li>
+                                <a href="assignments/parameters"> Parameters </a>
                             </li>
                         </ul>
                     </li>
