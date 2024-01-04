@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('contractassets', function (Blueprint $table) {
             $table->id();
+            $table->integer('contract')->nullable();
+            $table->integer('asset')->nullable();
+            $table->integer('status')->nullable();
+            $table->string('createdBy')->nullable();
+            $table->string('updatedBy')->nullable();
             $table->timestamps();
         });
     }

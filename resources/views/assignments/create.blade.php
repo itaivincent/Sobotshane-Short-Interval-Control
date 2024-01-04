@@ -45,7 +45,7 @@
                                                             <label class="form-label">Contracts</label>
                                                                 <div class="invoice-action-currency">
                                                                     <div class="dropdown selectable-dropdown cardName-select">
-                                                                    <select name="trailerType" class="form-select">
+                                                                    <select name="contract" class="form-select">
                                                                     <option selected="">Choose a Contract</option>
                                                                     @foreach ( $contracts as $contract)
                                                                     <option value="{{$contract->id}}">{{$contract->number}} {{$contract->client}} and {{$contract->provider}}</option>                                                                                                       
@@ -67,10 +67,10 @@
                                        
                                                     <h6 class="">Select Routes</h6>                                     
     
-                        <div class="col-lg-12">
+                        <div class="col-lg-12" id="routes" >
                             <div class="statbox widget box box-shadow">
                                 <div class="widget-content widget-content-area">
-                                    <table id="style-2" class="table style-2 dt-table-hover">
+                                    <table id="style-" class="table style-2 dt-table-hover">
                                         <thead>
                                             <tr>
                                                 <th class="checkbox-column dt-no-sorting"> Record Id </th>
@@ -86,7 +86,9 @@
                                             @foreach ($routes as $route)
 
                                             <tr>
-                                                <td class="checkbox-column"> 1 </td>
+                                                <td class="text-center">
+                                               <input type="checkbox" name="routesIds[]" value="{{ $route->id }}">
+                                               </td>
                                                 <td>{{$route->from}}</td>
                                                 <td>{{$route->to}}</td>
                                                 <td>{{$route->activity}}</td>
@@ -110,47 +112,49 @@
 
 
                     <!-- Assets -->
+                                    
+                                    <h6 class="">Select Assets</h6>                                     
                     
-                    <h6 class="">Select Assets</h6>                                     
-    
-    <div class="col-lg-12">
-        <div class="statbox widget box box-shadow">
-            <div class="widget-content widget-content-area">
-                <table id="style-1" class="table style-2 dt-table-hover">
-                    <thead>
-                        <tr>
-                            <th class="checkbox-column dt-no-sorting"> Record Id </th>
-                            <th>Make</th>
-                            <th class="text-center">Model</th>
-                            <th>Registration</th>
-                            <th>Type</th>
-                            <th>Capacity</th>                          
-                            <th class="text-center">Status</th>
-                          
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ( $assets as $asset)
-                        <tr>
-                            <td class="checkbox-column"> 1 </td>
-                            <td class="text-center">{{$asset->make}}</td>
-                            <td class="text-center">{{$asset->model}}</td>
-                            <td class="text-center">{{$asset->registration}}</td>
-                            <td class="text-center">{{$asset->assetType}}</td>
-                            <td class="text-center">{{$asset->payloadCapacity}}</td>
-                            <td class="text-center"><span class="shadow-none badge badge-primary">Approved</span></td>
-                        </tr> 
-                        @endforeach                                                                                                                       
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
+                    <div class="col-lg-12" id="assets" >
+                        <div class="statbox widget box box-shadow">
+                            <div class="widget-content widget-content-area">
+                                <table id="styl-1" class="table style-2 dt-table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="checkbox-column dt-no-sorting"> Record Id </th>
+                                            <th>Make</th>
+                                            <th class="text-center">Model</th>
+                                            <th>Registration</th>
+                                            <th>Type</th>
+                                            <th>Capacity</th>                          
+                                            <th class="text-center">Status</th>
+                                        
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ( $assets as $asset)
+                                        <tr>
+                                            <td class="text-center">
+                                            <input type="checkbox"  name="assetIds[]" value="{{ $asset->id }}">
+                                            </td>
+                                            <td class="text-center">{{$asset->make}}</td>
+                                            <td class="text-center">{{$asset->model}}</td>
+                                            <td class="text-center">{{$asset->registration}}</td>
+                                            <td class="text-center">{{$asset->assetType}}</td>
+                                            <td class="text-center">{{$asset->payloadCapacity}}</td>
+                                            <td class="text-center"><span class="shadow-none badge badge-primary">Approved</span></td>
+                                        </tr> 
+                                        @endforeach                                                                                                                       
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
               
                                           
                                     
-                                        <button type="submit" class="btn btn-primary  float-end mt-3">Make Assignments</button>
+                                        <button type="submit" onclick="getSelectedCheckboxes()" class="btn btn-primary  float-end mt-3">Make Assignments</button>
                                     </form>
                                     </div>
                                 </div>
@@ -166,4 +170,5 @@
 
             </div>
 
+  
 @endsection
