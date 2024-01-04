@@ -48,7 +48,7 @@
                                                                     <select name="trailerType" class="form-select">
                                                                     <option selected="">Choose a Contract</option>
                                                                     @foreach ( $contracts as $contract)
-                                                                    <option value="{{$contract->id}}">{{$contract->number}} {{$contract->client}} {{$contract->provider}}</option>                                                                                                       
+                                                                    <option value="{{$contract->id}}">{{$contract->number}} {{$contract->client}} and {{$contract->provider}}</option>                                                                                                       
                                                                     @endforeach
                                                                                                                            
                                                                    </select>  
@@ -74,29 +74,29 @@
                                         <thead>
                                             <tr>
                                                 <th class="checkbox-column dt-no-sorting"> Record Id </th>
-                                                <th>First Name</th>
-                                                <th>Last Name</th>
-                                                <th>Email</th>
-                                                <th>Mobile No.</th>
-                                                <th class="text-center">Image</th>
-                                                <th class="text-center">Status</th>
-                                                <th class="text-center dt-no-sorting">Action</th>
+                                                <th>From</th>
+                                                <th>To</th>
+                                                <th>Activity</th>
+                                                <th>Distance(Km)</th>
+                                                <th class="text-center">Type</th>
+                                                <th class="text-center">Status</th>                              
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($routes as $route)
+
                                             <tr>
                                                 <td class="checkbox-column"> 1 </td>
-                                                <td>Jane</td>
-                                                <td>Lamb</td>
-                                                <td>johndoe@yahoo.com</td>
-                                                <td>555-555-5555</td>
-                                                <td class="text-center">
-                                                    <span><img src="../src/assets/img/profile-9.jpeg" class="rounded-circle profile-img" alt="avatar"></span>
-                                                </td>
+                                                <td>{{$route->from}}</td>
+                                                <td>{{$route->to}}</td>
+                                                <td>{{$route->activity}}</td>
+                                                <td>{{number_format($route->distance, 2)}}</td>
+                                                <td>{{$route->Type}}</td>
                                                 <td class="text-center"><span class="shadow-none badge badge-primary">Approved</span></td>
-                                                <td class="text-center"><a href="javascript:void(0);" class="bs-tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" data-original-title="Delete"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle table-cancel"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg></a></td>
                                             </tr>
                                           
+                                            @endforeach
+                                    
                                         
                                                                                  
                                         </tbody>
@@ -120,31 +120,27 @@
                     <thead>
                         <tr>
                             <th class="checkbox-column dt-no-sorting"> Record Id </th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Email</th>
-                            <th>Mobile No.</th>
-                            <th class="text-center">Image</th>
+                            <th>Make</th>
+                            <th class="text-center">Model</th>
+                            <th>Registration</th>
+                            <th>Type</th>
+                            <th>Capacity</th>                          
                             <th class="text-center">Status</th>
-                            <th class="text-center dt-no-sorting">Action</th>
+                          
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ( $assets as $asset)
                         <tr>
                             <td class="checkbox-column"> 1 </td>
-                            <td>Jane</td>
-                            <td>Lamb</td>
-                            <td>johndoe@yahoo.com</td>
-                            <td>555-555-5555</td>
-                            <td class="text-center">
-                                <span><img src="../src/assets/img/profile-9.jpeg" class="rounded-circle profile-img" alt="avatar"></span>
-                            </td>
+                            <td class="text-center">{{$asset->make}}</td>
+                            <td class="text-center">{{$asset->model}}</td>
+                            <td class="text-center">{{$asset->registration}}</td>
+                            <td class="text-center">{{$asset->assetType}}</td>
+                            <td class="text-center">{{$asset->payloadCapacity}}</td>
                             <td class="text-center"><span class="shadow-none badge badge-primary">Approved</span></td>
-                            <td class="text-center"><a href="javascript:void(0);" class="bs-tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" data-original-title="Delete"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle table-cancel"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg></a></td>
-                        </tr>
-                      
-                    
-                                                             
+                        </tr> 
+                        @endforeach                                                                                                                       
                     </tbody>
                 </table>
             </div>
