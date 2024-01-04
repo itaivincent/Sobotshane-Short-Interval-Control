@@ -26,7 +26,7 @@
                                                 <th class="text-center">Service Provider</th>
                                                 <th>Client</th>
                                                 <th>Contract #</th>
-                                                <th>Duration</th>
+                                                <th>Duration(months)</th>
                                                 <th>Product</th>
                                                 <th>Contract Value</th>
                                                
@@ -38,13 +38,13 @@
                                             <tr>
                                                
                                                 <td class="text-center">
-                                                    <span><img src="../src/assets/img/profile-17.jpeg" class="profile-img" alt="avatar"></span>
+                                                  {{$contract->provider}}
                                                 </td>
-                                                <td>Donna</td>
-                                                <td>Rogers</td>
-                                                <td>donna@yahoo.com</td>
-                                                <td>555-555-5555</td>
-                                                <td>555-555-5555</td>
+                                                <td>  {{$contract->client}}</td>
+                                                <td>  {{$contract->number}}</td>
+                                                <td>  {{$contract->duration}}</td>
+                                                <td>  {{$contract->commodity}}</td>
+                                                <td>  {{$contract->contractValue}}</td>
                                                
                                                 <td class="text-center">
                                                     <ul class="table-controls">
