@@ -28,7 +28,7 @@ class AssignmentController extends Controller
         $routes = Route::all();
         $assets = Asset::all();
 
-        return view('contracts.create', compact('contracts','routes','assets'));
+        return view('assignments.create', compact('contracts','routes','assets'));
     }
 
 

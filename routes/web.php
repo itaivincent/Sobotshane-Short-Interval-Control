@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AssetController;
 use App\Http\Controllers\ContractController;
 use App\Http\Controllers\DriverController;
+use App\Http\Controllers\AssignmentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -69,6 +70,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/drivers/store', [DriverController::class, 'store'])->name('drivers.store');
     Route::get('/drivers/edit/{id}', [DriverController::class, 'edit'])->name('drivers.edit');
     Route::put('/drivers/update/{id}', [DriverController::class, 'update'])->name('drivers.update');
+
+    //Assignments 
+    Route::get('/assignments/create', [AssignmentController::class, 'create'])->name('assignments.create');
+    Route::get('/assignments/index', [AssignmentController::class, 'index'])->name('assignments.index');
+    Route::post('/assignments/store', [AssignmentController::class, 'store'])->name('assignments.store');
 
 });
 
