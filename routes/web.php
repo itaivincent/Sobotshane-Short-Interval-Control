@@ -73,9 +73,11 @@ Route::middleware('auth')->group(function () {
 
     //Assignments 
     Route::get('/assignments/create', [AssignmentController::class, 'create'])->name('assignments.create');
+    Route::get('/assignments/routesasset', [AssignmentController::class, 'routesasset'])->name('assignments.routesasset');
     Route::get('/assignments/index', [AssignmentController::class, 'index'])->name('assignments.index');
     Route::get('/assignments/show/{id}', [AssignmentController::class, 'show'])->name('assignments.show');
     Route::post('/assignments/store', [AssignmentController::class, 'store'])->name('assignments.store');
+    Route::post('/assignments/storeroutesasset', [AssignmentController::class, 'storeroutesasset'])->name('assignments.storeroutesasset');
 
 });
 

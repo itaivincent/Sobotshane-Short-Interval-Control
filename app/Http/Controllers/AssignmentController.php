@@ -86,4 +86,48 @@ class AssignmentController extends Controller
         return redirect()->route('contracts.create')->with('success', 'Assignment created successfully!');
     }
 
+
+    public function routesasset(){
+        $contracts = Contract::all();
+        $routes = Route::all();
+        $assets = Asset::all();
+
+        return view('assignments.routesasset', compact('contracts','routes','assets'));
+    }
+
+    public function storeroutesasset(Request $request)
+    {
+        $user = auth()->user();
+        $routes = $request->input('routesIds');
+        $assets = $request->input('assetIds');
+        $contract = $request->contract;
+
+        foreach($routes as $key => $number){
+
+          //  dd($routes[$key]);
+            $routeUpdate = Route::where('id', '=', $routes[$key])->update([
+
+                'contractId' => $contract
+            ]);
+        }
+
+        foreach($assets as $key => $number){
+
+            $asset = Asset::where('id', $assets[$key] )->first();
+
+            $assetCreate = Contractasset::create([
+
+                'contract' => $contract,
+                'asset' => $asset->id,
+                'createdBy' =>  $user->name
+
+            ]);
+        }
+
+
+        return redirect()->route('contracts.routesasset')->with('success', 'Assignment created successfully!');
+    }
+
+
+
 }
