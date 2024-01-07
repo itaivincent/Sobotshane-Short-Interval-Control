@@ -48,7 +48,7 @@
                                                
                                                 <td class="text-center">
                                                     <ul class="table-controls">
-                                                        <li><a href="#"  class="shadow-none badge badge-primary" data-original-title="Edit"><span class="shadow-none badge badge-primary">View Assignment</span></a></li>
+                                                        <li><a href="/assignments/show/{{$contract->id}}"  class="shadow-none badge badge-primary" data-original-title="Edit"><span class="shadow-none badge badge-primary">View Assignment</span></a></li>
                                                     </ul>
                                                 </td>
                                             </tr>

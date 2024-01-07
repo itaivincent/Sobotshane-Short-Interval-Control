@@ -172,7 +172,10 @@
                         </a>
                         <ul class="collapse submenu list-unstyled" id="assignments" data-bs-parent="#accordionExample">
                              <li>
-                                <a href="/assignments/create"> Create Assignments </a>
+                                <a href="/assignments/create"> Contracts and Routes </a>
+                            </li>
+                            <li>
+                                <a href="/assignments/routesasset"> Routes and Assets </a>
                             </li>
                             <li>
                                 <a href="/assignments/index"> Manage Assignments </a>

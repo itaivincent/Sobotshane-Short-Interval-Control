@@ -20,7 +20,7 @@ class AssignmentController extends Controller
     public function index()
     {
         $contracts = Contract::all();
-        
+
         return view('assignments.index', compact('contracts'));
     }
 
@@ -31,6 +31,25 @@ class AssignmentController extends Controller
         $assets = Asset::all();
 
         return view('assignments.create', compact('contracts','routes','assets'));
+    }
+
+
+    public function show(Request $request, $id){
+
+        $contract = Contract::where('id', $id)->first();
+        $routes = Route::where('contractId',$contract->id)->get();
+        $contractassets = Contractasset::where('contract', $id)->get();
+     
+        $assets = [];
+
+        foreach(   $contractassets as $assetId){
+
+            $assetRecord = Asset::where('id', $assetId->asset )->first();
+            $assets[] = $assetRecord;
+        }
+
+       // dd($assets);
+        return view('assignments.show', compact('contract','routes','assets'));
     }
 
 
