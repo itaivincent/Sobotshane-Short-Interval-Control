@@ -11,6 +11,8 @@ use App\Models\Contract;
 use App\Models\Driver;
 use App\Models\Formula;
 use App\Models\Contractasset;
+use App\Models\Capability;
+use App\Models\Assetdriver;
 use App\Models\Escalationformula;
 use App\Models\Route;
 use DB;
@@ -46,10 +48,15 @@ class AssignmentController extends Controller
         $totalTonCapacity = Asset::where('status','=', '1')->sum('payloadCapacity');
        // dd($totalforecastMonthlyVolume,$totalTonCapacity);
 
+       $capability = Capability::where('contract', '=', -1)->updateOrCreate(
+
+        ['contract' =>  -1 ],
+        ['capability' => $totalTonCapacity ],
+
+       );
+
         return view('assignments.capability', compact('totalTonCapacity','totalrequiredMonthlyVolume','totalforecastMonthlyVolume'));
     }
-
-
 
     public function show(Request $request, $id){
 
@@ -67,10 +74,15 @@ class AssignmentController extends Controller
             $capability += $assetRecord->payloadCapacity;
         }
 
+        $capabilityCreate = Capability::where('contract', '=', $contract->id)->updateOrCreate(
+
+            ['contract' =>   $contract->id ],
+            ['capability' => $capability ],
+    
+        );
 
         return view('assignments.show', compact('contract','routes','assets','capability'));
     }
-
 
     public function store(Request $request)
     {
@@ -104,7 +116,6 @@ class AssignmentController extends Controller
 
         return redirect()->route('contracts.create')->with('success', 'Assignment created successfully!');
     }
-
 
     public function routesasset(){
 
@@ -145,7 +156,6 @@ class AssignmentController extends Controller
     }
 
 
-
     public function assetdriver(){
 
      
@@ -157,34 +167,27 @@ class AssignmentController extends Controller
 
     public function storeassetdriver(Request $request)
     {
-      //  dd($request->asset,$request->input('driverIds'));
+
         $user = auth()->user();
         $drivers = $request->input('driverIds');
         $asset = $request->asset;
 
-          //  dd($routes[$key]);
-            $route = Route::where('id', '=', $route)->first();
+        foreach($drivers as $key => $number){
 
+            $driver = Driver::where('id', $drivers[$key] )->first();
 
-        foreach($assets as $key => $number){
+            $assetDriverCreate = Assetdriver::create([
 
-            $asset = Asset::where('id', $assets[$key] )->first();
-
-            $assetCreate = Routeasset::create([
-
-                'contract' => $route->contractId,
-                'route' => $route->id,
-                'asset' => $asset->id,
+                'driver' => $driver->id,
+                'asset' => $asset,
                 'createdBy' =>  $user->name
 
             ]);
         }
 
 
-        return redirect()->route('assignments.routesasset')->with('success', 'Assignment created successfully!');
+        return redirect()->route('assignments.assetdriver')->with('success', 'Assignment created successfully!');
     }
-
-
 
 
 }

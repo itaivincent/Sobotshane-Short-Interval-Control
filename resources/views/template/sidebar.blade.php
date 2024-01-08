@@ -48,7 +48,13 @@
                         </a>
                         <ul class="collapse submenu list-unstyled" id="plan" data-bs-parent="#accordionExample">
                             <li>
-                                <a href="javascript:void(0);"> Plans </a>
+                                <a href="/planning/monthly"> Monthly Plan </a>
+                            </li>
+                            <li>
+                                <a href="/planning/weekly"> Weekly Plan </a>
+                            </li>
+                            <li>
+                                <a href="/planning/daily"> Daily Plan </a>
                             </li>
                             <li>
                                 <a href="javascript:void(0);"> Parameters </a>
