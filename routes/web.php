@@ -6,6 +6,7 @@ use App\Http\Controllers\AssetController;
 use App\Http\Controllers\ContractController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\AssignmentController;
+use App\Http\Controllers\PlanningController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,7 +40,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/users/store', [UserController::class, 'store'])->name('users.store');
     Route::post('/users/userRole', [UserController::class, 'userRole'])->name('users.userRole');
 
-
     //Assets Routes
     Route::get('/assets/parameters', [AssetController::class, 'parameters'])->name('assets.parameters');
     Route::get('/assets/index', [AssetController::class, 'index'])->name('assets.index');
@@ -47,7 +47,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/assets/store', [AssetController::class, 'store'])->name('assets.store');
     Route::get('/assets/edit/{id}', [AssetController::class, 'edit'])->name('assets.edit');
     Route::put('/assets/update/{id}', [AssetController::class, 'update'])->name('assets.update');
-
 
     //Contracts
     Route::get('/contracts/index', [ContractController::class, 'index'])->name('contracts.index');
@@ -62,7 +61,6 @@ Route::middleware('auth')->group(function () {
     Route::put('/contracts/updateformula/{id}', [ContractController::class, 'updateformula'])->name('contracts.updateformula');
     Route::get('/download-pdf/{id}', [ContractController::class, 'pdf'])->name('contracts.pdf');
     Route::resource('contracts', ContractController::class);
-
 
     //Drivers
     Route::get('/drivers/create', [DriverController::class, 'create'])->name('drivers.create');
@@ -81,6 +79,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/assignments/capability', [AssignmentController::class, 'capability'])->name('assignments.capability');
     Route::post('/assignments/storeroutesasset', [AssignmentController::class, 'storeroutesasset'])->name('assignments.storeroutesasset');
     Route::post('/assignments/storeassetdriver', [AssignmentController::class, 'storeassetdriver'])->name('assignments.storeassetdriver');
+
+    //Planning
+    Route::get('/planning/contractplan', [PlanningController::class, 'contractplan'])->name('assignments.contractplan');
+    Route::get('/planning/routeplan', [PlanningController::class, 'routeplan'])->name('assignments.routeplan');
+    Route::get('/planning/showcontractplan/{id}', [PlanningController::class, 'showcontractplan'])->name('assignments.showcontractplan');
+    Route::get('/planning/showrouteplan/{id}', [PlanningController::class, 'showrouteplan'])->name('assignments.showrouteplan');
+    Route::get('/planning/showallcontractplan', [PlanningController::class, 'showallcontractplan'])->name('assignments.showallcontractplan');
+    Route::get('/planning/showallrouteplan', [PlanningController::class, 'showallrouteplan'])->name('assignments.showallrouteplan');
 
 });
 
