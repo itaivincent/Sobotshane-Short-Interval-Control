@@ -178,6 +178,9 @@
                                 <a href="/assignments/routesasset"> Routes and Assets </a>
                             </li>
                             <li>
+                                <a href="/assignments/assetdriver"> Assets and Driver </a>
+                            </li>
+                            <li>
                                 <a href="/assignments/index"> Manage Assignments </a>
                             </li>
                             <li>

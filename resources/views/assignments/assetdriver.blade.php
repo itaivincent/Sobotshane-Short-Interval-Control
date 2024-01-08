@@ -31,26 +31,25 @@
                             
                                 <div class="tab-panel" id="animated-underline-profile" role="tabpanel" aria-labelledby="animated-underline-profile-tab">
                                     <div class="row">
-                                    <form method="post"  id="assets" action="{{ route('assignments.storeroutesasset') }}">
+                                    <form method="post"  id="assets" action="{{ route('assignments.storeassetdriver') }}">
                                       @csrf   
     
                                         <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
                                             <div class="section general-info payment-info">
                                                 <div class="info">
-                                                    <h6 class="">Select a Route</h6>                              
+                                                    <h6 class="">Select an Asset</h6>                              
     
                                                     <div class="row mt-4">
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
-                                                            <label class="form-label">Routes</label>
+                                                            <label class="form-label">Assets</label>
                                                                 <div class="invoice-action-currency">
                                                                     <div class="dropdown selectable-dropdown cardName-select">
-                                                                    <select name="route" class="form-select">
-                                                                    <option selected="">Choose a Route</option>
-                                                                    @foreach ( $routes as $route)
-                                                                    <option value="{{$route->id}}">{{$route->from}} to {{$route->to}} and activity is {{$route->activity}}</option>                                                                                                       
-                                                                    @endforeach
-                                                                                                                           
+                                                                    <select name="asset" class="form-select">
+                                                                    <option selected="">Choose an Asset</option>
+                                                                    @foreach ( $assets as $asset)
+                                                                    <option value="{{$asset->id}}"> {{$asset->make}}  {{$asset->model}}  {{ $asset->assetType }} Capacity {{$asset->payloadCapacity}}</option>                                                                                                       
+                                                                    @endforeach                                                                               
                                                                    </select>  
                                                                     </div>
                                                                 </div>
@@ -64,7 +63,7 @@
 
                     <!-- Assets -->
                                     
-                                    <h6 class="">Select Assets</h6>                                     
+                                    <h6 class="">Select Driver</h6>                                     
                     
                     <div class="col-lg-12" id="assets" >
                         <div class="statbox widget box box-shadow">
@@ -73,26 +72,26 @@
                                     <thead>
                                         <tr>
                                             <th class="checkbox-column dt-no-sorting"> Record Id </th>
-                                            <th>Make</th>
-                                            <th class="text-center">Model</th>
-                                            <th>Registration</th>
-                                            <th>Type</th>
-                                            <th>Capacity</th>                          
+                                            <th>Name</th>
+                                            <th class="text-center">Surname</th>
+                                            <th>Group</th>
+                                            <th>Licence Exp Date</th>
+                                            <th>Vehicle Type</th>                          
                                             <th class="text-center">Status</th>
                                         
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ( $assets as $asset)
+                                        @foreach ( $drivers as $asset)
                                         <tr>
                                             <td class="text-center">
-                                            <input type="checkbox"  name="assetIds[]" value="{{ $asset->id }}">
+                                            <input type="checkbox"  name="driverIds[]" value="{{ $asset->id }}">
                                             </td>
-                                            <td class="text-center">{{$asset->make}}</td>
-                                            <td class="text-center">{{$asset->model}}</td>
-                                            <td class="text-center">{{$asset->registration}}</td>
-                                            <td class="text-center">{{$asset->assetType}}</td>
-                                            <td class="text-center">{{$asset->payloadCapacity}}</td>
+                                            <td class="text-center">{{$asset->name}}</td>
+                                            <td class="text-center">{{$asset->surname}}</td>
+                                            <td class="text-center">{{$asset->group}}</td>
+                                            <td class="text-center">{{$asset->licenseExpireDate}}</td>
+                                            <td class="text-center">{{$asset->vehicleType}}</td>
                                             <td class="text-center"><span class="shadow-none badge badge-primary">Approved</span></td>
                                         </tr> 
                                         @endforeach                                                                                                                       

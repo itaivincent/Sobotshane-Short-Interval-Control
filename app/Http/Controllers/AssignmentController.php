@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Asset;
 use App\Models\Routeasset;
 use App\Models\Contract;
+use App\Models\Driver;
 use App\Models\Formula;
 use App\Models\Contractasset;
 use App\Models\Escalationformula;
@@ -142,6 +143,47 @@ class AssignmentController extends Controller
 
         return redirect()->route('assignments.routesasset')->with('success', 'Assignment created successfully!');
     }
+
+
+
+    public function assetdriver(){
+
+     
+        $drivers = Driver::all();
+        $assets = Asset::all();
+
+        return view('assignments.assetdriver', compact('drivers','assets'));
+    }
+
+    public function storeassetdriver(Request $request)
+    {
+      //  dd($request->asset,$request->input('driverIds'));
+        $user = auth()->user();
+        $drivers = $request->input('driverIds');
+        $asset = $request->asset;
+
+          //  dd($routes[$key]);
+            $route = Route::where('id', '=', $route)->first();
+
+
+        foreach($assets as $key => $number){
+
+            $asset = Asset::where('id', $assets[$key] )->first();
+
+            $assetCreate = Routeasset::create([
+
+                'contract' => $route->contractId,
+                'route' => $route->id,
+                'asset' => $asset->id,
+                'createdBy' =>  $user->name
+
+            ]);
+        }
+
+
+        return redirect()->route('assignments.routesasset')->with('success', 'Assignment created successfully!');
+    }
+
 
 
 
