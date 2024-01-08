@@ -33,8 +33,43 @@
                                     <div class="row">
                                     <form method="post"  id="assets" action="">
                                       @csrf   
+               
     
                                       <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+                                            <div class="section general-info payment-info">
+                                                <div class="info">
+                                                    <h6 class="">Contract Tonnage Capability</h6>                              
+    
+                                                    <div class="row mt-4">
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Capable Tonnage</label>
+                                                                <input type="text" name="make" class="form-control add-billing-address-input" value="{{$capability}}" readonly>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Forecast Monthly Volume</label>
+                                                                <input type="text" name="registration" class="form-control"  value="{{$contract->totalrequiredMonthlyVolume}}" readonly>
+                                                            </div>
+                                                        </div>
+                                             
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Required Monthly Quantity</label>
+                                                                <input type="text"  name="vinNumber" class="form-control"   value="{{$contract->requiredMonthlyVolume}}" disabled>
+                                                            </div>
+                                                        </div>
+                                                                                                                                                          
+                                                </div>
+                                            </div>
+                                        </div>
+                                            </br>
+
+
+
+
+                                        <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
                                             <div class="section general-info payment-info">
                                                 <div class="info">
                                                     <h6 class="">Contract Details</h6>                              
@@ -80,7 +115,7 @@
                                                             </div>
                                                         </div>
 
-                                                        
+
 
                                                       <div class="col-md-4">                                                                                                                    
                                                             <div class="mb-3">

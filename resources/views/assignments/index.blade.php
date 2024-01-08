@@ -14,6 +14,11 @@
         </ol>
     </nav>
 </div></br>
+
+<div>
+    <a href="/assignments/capability/"  class="shadow-none badge badge-primary" data-original-title="Edit"><span class="shadow-none badge badge-primary">View Total Capability</span></a>
+</div>
+    </br>                                        
 <!-- /BREADCRUMB -->
 <div class="row layout-spacing">
                         <div class="col-lg-12">

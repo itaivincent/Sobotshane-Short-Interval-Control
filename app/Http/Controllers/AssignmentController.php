@@ -6,11 +6,13 @@ use Illuminate\Http\Request;
 use App\Models\Userrole;
 use App\Models\User;
 use App\Models\Asset;
+use App\Models\Routeasset;
 use App\Models\Contract;
 use App\Models\Formula;
 use App\Models\Contractasset;
 use App\Models\Escalationformula;
 use App\Models\Route;
+use DB;
 use App\Models\Routeratetracker;
 use Carbon\Carbon;
 
@@ -33,6 +35,20 @@ class AssignmentController extends Controller
         return view('assignments.create', compact('contracts','routes','assets'));
     }
 
+    
+    public function capability()
+    {
+       // $totalforecastMonthlyVolume = Contract::sum('forecastMonthlyVolume');
+
+        $totalforecastMonthlyVolume = Contract::select(DB::raw('SUM(CAST(forecastMonthlyVolume AS DECIMAL(10, 2))) as total'))->get()[0]->total;
+        $totalrequiredMonthlyVolume = Contract::select(DB::raw('SUM(CAST(requiredMonthlyVolume AS DECIMAL(10, 2))) as total'))->get()[0]->total;
+        $totalTonCapacity = Asset::where('status','=', '1')->sum('payloadCapacity');
+       // dd($totalforecastMonthlyVolume,$totalTonCapacity);
+
+        return view('assignments.capability', compact('totalTonCapacity','totalrequiredMonthlyVolume','totalforecastMonthlyVolume'));
+    }
+
+
 
     public function show(Request $request, $id){
 
@@ -41,15 +57,17 @@ class AssignmentController extends Controller
         $contractassets = Contractasset::where('contract', $id)->get();
      
         $assets = [];
+        $capability = 0;
 
-        foreach(   $contractassets as $assetId){
+        foreach($contractassets as $assetId){
 
             $assetRecord = Asset::where('id', $assetId->asset )->first();
             $assets[] = $assetRecord;
+            $capability += $assetRecord->payloadCapacity;
         }
 
-       // dd($assets);
-        return view('assignments.show', compact('contract','routes','assets'));
+
+        return view('assignments.show', compact('contract','routes','assets','capability'));
     }
 
 
@@ -88,6 +106,7 @@ class AssignmentController extends Controller
 
 
     public function routesasset(){
+
         $contracts = Contract::all();
         $routes = Route::all();
         $assets = Asset::all();
@@ -97,27 +116,23 @@ class AssignmentController extends Controller
 
     public function storeroutesasset(Request $request)
     {
+       // dd($request->route,$request->input('assetIds'));
         $user = auth()->user();
-        $routes = $request->input('routesIds');
         $assets = $request->input('assetIds');
-        $contract = $request->contract;
-
-        foreach($routes as $key => $number){
+        $route = $request->route;
 
           //  dd($routes[$key]);
-            $routeUpdate = Route::where('id', '=', $routes[$key])->update([
+            $route = Route::where('id', '=', $route)->first();
 
-                'contractId' => $contract
-            ]);
-        }
 
         foreach($assets as $key => $number){
 
             $asset = Asset::where('id', $assets[$key] )->first();
 
-            $assetCreate = Contractasset::create([
+            $assetCreate = Routeasset::create([
 
-                'contract' => $contract,
+                'contract' => $route->contractId,
+                'route' => $route->id,
                 'asset' => $asset->id,
                 'createdBy' =>  $user->name
 
@@ -125,7 +140,7 @@ class AssignmentController extends Controller
         }
 
 
-        return redirect()->route('contracts.routesasset')->with('success', 'Assignment created successfully!');
+        return redirect()->route('assignments.routesasset')->with('success', 'Assignment created successfully!');
     }
 
 
