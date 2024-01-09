@@ -13,6 +13,7 @@ class Planassets extends Model
 
         'contractplanId',
         'routeplanId',
+        'assetId',
         'make',
         'registration',
         'assetDescription',

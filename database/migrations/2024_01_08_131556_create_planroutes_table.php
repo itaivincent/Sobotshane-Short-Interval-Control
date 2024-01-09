@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('contractplanId')->nullable();
             $table->string('routeplanId')->nullable();
+            $table->string('routeId')->nullable();
             $table->string('from')->nullable();
             $table->string('to')->nullable();
             $table->string('activity')->nullable();

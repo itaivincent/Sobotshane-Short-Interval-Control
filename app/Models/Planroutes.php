@@ -14,6 +14,7 @@ class Planroutes extends Model
         'name',   
         'contractplanId',
         'routeplanId',
+        'routeId',
         'from',
         'to',
         'activity',
