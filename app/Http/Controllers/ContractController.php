@@ -154,6 +154,8 @@ class ContractController extends Controller
         $userrole->unit = $request->unit;
         $userrole->contractId = $request->contract;
         $userrole->rate = $request->rate;
+        $userrole->totalQuantity = $request->totalQuantity;
+        $userrole->estimatedmonthQuantity = $request->monthQuantity;
         $userrole->routeCategory = $request->routeCategory;
         $userrole->type = $request->type;
         $userrole->createdBy = $user->name;
@@ -404,11 +406,8 @@ class ContractController extends Controller
         $contract = Contract::where('id',$id)->first();
         $escalationformulas = Escalationformula::where('contract','=', $id)->get();
      //   dd($routes);
-
         return view('contracts.edit', compact('contract','escalationformulas'));
     }
-
-
 
 
     public function updateformula(Request $request, $id)

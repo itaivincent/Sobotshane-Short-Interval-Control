@@ -29,8 +29,6 @@ class PlanningController extends Controller
         //
     }
 
-
-
      /**
      * Display a listing of the resource.
      */
@@ -45,12 +43,11 @@ class PlanningController extends Controller
 
     public function showcontractplan($id)
     {
-        
+        $
         $contracts = Contract::all();
 
         return view('planning.showmonthlycontractplan', compact('contracts'));
     }
-
 
 
     public function routeplan()
