@@ -63,15 +63,19 @@ class PlanningController extends Controller
         foreach($contractroutes as $routes){
             
             $assetRecord = Asset::where('id', '=', $routes->asset)->where('resourcePoolStatus' , '=', null)->first();
-          //  dd($assetRecord);
+         //   dd($assetRecord);
 
             if($assetRecord != null){
 
                 $assets[] = $assetRecord;
                 $availablemonthcapacity += $assetRecord->payloadCapacity;
+
+            }else{
+                
+                return back()->with('error', 'There are no resource to use, adjust your assigments for this Contract'); 
             }
           
-            return back()->with('error', 'There are no resource to use, adjust your assigments for this Contract'); 
+           
         }
 
        // dd($assets);
@@ -101,6 +105,7 @@ class PlanningController extends Controller
 
                         'contractplanId' => $contractplancreate->id,
                         'make'     => $asset->make, 
+                        'assetId'     => $asset->id, 
                         'registration'    =>$asset->registration, 
                         'assetDescription'    =>$asset->assetDescription, 
                         'vinNumber'    =>$asset->vinNumber, 
@@ -138,20 +143,21 @@ class PlanningController extends Controller
                         $plandrivercreate = Plandrivers::create([
 
                             'contractplanId' => $contractplancreate->id,
-                            'name'            =>$asset->name, 
-                            'surname'         =>$asset->surname, 
-                            'group'           =>$asset->group, 
-                            'gender'          =>$asset->gender, 
-                            'routeType'       =>$asset->routeType, 
-                            'licenseNumber'    =>$asset->licenseNumber,    
-                            'statusReason'     =>$asset->statusReason,     
-                            'vehicleType'      =>$asset->vehicleType, 
-                            'licenseExpireDate'    =>$asset->licenseExpireDate,                          
+                            'name'            =>$plandriver->name, 
+                            'driverId'            =>$plandriver->id, 
+                            'surname'         =>$plandriver->surname, 
+                            'group'           =>$plandriver->group, 
+                            'gender'          =>$plandriver->gender, 
+                            'routeType'       =>$plandriver->routeType, 
+                            'licenseNumber'    =>$plandriver->licenseNumber,    
+                            'statusReason'     =>$plandriver->statusReason,     
+                            'vehicleType'      =>$plandriver->vehicleType, 
+                            'licenseExpireDate'    =>$plandriver->licenseExpireDate,                          
                             'createdBy'      => $user->name,
                         ]);
 
                         
-                    $updateasset = Driver::where('id','=', $driver->id )->update([
+                    $updatedriver = Driver::where('id','=', $driver->id )->update([
                         
                         'resourcePoolStatus' => '1',
                     ]);
@@ -192,7 +198,8 @@ class PlanningController extends Controller
                     $planassetcreate = Planassets::create([
 
                         'contractplanId' => $contractplancreate->id,
-                        'make'     => $asset->make, 
+                        'make'     => $asset->make,
+                        'assetId'     => $asset->id,  
                         'registration'    =>$asset->registration, 
                         'assetDescription'    =>$asset->assetDescription, 
                         'vinNumber'    =>$asset->vinNumber, 
@@ -230,15 +237,16 @@ class PlanningController extends Controller
                         $plandrivercreate = Plandrivers::create([
 
                             'contractplanId' => $contractplancreate->id,
-                            'name'            =>$asset->name, 
-                            'surname'         =>$asset->surname, 
-                            'group'           =>$asset->group, 
-                            'gender'          =>$asset->gender, 
-                            'routeType'       =>$asset->routeType, 
-                            'licenseNumber'    =>$asset->licenseNumber,    
-                            'statusReason'     =>$asset->statusReason,     
-                            'vehicleType'      =>$asset->vehicleType, 
-                            'licenseExpireDate'    =>$asset->licenseExpireDate,                          
+                            'name'            =>$plandriver->name, 
+                            'driverId'            =>$plandriver->id, 
+                            'surname'         =>$plandriver->surname, 
+                            'group'           =>$plandriver->group, 
+                            'gender'          =>$plandriver->gender, 
+                            'routeType'       =>$plandriver->routeType, 
+                            'licenseNumber'    =>$plandriver->licenseNumber,    
+                            'statusReason'     =>$plandriver->statusReason,     
+                            'vehicleType'      =>$plandriver->vehicleType, 
+                            'licenseExpireDate'    =>$plandriver->licenseExpireDate,                          
                             'createdBy'      => $user->name,
 
                         ]);
@@ -255,6 +263,7 @@ class PlanningController extends Controller
 
             }        
             
+
           //search out for additional resources 
            $neededadditionalcapacity = $forecastmonthcapacity - $currentCapacity;
          $newavailablemonthcapacity = 0;
@@ -268,11 +277,15 @@ class PlanningController extends Controller
 
             $newassets[] = $assetRecord;
             $newavailablemonthcapacity += $assetRecord->payloadCapacity;
-        }
-          
-        return back()->with('error', 'There are no resource to use, adjust your assigments for this Contract'); 
+            $checkrecords = 1;
+           }else{
+            $checkrecords = 0;
+           }
+
         }
 
+        if($checkrecords == 1){
+     
         if($newavailablemonthcapacity > 0){
      
             //adding additional resource pool assets and drivers to the plan
@@ -286,6 +299,7 @@ class PlanningController extends Controller
 
                         'contractplanId' => $contractplancreate->id,
                         'make'     => $asset->make, 
+                        'assetId'     => $asset->id, 
                         'registration'    =>$asset->registration, 
                         'assetDescription'    =>$asset->assetDescription, 
                         'vinNumber'    =>$asset->vinNumber, 
@@ -323,21 +337,22 @@ class PlanningController extends Controller
                         $plandrivercreate = Plandrivers::create([
 
                             'contractplanId' => $contractplancreate->id,
-                            'name'            =>$asset->name, 
-                            'surname'         =>$asset->surname, 
-                            'group'           =>$asset->group, 
-                            'gender'          =>$asset->gender, 
-                            'routeType'       =>$asset->routeType, 
-                            'licenseNumber'    =>$asset->licenseNumber,    
-                            'statusReason'     =>$asset->statusReason,     
-                            'vehicleType'      =>$asset->vehicleType, 
-                            'licenseExpireDate'    =>$asset->licenseExpireDate,                          
+                            'name'            =>$plandriver->name, 
+                            'driverId'            =>$plandriver->id, 
+                            'surname'         =>$plandriver->surname, 
+                            'group'           =>$plandriver->group, 
+                            'gender'          =>$plandriver->gender, 
+                            'routeType'       =>$plandriver->routeType, 
+                            'licenseNumber'    =>$plandriver->licenseNumber,    
+                            'statusReason'     =>$plandriver->statusReason,     
+                            'vehicleType'      =>$plandriver->vehicleType, 
+                            'licenseExpireDate'    =>$plandriver->licenseExpireDate,                          
                             'createdBy'      => $user->name,
 
                         ]);
 
                         
-                    $updateasset = Driver::where('id','=', $driver->id )->update([
+                    $updatedriver = Driver::where('id','=', $driver->id )->update([
                         
                         'resourcePoolStatus' => '1',
                     ]);
@@ -348,6 +363,7 @@ class PlanningController extends Controller
 
             }        
 
+        }
         }
 
         }
