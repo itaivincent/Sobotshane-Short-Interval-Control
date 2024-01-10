@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('vehicleType')->nullable();
             $table->string('statusReason')->nullable();
             $table->string('resourcePoolStatus')->nullable();
+            $table->string('routeresourcePoolStatus')->nullable();
             $table->string('status')->nullable();
             $table->string('updatedBy')->nullable();
             $table->string('createdBy')->nullable();

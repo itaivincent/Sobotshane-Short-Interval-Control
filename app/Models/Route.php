@@ -26,6 +26,7 @@ class Route extends Model
         'type',
         'status',
         'resourcePoolStatus',
+        'routeresourcePoolStatus',
         'routeCategory',
         'createdBy',
         'updatedBy',

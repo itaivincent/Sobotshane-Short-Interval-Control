@@ -35,6 +35,7 @@ class Asset extends Model
         'truckType',
         'trailerType',
         'resourcePoolStatus',
+        'routeresourcePoolStatus',
         'registrationExpireDate',
         'createdBy',
         'updatedBy',

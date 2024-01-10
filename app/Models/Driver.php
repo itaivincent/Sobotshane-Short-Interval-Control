@@ -20,6 +20,7 @@ class Driver extends Model
         'routeType',
         'licenseNumber',
         'resourcePoolStatus',
+        'routeresourcePoolStatus',
         'vehicleType',
         'availability',
         'status',

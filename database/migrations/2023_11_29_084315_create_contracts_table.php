@@ -37,6 +37,7 @@ return new class extends Migration
             $table->string('price')->nullable();
             $table->string('totalVolume')->nullable();
             $table->string('resourcePoolStatus')->nullable();
+            $table->string('routeresourcePoolStatus')->nullable();
             $table->string('updatedBy')->nullable();
             $table->string('createdBy');
             $table->timestamps();

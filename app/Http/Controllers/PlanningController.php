@@ -71,7 +71,7 @@ class PlanningController extends Controller
                 $availablemonthcapacity += $assetRecord->payloadCapacity;
 
             }else{
-                
+
                 return back()->with('error', 'There are no resource to use, adjust your assigments for this Contract'); 
             }
           
@@ -387,6 +387,342 @@ class PlanningController extends Controller
         return view('planning.routeplan', compact('routes'));
     }
 
+
+
+
+
+    public function showrouteplan($id)
+    {
+        dd($id);
+        $user = auth()->user();
+
+        //Monthly Horizon being planned for
+
+        //Get the forecast monthly plan/capacity
+        $forecastmonthcapacity = Route::where('contractId', $id)->sum('estimatedmonthQuantity');
+        $contractroutes = Routeasset::where('contract', $id)->get();
+
+        $availablemonthcapacity = 0;
+        $assets = [];
+
+        //Get monthly current capacity
+        foreach($contractroutes as $routes){
+            
+            $assetRecord = Asset::where('id', '=', $routes->asset)->where('resourcePoolStatus' , '=', null)->first();
+         //   dd($assetRecord);
+
+            if($assetRecord != null){
+
+                $assets[] = $assetRecord;
+                $availablemonthcapacity += $assetRecord->payloadCapacity;
+
+            }else{
+                
+                return back()->with('error', 'There are no resource to use, adjust your assigments for this Contract'); 
+            }
+          
+           
+        }
+
+       // dd($assets);
+
+        //compare forecast vs current plan 
+        if($availablemonthcapacity > $forecastmonthcapacity){
+
+            $forecastmonthcapacity;
+            $currentCapacity = 0;
+
+            $contractplancreate = Contractplan::create([
+
+                'duration' => 1,
+                'contract' => $id,
+                'capacity' => $forecastmonthcapacity,
+                'createdBy' =>  $user->name
+
+            ]);
+
+            foreach($assets as $asset){
+
+                if($currentCapacity <= $forecastmonthcapacity){
+
+                    $currentCapacity += $asset->payloadCapacity;
+
+                    $planassetcreate = Planassets::create([
+
+                        'contractplanId' => $contractplancreate->id,
+                        'make'     => $asset->make, 
+                        'assetId'     => $asset->id, 
+                        'registration'    =>$asset->registration, 
+                        'assetDescription'    =>$asset->assetDescription, 
+                        'vinNumber'    =>$asset->vinNumber, 
+                        'assetType'    =>$asset->assetType, 
+                        'weight'     => $asset->weight,    
+                        'statusReason'    => $asset->statusReason,     
+                        'licenseNumber'    => $asset->licenseNumber, 
+                        'payloadCapacity'    => $asset->payloadCapacity,  
+                        'mileage'      => $asset->mileage, 
+                        'fueltype'     => $asset->fueltype,            
+                        'truckType'      => $asset->truckType,
+                        'trailerType'    => $asset->trailerType,
+                        'model'           => $asset->model,
+                        'registrationYear'    => $asset->registrationYear,
+                        'engineCapacity'    => $asset->engineCapacity,
+                        'expectedFuelConsumption'    => $asset->expectedFuelConsumption,
+                        'gearType'    => $asset->gearType,     
+                        'registrationExpireDate'    => $asset->registrationExpireDate, 
+                        'createdBy' => $user->name,
+
+                    ]);
+
+
+                    $updateasset = Asset::where('id','=', $asset->id )->update([
+
+                        'resourcePoolStatus' => '1',
+                    ]);
+
+                    $driversIds = Assetdriver::where('asset', '=' , $asset->id)->get();
+
+                    foreach($driversIds as $driver){
+
+                        $plandriver = Driver::where('id', '=', $driver->id)->first();
+                        
+                        $plandrivercreate = Plandrivers::create([
+
+                            'contractplanId' => $contractplancreate->id,
+                            'name'            =>$plandriver->name, 
+                            'driverId'            =>$plandriver->id, 
+                            'surname'         =>$plandriver->surname, 
+                            'group'           =>$plandriver->group, 
+                            'gender'          =>$plandriver->gender, 
+                            'routeType'       =>$plandriver->routeType, 
+                            'licenseNumber'    =>$plandriver->licenseNumber,    
+                            'statusReason'     =>$plandriver->statusReason,     
+                            'vehicleType'      =>$plandriver->vehicleType, 
+                            'licenseExpireDate'    =>$plandriver->licenseExpireDate,                          
+                            'createdBy'      => $user->name,
+                        ]);
+
+                        
+                    $updatedriver = Driver::where('id','=', $driver->id )->update([
+                        
+                        'resourcePoolStatus' => '1',
+                    ]);
+
+                    }
+             
+
+                }
+               
+                dd($asset);
+
+            }
+
+            //produce plan to fit the forecastmonthcapacity
+
+
+            //get all resources that are assigned to contract but still in resource pool
+
+        }else{
+
+            //produce plan for the available capacity 
+            $currentCapacity = 0;
+            $contractplancreate = Contractplan::create([
+
+                'duration' => 1,
+                'contract' => $id,
+                'capacity' => $availablemonthcapacity,
+                'createdBy' =>  $user->name
+
+            ]);
+
+            foreach($assets as $asset){
+
+                if($currentCapacity <= $availablemonthcapacity){
+
+                    $currentCapacity += $asset->payloadCapacity;
+
+                    $planassetcreate = Planassets::create([
+
+                        'contractplanId' => $contractplancreate->id,
+                        'make'     => $asset->make,
+                        'assetId'     => $asset->id,  
+                        'registration'    =>$asset->registration, 
+                        'assetDescription'    =>$asset->assetDescription, 
+                        'vinNumber'    =>$asset->vinNumber, 
+                        'assetType'    =>$asset->assetType, 
+                        'weight'     => $asset->weight,    
+                        'statusReason'    => $asset->statusReason,     
+                        'licenseNumber'    => $asset->licenseNumber, 
+                        'payloadCapacity'    => $asset->payloadCapacity,  
+                        'mileage'      => $asset->mileage, 
+                        'fueltype'     => $asset->fueltype,            
+                        'truckType'      => $asset->truckType,
+                        'trailerType'    => $asset->trailerType,
+                        'model'           => $asset->model,
+                        'registrationYear'    => $asset->registrationYear,
+                        'engineCapacity'    => $asset->engineCapacity,
+                        'expectedFuelConsumption'    => $asset->expectedFuelConsumption,
+                        'gearType'    => $asset->gearType,     
+                        'registrationExpireDate'    => $asset->registrationExpireDate, 
+                        'createdBy' => $user->name,
+
+                    ]);
+
+
+                    $updateasset = Asset::where('id','=', $asset->id )->update([
+
+                        'resourcePoolStatus' => '1',
+                    ]);
+
+                    $driversIds = Assetdriver::where('asset', '=' , $asset->id)->get();
+
+                    foreach($driversIds as $driver){
+
+                        $plandriver = Driver::where('id', '=', $driver->id)->first();
+                        
+                        $plandrivercreate = Plandrivers::create([
+
+                            'contractplanId' => $contractplancreate->id,
+                            'name'            =>$plandriver->name, 
+                            'driverId'            =>$plandriver->id, 
+                            'surname'         =>$plandriver->surname, 
+                            'group'           =>$plandriver->group, 
+                            'gender'          =>$plandriver->gender, 
+                            'routeType'       =>$plandriver->routeType, 
+                            'licenseNumber'    =>$plandriver->licenseNumber,    
+                            'statusReason'     =>$plandriver->statusReason,     
+                            'vehicleType'      =>$plandriver->vehicleType, 
+                            'licenseExpireDate'    =>$plandriver->licenseExpireDate,                          
+                            'createdBy'      => $user->name,
+
+                        ]);
+
+                        
+                    $updateasset = Driver::where('id','=', $driver->id )->update([
+                        
+                        'resourcePoolStatus' => '1',
+                    ]);
+
+                    }
+
+                }             
+
+            }        
+            
+
+          //search out for additional resources 
+           $neededadditionalcapacity = $forecastmonthcapacity - $currentCapacity;
+         $newavailablemonthcapacity = 0;
+         $newassets = [];
+
+         foreach($contractroutes as $routes){
+
+            $assetRecord = Asset::where('id', '=', $routes->asset )->where('resourcePoolStatus' , '=', null)->first();
+           // dd($assetRecord);
+           if($assetRecord != null){
+
+            $newassets[] = $assetRecord;
+            $newavailablemonthcapacity += $assetRecord->payloadCapacity;
+            $checkrecords = 1;
+           }else{
+            $checkrecords = 0;
+           }
+
+        }
+
+        if($checkrecords == 1){
+     
+        if($newavailablemonthcapacity > 0){
+     
+            //adding additional resource pool assets and drivers to the plan
+            foreach($newassets as $asset){
+
+                if($neededadditionalcapacity <= $newavailablemonthcapacity){
+
+                    $currentCapacity += $asset->payloadCapacity;
+
+                    $planassetcreate = Planassets::create([
+
+                        'contractplanId' => $contractplancreate->id,
+                        'make'     => $asset->make, 
+                        'assetId'     => $asset->id, 
+                        'registration'    =>$asset->registration, 
+                        'assetDescription'    =>$asset->assetDescription, 
+                        'vinNumber'    =>$asset->vinNumber, 
+                        'assetType'    =>$asset->assetType, 
+                        'weight'     => $asset->weight,    
+                        'statusReason'    => $asset->statusReason,     
+                        'licenseNumber'    => $asset->licenseNumber, 
+                        'payloadCapacity'    => $asset->payloadCapacity,  
+                        'mileage'      => $asset->mileage, 
+                        'fueltype'     => $asset->fueltype,            
+                        'truckType'      => $asset->truckType,
+                        'trailerType'    => $asset->trailerType,
+                        'model'           => $asset->model,
+                        'registrationYear'    => $asset->registrationYear,
+                        'engineCapacity'    => $asset->engineCapacity,
+                        'expectedFuelConsumption'    => $asset->expectedFuelConsumption,
+                        'gearType'    => $asset->gearType,     
+                        'registrationExpireDate'    => $asset->registrationExpireDate, 
+                        'createdBy' => $user->name,
+
+                    ]);
+
+
+                    $updateasset = Asset::where('id','=', $asset->id )->update([
+
+                        'resourcePoolStatus' => '1',
+                    ]);
+
+                    $driversIds = Assetdriver::where('asset', '=' , $asset->id)->get();
+
+                    foreach($driversIds as $driver){
+
+                        $plandriver = Driver::where('id', '=', $driver->id)->first();
+                        
+                        $plandrivercreate = Plandrivers::create([
+
+                            'contractplanId' => $contractplancreate->id,
+                            'name'            =>$plandriver->name, 
+                            'driverId'            =>$plandriver->id, 
+                            'surname'         =>$plandriver->surname, 
+                            'group'           =>$plandriver->group, 
+                            'gender'          =>$plandriver->gender, 
+                            'routeType'       =>$plandriver->routeType, 
+                            'licenseNumber'    =>$plandriver->licenseNumber,    
+                            'statusReason'     =>$plandriver->statusReason,     
+                            'vehicleType'      =>$plandriver->vehicleType, 
+                            'licenseExpireDate'    =>$plandriver->licenseExpireDate,                          
+                            'createdBy'      => $user->name,
+
+                        ]);
+
+                        
+                    $updatedriver = Driver::where('id','=', $driver->id )->update([
+                        
+                        'resourcePoolStatus' => '1',
+                    ]);
+
+                    }
+
+                }             
+
+            }        
+
+        }
+        }
+
+        }
+
+        dd('zvaita....');
+
+
+
+        //output final plan 
+    
+
+        return view('planning.showmonthlycontractplan', compact('contracts'));
+    }
 
 
 

@@ -25,6 +25,7 @@ class Contract extends Model
         'requiredMonthlyVolume',
         'requiredMonthlyQuantity',
         'resourcePoolStatus',
+        'routeresourcePoolStatus',
         'commodity',
         'RouteType',
         'RouteId',
