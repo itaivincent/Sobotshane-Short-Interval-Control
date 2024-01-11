@@ -39,8 +39,12 @@ return new class extends Migration
             $table->string('status')->nullable();
             $table->integer('mileage')->nullable();
             $table->string('fueltype')->nullable();
+            $table->string('monthly')->nullable();       
+            $table->string('weekly')->nullable();
+            $table->string('daily')->nullable();
             $table->string('resourcePoolStatus')->nullable();
             $table->date('registrationExpireDate')->nullable();
+            
             $table->string('updatedBy')->nullable();
             $table->string('createdBy');
             $table->timestamps();

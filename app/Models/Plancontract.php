@@ -35,6 +35,9 @@ class Plancontract extends Model
         'formula',
         'contractValue',
         'price',
+        'monthly',
+        'weekly',
+        'daily',
         'createdBy',
         'updatedBy',
        

@@ -84,7 +84,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/planning/contractplan', [PlanningController::class, 'contractplan'])->name('assignments.contractplan');
     Route::get('/planning/routeplan', [PlanningController::class, 'routeplan'])->name('assignments.routeplan');
     Route::get('/planning/showcontractplan/{id}', [PlanningController::class, 'showcontractplan'])->name('assignments.showcontractplan');
+    Route::get('/planning/showcontractplanweekly/{id}', [PlanningController::class, 'showcontractplanweekly'])->name('assignments.showcontractplanweekly');
+    Route::get('/planning/showcontractplandaily/{id}', [PlanningController::class, 'showcontractplandaily'])->name('assignments.showcontractplandaily');
     Route::get('/planning/showrouteplan/{id}', [PlanningController::class, 'showrouteplan'])->name('assignments.showrouteplan');
+    Route::get('/planning/showrouteplanweekly/{id}', [PlanningController::class, 'showrouteplanweekly'])->name('assignments.showrouteplanweekly');
+    Route::get('/planning/showrouteplandaily/{id}', [PlanningController::class, 'showrouteplandaily'])->name('assignments.showrouteplandaily');
     Route::get('/planning/showallcontractplan', [PlanningController::class, 'showallcontractplan'])->name('assignments.showallcontractplan');
     Route::get('/planning/showallrouteplan', [PlanningController::class, 'showallrouteplan'])->name('assignments.showallrouteplan');
 

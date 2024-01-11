@@ -12,6 +12,7 @@ use App\Models\Driver;
 use App\Models\Formula;
 use App\Models\Contractasset;
 use App\Models\Contractplan;
+use App\Models\Routeplan;
 use App\Models\Capability;
 use App\Models\Planassets;
 use App\Models\Planroutes;
@@ -393,14 +394,14 @@ class PlanningController extends Controller
 
     public function showrouteplan($id)
     {
-        dd($id);
+      //  dd($id);
         $user = auth()->user();
 
         //Monthly Horizon being planned for
 
         //Get the forecast monthly plan/capacity
-        $forecastmonthcapacity = Route::where('contractId', $id)->sum('estimatedmonthQuantity');
-        $contractroutes = Routeasset::where('contract', $id)->get();
+        $forecastmonthcapacity = Route::where('id', $id)->sum('estimatedmonthQuantity');
+        $contractroutes = Routeasset::where('route', $id)->get();
 
         $availablemonthcapacity = 0;
         $assets = [];
@@ -408,7 +409,7 @@ class PlanningController extends Controller
         //Get monthly current capacity
         foreach($contractroutes as $routes){
             
-            $assetRecord = Asset::where('id', '=', $routes->asset)->where('resourcePoolStatus' , '=', null)->first();
+            $assetRecord = Asset::where('id', '=', $routes->asset)->where('routeresourcePoolStatus' , '=', null)->first();
          //   dd($assetRecord);
 
             if($assetRecord != null){
@@ -418,7 +419,7 @@ class PlanningController extends Controller
 
             }else{
                 
-                return back()->with('error', 'There are no resource to use, adjust your assigments for this Contract'); 
+                return back()->with('error', 'There are no resource to use, adjust your assigments for this Route'); 
             }
           
            
@@ -432,10 +433,10 @@ class PlanningController extends Controller
             $forecastmonthcapacity;
             $currentCapacity = 0;
 
-            $contractplancreate = Contractplan::create([
+            $contractplancreate = Routeplan::create([
 
                 'duration' => 1,
-                'contract' => $id,
+                'route' => $id,
                 'capacity' => $forecastmonthcapacity,
                 'createdBy' =>  $user->name
 
@@ -449,7 +450,7 @@ class PlanningController extends Controller
 
                     $planassetcreate = Planassets::create([
 
-                        'contractplanId' => $contractplancreate->id,
+                        'routeplanId' => $contractplancreate->id,
                         'make'     => $asset->make, 
                         'assetId'     => $asset->id, 
                         'registration'    =>$asset->registration, 
@@ -488,7 +489,7 @@ class PlanningController extends Controller
                         
                         $plandrivercreate = Plandrivers::create([
 
-                            'contractplanId' => $contractplancreate->id,
+                            'routeplanId' => $contractplancreate->id,
                             'name'            =>$plandriver->name, 
                             'driverId'            =>$plandriver->id, 
                             'surname'         =>$plandriver->surname, 
@@ -526,10 +527,10 @@ class PlanningController extends Controller
 
             //produce plan for the available capacity 
             $currentCapacity = 0;
-            $contractplancreate = Contractplan::create([
+            $contractplancreate = Routeplan::create([
 
                 'duration' => 1,
-                'contract' => $id,
+                'route' => $id,
                 'capacity' => $availablemonthcapacity,
                 'createdBy' =>  $user->name
 
@@ -543,7 +544,7 @@ class PlanningController extends Controller
 
                     $planassetcreate = Planassets::create([
 
-                        'contractplanId' => $contractplancreate->id,
+                        'routeplanId' => $contractplancreate->id,
                         'make'     => $asset->make,
                         'assetId'     => $asset->id,  
                         'registration'    =>$asset->registration, 
@@ -582,7 +583,7 @@ class PlanningController extends Controller
                         
                         $plandrivercreate = Plandrivers::create([
 
-                            'contractplanId' => $contractplancreate->id,
+                            'routeplanId' => $contractplancreate->id,
                             'name'            =>$plandriver->name, 
                             'driverId'            =>$plandriver->id, 
                             'surname'         =>$plandriver->surname, 
@@ -617,7 +618,7 @@ class PlanningController extends Controller
 
          foreach($contractroutes as $routes){
 
-            $assetRecord = Asset::where('id', '=', $routes->asset )->where('resourcePoolStatus' , '=', null)->first();
+            $assetRecord = Asset::where('id', '=', $routes->asset )->where('routeresourcePoolStatus' , '=', null)->first();
            // dd($assetRecord);
            if($assetRecord != null){
 
@@ -643,7 +644,7 @@ class PlanningController extends Controller
 
                     $planassetcreate = Planassets::create([
 
-                        'contractplanId' => $contractplancreate->id,
+                        'routeplanId' => $contractplancreate->id,
                         'make'     => $asset->make, 
                         'assetId'     => $asset->id, 
                         'registration'    =>$asset->registration, 
@@ -682,7 +683,7 @@ class PlanningController extends Controller
                         
                         $plandrivercreate = Plandrivers::create([
 
-                            'contractplanId' => $contractplancreate->id,
+                            'routeplanId' => $contractplancreate->id,
                             'name'            =>$plandriver->name, 
                             'driverId'            =>$plandriver->id, 
                             'surname'         =>$plandriver->surname, 
@@ -721,10 +722,201 @@ class PlanningController extends Controller
         //output final plan 
     
 
-        return view('planning.showmonthlycontractplan', compact('contracts'));
+        return view('planning.showmonthlyrouteplan', compact('contracts'));
     }
 
 
+    public function showrouteplanweekly($id)
+    {
+        //dd($id);
+        $user = auth()->user();
+
+        $routeplanId = Routeplan::where('route','=', $id)->latest()->first();
+       // dd($routeplanId->id);
+        //Weekly Horizon being planned for
+
+        //Get the forecast monthly plan/capacity
+        $forecastmonthcapacity = Route::where('id', $id)->sum('estimatedmonthQuantity');
+        $forecastmonthcapacity = $forecastmonthcapacity/4;
+       // dd($forecastmonthcapacity);
+        $contractroutes = Planassets::where('routeplanId', $routeplanId->id)->get();
+
+        $availablemonthcapacity = 0;
+        $assets = [];
+
+        //Get monthly current capacity
+        foreach($contractroutes as $routes){
+            
+        $assetRecord = Planassets::where('assetId', '=', $routes->assetId)->where('routeplanId','=', $routeplanId->id)->first();
+         //   dd($assetRecord);
+
+            if($assetRecord != null){
+
+                $assets[] = $assetRecord;
+                $availablemonthcapacity += $assetRecord->payloadCapacity;
+
+            }else{
+                
+                return back()->with('error', 'There are no resource to use, adjust your assigments for this Route'); 
+            }
+          
+           
+        }
+
+      //  dd($availablemonthcapacity);
+
+        //compare forecast vs current plan 
+ 
+
+            $forecastmonthcapacity;
+            $currentCapacity = 0;
+
+            foreach($assets as $asset){
+
+                if($currentCapacity <= $forecastmonthcapacity){
+
+                    $currentCapacity += $asset->payloadCapacity;
+
+                    $planassetcreate = Planassets::where('id','=', $asset->id)->update([
+
+                        'weekly' => 1,                      
+                        'updatedBy' => $user->name,
+
+                    ]);
+
+
+                    $driversIds = Assetdriver::where('asset', '=' , $asset->assetId)->get();
+
+                    foreach($driversIds as $driver){
+
+                        $plandriver = Driver::where('id', '=', $driver->id)->first();
+                        
+                        $plandrivercreate = Plandrivers::where('driverId','=', $plandriver->id )->where('routeplanId','=', $routeplanId->id)->update([
+
+                        'weekly' => 1,                      
+                        'updatedBy' => $user->name,
+
+                        ]);
+                             
+                    }
+             
+
+                }
+               
+                //dd($asset);
+
+            }
+
+            //produce plan to fit the forecastmonthcapacity
+
+
+            //get all resources that are assigned to contract but still in resource pool
+
+        dd('zvaita....');
+
+
+
+        //output final plan 
+    
+
+        return view('planning.showweeklyrouteplan', compact('contracts'));
+    }
+
+
+    public function showrouteplandaily($id)
+    {
+       //dd($id);
+       $user = auth()->user();
+
+       $routeplanId = Routeplan::where('route','=', $id)->first();
+       //Weekly Horizon being planned for
+
+       //Get the forecast monthly plan/capacity
+       $forecastmonthcapacity = Route::where('id', $id)->sum('estimatedmonthQuantity');
+       $forecastmonthcapacity = $forecastmonthcapacity/30;
+     //  dd($forecastmonthcapacity);
+       $contractroutes = Planassets::where('routeplanId', $routeplanId->id)->get();
+
+       $availablemonthcapacity = 0;
+       $assets = [];
+
+       //Get monthly current capacity
+       foreach($contractroutes as $routes){
+           
+       $assetRecord = Planassets::where('assetId', '=', $routes->assetId)->where('routeplanId','=', $routeplanId->id)->first();
+        //   dd($assetRecord);
+
+           if($assetRecord != null){
+
+               $assets[] = $assetRecord;
+               $availablemonthcapacity += $assetRecord->payloadCapacity;
+
+           }else{
+               
+               return back()->with('error', 'There are no resource to use, adjust your assigments for this Route'); 
+           }
+         
+          
+       }
+
+     //  dd($availablemonthcapacity);
+
+       //compare forecast vs current plan 
+
+
+           $forecastmonthcapacity;
+           $currentCapacity = 0;
+
+           foreach($assets as $asset){
+
+               if($currentCapacity <= $forecastmonthcapacity){
+
+                   $currentCapacity += $asset->payloadCapacity;
+
+                   $planassetcreate = Planassets::where('id','=', $asset->id)->update([
+
+                       'daily' => 1,                      
+                       'updatedBy' => $user->name,
+
+                   ]);
+
+
+                   $driversIds = Assetdriver::where('asset', '=' , $asset->assetId)->get();
+
+                   foreach($driversIds as $driver){
+
+                       $plandriver = Driver::where('id', '=', $driver->id)->first();
+                       
+                       $plandrivercreate = Plandrivers::where('driverId','=', $plandriver->id )->where('routeplanId','=', $routeplanId->id)->update([
+
+                       'daily' => 1,                      
+                       'updatedBy' => $user->name,
+
+                       ]);
+                            
+                   }
+            
+
+               }
+              
+               //dd($asset);
+
+           }
+
+           //produce plan to fit the forecastmonthcapacity
+
+
+           //get all resources that are assigned to contract but still in resource pool
+
+       dd('zvaita....');
+
+
+
+       //output final plan 
+   
+
+       return view('planning.showdailyrouteplan', compact('contracts'));
+    }
 
     /**
      * Show the form for creating a new resource.

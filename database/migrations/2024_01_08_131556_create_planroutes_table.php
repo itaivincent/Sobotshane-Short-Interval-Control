@@ -28,6 +28,9 @@ return new class extends Migration
             $table->string('routeCategory')->nullable();
             $table->string('resourcePoolStatus')->nullable();
             $table->string('status')->nullable();
+            $table->string('monthly')->nullable();       
+            $table->string('weekly')->nullable();
+            $table->string('daily')->nullable(); 
             $table->string('createdBy')->nullable();
             $table->string('updatedBy')->nullable();
             $table->timestamps();

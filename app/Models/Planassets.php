@@ -38,6 +38,9 @@ class Planassets extends Model
         'trailerType',
         'resourcePoolStatus',
         'registrationExpireDate',
+        'monthly',
+        'weekly',
+        'daily',
         'createdBy',
         'updatedBy',
   

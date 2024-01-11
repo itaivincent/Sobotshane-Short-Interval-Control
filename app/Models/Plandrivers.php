@@ -26,6 +26,9 @@ class Plandrivers extends Model
         'availability',
         'status',
         'statusReason',
+        'monthly',
+        'weekly',
+        'daily',
         'createdBy',
         'updatedBy',
        

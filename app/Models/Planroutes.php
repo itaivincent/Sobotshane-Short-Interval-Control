@@ -28,6 +28,9 @@ class Planroutes extends Model
         'status',
         'resourcePoolStatus',
         'routeCategory',
+        'monthly',
+        'weekly',
+        'daily',
         'createdBy',
         'updatedBy',
        
