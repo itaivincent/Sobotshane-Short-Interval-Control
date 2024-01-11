@@ -41,6 +41,7 @@ class Planassets extends Model
         'monthly',
         'weekly',
         'daily',
+        'confirmation',
         'createdBy',
         'updatedBy',
   

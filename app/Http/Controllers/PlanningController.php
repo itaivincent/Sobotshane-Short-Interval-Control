@@ -32,7 +32,7 @@ class PlanningController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
      /**
@@ -717,6 +717,9 @@ class PlanningController extends Controller
         }
 
      
+        $title = 'Remove item!';
+        $text = "Are you sure you want to delete?";
+        confirmDelete($title, $text);
 
         $routeplan = Routeplan::where('activity', '=' , '1')->latest()->first();
         $routes = Route::where('id', '=' , $routeplan->route)->get();
@@ -725,7 +728,6 @@ class PlanningController extends Controller
 
         return view('planning.showmonthlyrouteplan', compact('routeplan','routes','routeplanassets','routeplandrivers'));
     }
-
 
     public function showrouteplanweekly($id)
     {
@@ -802,11 +804,12 @@ class PlanningController extends Controller
 
 
             $routeplan = $routeplanId;
+            $routes = Route::where('id', '=' , $routeplan->route)->get();
             $routeplanassets = Planassets::where('routeplanId','=', $routeplan->id)->get();
             $routeplandrivers = Plandrivers::where('routeplanId','=', $routeplan->id)->get();
 
         //    dd($routeplan,$routeplanassets,$routeplandrivers);
-        return view('planning.showweeklyrouteplan', compact('routeplan','routeplanassets','routeplandrivers'));
+        return view('planning.showweeklyrouteplan', compact('routeplan','routes','routeplanassets','routeplandrivers'));
     }
 
 
@@ -896,12 +899,62 @@ class PlanningController extends Controller
            //get all resources that are assigned to contract but still in resource pool
 
            $routeplan = $routeplanId;
+           $routes = Route::where('id', '=' , $routeplan->route)->get();
            $routeplanassets = Planassets::where('routeplanId','=', $routeplan->id)->get();
            $routeplandrivers = Plandrivers::where('routeplanId','=', $routeplan->id)->get();
    
 
-       return view('planning.showdailyrouteplan', compact('routeplan','routeplanassets','routeplandrivers'));
+       return view('planning.showdailyrouteplan', compact('routeplan','routes','routeplanassets','routeplandrivers'));
     }
+
+
+    public function editroutemonthlyplandriver($id){
+
+    $plandriver = Plandrivers::where('id', $id)->delete();
+
+    if($plandriver){
+
+        return back()->with('success', 'Driver removed from plan successfully!'); 
+
+    }else{
+
+        return back()->with('error', 'Failed to remove driver!'); 
+    }
+    
+    }
+
+
+    public function editroutemonthlyplanasset($id){
+
+        $plandriver = Planassets::where('id', $id)->delete();
+    
+        if($plandriver){
+    
+            return back()->with('success', 'Asset removed from plan successfully!'); 
+    
+        }else{
+    
+            return back()->with('error', 'Failed to remove Asset!'); 
+        }
+        
+        }
+
+
+
+        public function confirmplan($id){
+
+            $plandriver = Planassets::where('id', $id)->delete();
+        
+            if($plandriver){
+        
+                return back()->with('success', 'Asset removed from plan successfully!'); 
+        
+            }else{
+        
+                return back()->with('error', 'Failed to remove Asset!'); 
+            }
+            
+            }
 
     /**
      * Show the form for creating a new resource.

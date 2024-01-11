@@ -38,6 +38,7 @@ class Plancontract extends Model
         'monthly',
         'weekly',
         'daily',
+        'confirmation',
         'createdBy',
         'updatedBy',
        

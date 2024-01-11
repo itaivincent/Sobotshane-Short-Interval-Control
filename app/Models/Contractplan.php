@@ -20,6 +20,7 @@ class Contractplan extends Model
         'activity',
         'status',
         'createdBy',
+        'confirmation',
         'updatedBy',
        
     ];

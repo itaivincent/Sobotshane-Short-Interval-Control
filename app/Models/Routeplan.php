@@ -19,6 +19,7 @@ class Routeplan extends Model
         'daily',
         'activity',
         'status',
+        'confirmation',
         'createdBy',
         'updatedBy',
        

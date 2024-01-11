@@ -111,7 +111,42 @@
     <script src="{!! asset('template/src/plugins/src/flatpickr/flatpickr.js') !!}"></script>
 
 
+    <script type="text/javascript">
+                                              function deleteConfirmation(id) {
+                                              swal({
+                                              title: "Confirm Grower Payment?",
+                                              text: "Please ensure and then confirm!",
+                                              type: "warning",
+                                              showCancelButton: !0,
+                                              confirmButtonText: "Yes, confirm it!",
+                                              cancelButtonText: "No, cancel!",
+                                              reverseButtons: !0
+                                              }).then(function (e) {
+                                              if (e.value === true) {
+                                              var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+                                              $.ajax({
+                                              type: 'GET',
+                                              url: "/intake/confirm/" + id,
+                                              data: {_token: CSRF_TOKEN},
+                                              dataType: 'JSON',
+                                              success: swal("success","You have succesfully confirmed payment!", "success"),
+                                              
 
+                                              });
+
+                                              $(document).ajaxStop(function(){
+                                              setInterval(window.location.reload(),3000);
+                                              });
+
+                                              } else {
+                                              e.dismiss;
+                                              }
+                                              }, function (dismiss) {
+                                              return false;
+                                              })
+                                              }
+                                              </script>
+                                                         
     
 <script>
         // var e;

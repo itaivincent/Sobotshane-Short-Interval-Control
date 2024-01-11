@@ -30,6 +30,7 @@ class Plandrivers extends Model
         'monthly',
         'weekly',
         'daily',
+        'confirmation',
         'createdBy',
         'updatedBy',
        

@@ -42,6 +42,7 @@ return new class extends Migration
             $table->string('updatedBy')->nullable();
             $table->string('monthly')->nullable();       
             $table->string('weekly')->nullable();
+            $table->string('confirmation')->nullable();   
             $table->string('daily')->nullable();
             $table->string('createdBy');
             $table->timestamps();

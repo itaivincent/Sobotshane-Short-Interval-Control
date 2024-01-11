@@ -92,6 +92,20 @@ Route::middleware('auth')->group(function () {
     Route::get('/planning/showallcontractplan', [PlanningController::class, 'showallcontractplan'])->name('assignments.showallcontractplan');
     Route::get('/planning/showallrouteplan', [PlanningController::class, 'showallrouteplan'])->name('assignments.showallrouteplan');
 
+
+    Route::delete('/planning/editroutemonthlyplandriver/{id}', [PlanningController::class, 'editroutemonthlyplandriver'])->name('assignments.editroutemonthlyplandriver');
+    Route::delete('/planning/editroutemonthlyplanasset/{id}', [PlanningController::class, 'editroutemonthlyplanasset'])->name('assignments.editroutemonthlyplanasset');
+
+    
+    Route::delete('/planning/editrouteweeklyplandriver/{id}', [PlanningController::class, 'editrouteweeklyplandriver'])->name('assignments.editrouteweeklyplandriver');
+    Route::delete('/planning/editrouteweeklyplanasset/{id}', [PlanningController::class, 'editrouteweeklyplanasset'])->name('assignments.editrouteweeklyplanasset');
+
+    
+    Route::delete('/planning/editroutedailyplandriver/{id}', [PlanningController::class, 'editroutedailyplandriver'])->name('assignments.editroutedailyplandriver');
+    Route::delete('/planning/editroutedailyplanasset/{id}', [PlanningController::class, 'editroutedailyplanasset'])->name('assignments.editroutedailyplanasset');
+
+    Route::get('/planning/confirmplan/{id}', [PlanningController::class, 'confirmplan'])->name('assignments.confirmplan');
+
 });
 
 require __DIR__.'/auth.php';

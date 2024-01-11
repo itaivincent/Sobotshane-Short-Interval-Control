@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('daily')->nullable();    
             $table->integer('activity')->nullable();  
             $table->integer('status')->nullable();
+            $table->string('confirmation')->nullable();   
             $table->string('createdBy')->nullable();
             $table->string('updatedBy')->nullable();
             $table->timestamps();

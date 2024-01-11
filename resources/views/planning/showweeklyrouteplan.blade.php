@@ -15,7 +15,7 @@
                         <nav class="breadcrumb-style-one" aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="#">Planning</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Route Plan</li>
+                                <li class="breadcrumb-item active" aria-current="page">Weekly Plan for this Route</li>
                             </ol>
                         </nav>
                     </div>
@@ -43,7 +43,7 @@
                     <tbody>
                         @foreach ($routes as $route)                                         
                         <tr>
-                            <td class="checkbox-column"> 1 </td>
+                            <td class="checkbox-column"> <input type="checkbox"  name="routeIds[]" value="{{ $route->id }}"> </td>
                             <td><a href="./app-invoice-preview.html"><span class="inv-number">{{ $route->from }}</span></a></td>
                          
                             <td><span class="inv-amount"> <p class="align-self-center mb-0 user-name">{{ $route->to }}</p></span></td>
@@ -84,7 +84,7 @@
                                 <tbody>
                                     @foreach ($routeplanassets as $asset)                                         
                                     <tr>
-                                        <td class="checkbox-column"> 1 </td>
+                                        <td class="checkbox-column"> <input type="checkbox"  name="assetIds[]" value="{{ $asset->id }}"></td>
                                         <td><a href="./app-invoice-preview.html"><span class="inv-number">{{ $asset->make }}</span></a></td>
                                      
                                         <td><span class="inv-amount"> <p class="align-self-center mb-0 user-name">{{ $asset->registration }}</p></span></td>
@@ -135,7 +135,7 @@
                                 <tbody>
                                     @foreach ($routeplandrivers as $asset)                                         
                                     <tr>
-                                        <td class="checkbox-column"> 1 </td>
+                                        <td class="checkbox-column"> <input type="checkbox"  name="assetIds[]" value="{{ $asset->id }}"></td>
                                         <td><a href="./app-invoice-preview.html"><span class="inv-number">{{ $asset->name }}</span></a></td>
                                      
                                         <td><span class="inv-amount"> <p class="align-self-center mb-0 user-name">{{ $asset->surname }}</p></span></td>
