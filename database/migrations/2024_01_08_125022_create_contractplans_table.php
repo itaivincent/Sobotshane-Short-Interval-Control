@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('month')->nullable();       
             $table->integer('week')->nullable();
             $table->integer('daily')->nullable();    
+            $table->integer('activity')->nullable();  
             $table->integer('status')->nullable();
             $table->string('createdBy')->nullable();
             $table->string('updatedBy')->nullable();

@@ -390,8 +390,6 @@ class PlanningController extends Controller
 
 
 
-
-
     public function showrouteplan($id)
     {
       //  dd($id);
@@ -416,10 +414,12 @@ class PlanningController extends Controller
 
                 $assets[] = $assetRecord;
                 $availablemonthcapacity += $assetRecord->payloadCapacity;
+                $activity = 1;
 
             }else{
                 
-                return back()->with('error', 'There are no resource to use, adjust your assigments for this Route'); 
+                $activity = 0;
+              continue;
             }
           
            
@@ -437,6 +437,7 @@ class PlanningController extends Controller
 
                 'duration' => 1,
                 'route' => $id,
+                'activity' => $activity,
                 'capacity' => $forecastmonthcapacity,
                 'createdBy' =>  $user->name
 
@@ -478,7 +479,7 @@ class PlanningController extends Controller
 
                     $updateasset = Asset::where('id','=', $asset->id )->update([
 
-                        'resourcePoolStatus' => '1',
+                        'routeresourcePoolStatus' => '1',
                     ]);
 
                     $driversIds = Assetdriver::where('asset', '=' , $asset->id)->get();
@@ -486,12 +487,13 @@ class PlanningController extends Controller
                     foreach($driversIds as $driver){
 
                         $plandriver = Driver::where('id', '=', $driver->id)->first();
+                      //  dd($plandriver);
                         
                         $plandrivercreate = Plandrivers::create([
 
                             'routeplanId' => $contractplancreate->id,
                             'name'            =>$plandriver->name, 
-                            'driverId'            =>$plandriver->id, 
+                            'driverId'         =>$plandriver->id, 
                             'surname'         =>$plandriver->surname, 
                             'group'           =>$plandriver->group, 
                             'gender'          =>$plandriver->gender, 
@@ -506,15 +508,14 @@ class PlanningController extends Controller
                         
                     $updatedriver = Driver::where('id','=', $driver->id )->update([
                         
-                        'resourcePoolStatus' => '1',
+                        'routeresourcePoolStatus' => '1',
                     ]);
 
                     }
              
-
                 }
                
-                dd($asset);
+               // dd($asset);
 
             }
 
@@ -572,7 +573,7 @@ class PlanningController extends Controller
 
                     $updateasset = Asset::where('id','=', $asset->id )->update([
 
-                        'resourcePoolStatus' => '1',
+                        'routeresourcePoolStatus' => '1',
                     ]);
 
                     $driversIds = Assetdriver::where('asset', '=' , $asset->id)->get();
@@ -580,12 +581,12 @@ class PlanningController extends Controller
                     foreach($driversIds as $driver){
 
                         $plandriver = Driver::where('id', '=', $driver->id)->first();
-                        
+                       // dd($plandriver);
                         $plandrivercreate = Plandrivers::create([
 
                             'routeplanId' => $contractplancreate->id,
                             'name'            =>$plandriver->name, 
-                            'driverId'            =>$plandriver->id, 
+                            'driverId'        =>$plandriver->id, 
                             'surname'         =>$plandriver->surname, 
                             'group'           =>$plandriver->group, 
                             'gender'          =>$plandriver->gender, 
@@ -601,7 +602,7 @@ class PlanningController extends Controller
                         
                     $updateasset = Driver::where('id','=', $driver->id )->update([
                         
-                        'resourcePoolStatus' => '1',
+                        'routeresourcePoolStatus' => '1',
                     ]);
 
                     }
@@ -672,7 +673,7 @@ class PlanningController extends Controller
 
                     $updateasset = Asset::where('id','=', $asset->id )->update([
 
-                        'resourcePoolStatus' => '1',
+                        'routeresourcePoolStatus' => '1',
                     ]);
 
                     $driversIds = Assetdriver::where('asset', '=' , $asset->id)->get();
@@ -680,7 +681,7 @@ class PlanningController extends Controller
                     foreach($driversIds as $driver){
 
                         $plandriver = Driver::where('id', '=', $driver->id)->first();
-                        
+                        //dd($plandriver);
                         $plandrivercreate = Plandrivers::create([
 
                             'routeplanId' => $contractplancreate->id,
@@ -701,7 +702,7 @@ class PlanningController extends Controller
                         
                     $updatedriver = Driver::where('id','=', $driver->id )->update([
                         
-                        'resourcePoolStatus' => '1',
+                        'routeresourcePoolStatus' => '1',
                     ]);
 
                     }
@@ -715,14 +716,14 @@ class PlanningController extends Controller
 
         }
 
-        dd('zvaita....');
+     
 
+        $routeplan = Routeplan::where('activity', '=' , '1')->latest()->first();
+        $routes = Route::where('id', '=' , $routeplan->route)->get();
+        $routeplanassets = Planassets::where('routeplanId','=', $routeplan->id)->get();
+        $routeplandrivers = Plandrivers::where('routeplanId','=', $routeplan->id)->get();
 
-
-        //output final plan 
-    
-
-        return view('planning.showmonthlyrouteplan', compact('contracts'));
+        return view('planning.showmonthlyrouteplan', compact('routeplan','routes','routeplanassets','routeplandrivers'));
     }
 
 
@@ -731,8 +732,8 @@ class PlanningController extends Controller
         //dd($id);
         $user = auth()->user();
 
-        $routeplanId = Routeplan::where('route','=', $id)->latest()->first();
-       // dd($routeplanId->id);
+        $routeplanId = Routeplan::where('route','=', $id)->where('activity','=', '1')->latest()->first();
+       // dd($routeplanId);
         //Weekly Horizon being planned for
 
         //Get the forecast monthly plan/capacity
@@ -757,16 +758,11 @@ class PlanningController extends Controller
 
             }else{
                 
-                return back()->with('error', 'There are no resource to use, adjust your assigments for this Route'); 
+                return back()->with('error', 'There are no resources to use, adjust your assigments for this Route'); 
             }
           
            
         }
-
-      //  dd($availablemonthcapacity);
-
-        //compare forecast vs current plan 
- 
 
             $forecastmonthcapacity;
             $currentCapacity = 0;
@@ -800,26 +796,17 @@ class PlanningController extends Controller
                              
                     }
              
-
-                }
-               
-                //dd($asset);
+                }             
 
             }
 
-            //produce plan to fit the forecastmonthcapacity
 
+            $routeplan = $routeplanId;
+            $routeplanassets = Planassets::where('routeplanId','=', $routeplan->id)->get();
+            $routeplandrivers = Plandrivers::where('routeplanId','=', $routeplan->id)->get();
 
-            //get all resources that are assigned to contract but still in resource pool
-
-        dd('zvaita....');
-
-
-
-        //output final plan 
-    
-
-        return view('planning.showweeklyrouteplan', compact('contracts'));
+        //    dd($routeplan,$routeplanassets,$routeplandrivers);
+        return view('planning.showweeklyrouteplan', compact('routeplan','routeplanassets','routeplandrivers'));
     }
 
 
@@ -828,7 +815,7 @@ class PlanningController extends Controller
        //dd($id);
        $user = auth()->user();
 
-       $routeplanId = Routeplan::where('route','=', $id)->first();
+       $routeplanId = Routeplan::where('route','=', $id)->where('activity','=', '1')->latest()->first();
        //Weekly Horizon being planned for
 
        //Get the forecast monthly plan/capacity
@@ -908,14 +895,12 @@ class PlanningController extends Controller
 
            //get all resources that are assigned to contract but still in resource pool
 
-       dd('zvaita....');
-
-
-
-       //output final plan 
+           $routeplan = $routeplanId;
+           $routeplanassets = Planassets::where('routeplanId','=', $routeplan->id)->get();
+           $routeplandrivers = Plandrivers::where('routeplanId','=', $routeplan->id)->get();
    
 
-       return view('planning.showdailyrouteplan', compact('contracts'));
+       return view('planning.showdailyrouteplan', compact('routeplan','routeplanassets','routeplandrivers'));
     }
 
     /**

@@ -13,6 +13,7 @@ class Plandrivers extends Model
         'contractplanId',
         'routeplanId',
         'assetId',
+        'driverId',
         'name',
         'surname',
         'group',  

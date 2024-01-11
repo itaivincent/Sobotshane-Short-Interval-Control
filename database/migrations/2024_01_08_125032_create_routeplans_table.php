@@ -16,7 +16,8 @@ return new class extends Migration
             $table->integer('duration')->nullable();       
             $table->integer('route')->nullable();
             $table->integer('capacity')->nullable();
-            $table->integer('month')->nullable();       
+            $table->integer('month')->nullable();    
+            $table->integer('activity')->nullable();      
             $table->integer('week')->nullable();
             $table->integer('daily')->nullable();    
             $table->integer('status')->nullable();

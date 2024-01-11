@@ -17,6 +17,7 @@ class Routeplan extends Model
         'month',
         'week',
         'daily',
+        'activity',
         'status',
         'createdBy',
         'updatedBy',
