@@ -53,6 +53,9 @@ jobs:
         with:
           name: php-app
 
+      - name: Copy .env
+        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+  
       - name: Unzip artifact for deployment
         run: unzip release.zip
       
