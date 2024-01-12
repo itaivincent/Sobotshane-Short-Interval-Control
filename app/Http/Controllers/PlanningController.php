@@ -392,24 +392,27 @@ class PlanningController extends Controller
 
     public function showrouteplan($id)
     {
-      //  dd($id);
+   
         $user = auth()->user();
 
         //Monthly Horizon being planned for
-
+       // dd($id);
         //Get the forecast monthly plan/capacity
         $forecastmonthcapacity = Route::where('id', $id)->sum('estimatedmonthQuantity');
         $contractroutes = Routeasset::where('route', $id)->get();
-
+        $contractroutescount = Routeasset::where('route', $id)->count();
         $availablemonthcapacity = 0;
         $assets = [];
 
+        if($contractroutescount  == 0){
+            
+            return back()->with('error', 'This route needs assignments to be made first!'); 
+        }
         //Get monthly current capacity
         foreach($contractroutes as $routes){
             
             $assetRecord = Asset::where('id', '=', $routes->asset)->where('routeresourcePoolStatus' , '=', null)->first();
-         //   dd($assetRecord);
-
+      
             if($assetRecord != null){
 
                 $assets[] = $assetRecord;
@@ -426,7 +429,7 @@ class PlanningController extends Controller
         }
 
        // dd($assets);
-
+        if($activity == 1){
         //compare forecast vs current plan 
         if($availablemonthcapacity > $forecastmonthcapacity){
 
@@ -532,6 +535,7 @@ class PlanningController extends Controller
 
                 'duration' => 1,
                 'route' => $id,
+                'activity' => $activity,
                 'capacity' => $availablemonthcapacity,
                 'createdBy' =>  $user->name
 
@@ -715,13 +719,14 @@ class PlanningController extends Controller
         }
 
         }
+    }
 
      
         $title = 'Remove item!';
         $text = "Are you sure you want to delete?";
         confirmDelete($title, $text);
 
-        $routeplan = Routeplan::where('activity', '=' , '1')->latest()->first();
+        $routeplan = Routeplan::where('activity', '=' , '1')->where('route','=', $id)->latest()->first();
         $routes = Route::where('id', '=' , $routeplan->route)->get();
         $routeplanassets = Planassets::where('routeplanId','=', $routeplan->id)->get();
         $routeplandrivers = Plandrivers::where('routeplanId','=', $routeplan->id)->get();
@@ -802,6 +807,9 @@ class PlanningController extends Controller
 
             }
 
+            $title = 'Remove item!';
+            $text = "Are you sure you want to delete?";
+            confirmDelete($title, $text);
 
             $routeplan = $routeplanId;
             $routes = Route::where('id', '=' , $routeplan->route)->get();
@@ -849,10 +857,6 @@ class PlanningController extends Controller
           
        }
 
-     //  dd($availablemonthcapacity);
-
-       //compare forecast vs current plan 
-
 
            $forecastmonthcapacity;
            $currentCapacity = 0;
@@ -894,7 +898,9 @@ class PlanningController extends Controller
            }
 
            //produce plan to fit the forecastmonthcapacity
-
+           $title = 'Remove item!';
+           $text = "Are you sure you want to delete?";
+           confirmDelete($title, $text);
 
            //get all resources that are assigned to contract but still in resource pool
 
@@ -943,16 +949,41 @@ class PlanningController extends Controller
 
         public function confirmplan($id){
 
-            $plandriver = Planassets::where('id', $id)->delete();
-        
-            if($plandriver){
-        
-                return back()->with('success', 'Asset removed from plan successfully!'); 
-        
-            }else{
-        
-                return back()->with('error', 'Failed to remove Asset!'); 
-            }
+           $routeplan = Routeplan::where('id', $id)->first(); 
+
+           $routeplanUpdate = Routeplan::where('id', $id)->update([
+
+            'confirmation' => '1'
+
+           ]); 
+
+           $routeplanassetUpdate = Planassets::where('routeplanId', $routeplan->id)->where('daily','=' , '1')->update([
+
+             'confirmation' => '1'
+
+           ]); 
+
+           $routeplandriverUpdate = Plandrivers::where('routeplanId', $routeplan->id)->where('daily','=' , '1')->update([
+            
+            'confirmation' => '1'
+            
+           ]); 
+
+
+             if($routeplanassetUpdate && $routeplandriverUpdate){
+
+                $routes = Route::where('id', '=' , $routeplan->route)->get();
+                $routeplanassets = Planassets::where('routeplanId','=', $routeplan->id)->where('daily','=' , '1')->where('confirmation','=' , '1')->get();
+                $routeplandrivers = Plandrivers::where('routeplanId','=', $routeplan->id)->where('daily','=' , '1')->where('confirmation','=' , '1')->get();
+
+               }else{
+
+                return back()->with('error', 'Failed to confrim plan!'); 
+               }
+
+               return view('planning.dailyrouteschedule', compact('routeplan','routes','routeplanassets','routeplandrivers'));
+
+              
             
             }
 

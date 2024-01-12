@@ -77,71 +77,39 @@
                                                     <div class="row mt-4">
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
-                                                                <label class="form-label">Make</label>
-                                                                <input type="text" name="make" class="form-control add-billing-address-input">
+                                                                <label class="form-label">Service Provider</label>
+                                                                <input type="text" name="make" value="{{$contract->provider}}" class="form-control add-billing-address-input">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
-                                                                <label class="form-label">Registration</label>
-                                                                <input type="text" name="registration" class="form-control">
+                                                                <label class="form-label">Client</label>
+                                                                <input type="text" name="registration" value="{{$contract->client}}" class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="col-4">
                                                             <div class="mb-3">
-                                                                <label class="form-label">Model</label>
-                                                                <input type="text" name="model"  class="form-control">
+                                                                <label class="form-label">Contract Value</label>
+                                                                <input type="text" name="model"  value="{{$contract->contractValue}}" class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
-                                                                <label class="form-label">Vin Number</label>
-                                                                <input type="text"  name="vinNumber" class="form-control">
+                                                                <label class="form-label">Duration</label>
+                                                                <input type="text"  name="vinNumber" value="{{$contract->duration}}" class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
-                                                            <label class="form-label">Asset Type</label>
-                                                                <div class="invoice-action-currency">
-                                                                    <div class="dropdown selectable-dropdown cardName-select">
-                                                                    <select name="assetType"  id="assetType" class="form-select" >
-                                                                    <option selected="">Choose...</option>
-                                                                    <option value="Trailer">Trailer</option>
-                                                                    <option value="Horse">Horse</option>
-                                                                                                                                                                 
-                                                                   </select>  
-                                                                    </div>
+                                                            <label class="form-label">Commodity</label>
+                                                            <input type="text"  name="vinNumber" value="{{$contract->commodity}}" class="form-control">
                                                                 </div>                                                                                                                                                                                                                         
                                                             </div>
                                                         </div>
 
 
 
-                                                      <div class="col-md-4">                                                                                                                    
-                                                            <div class="mb-3">
-                                                                <label class="form-label">Asset Weight</label>
-                                                                <input type="text"  name="weight"  class="form-control">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="mb-3">
-                                                                <label class="form-label">Registration Expiration Date</label>
-                                                                <input type="date"  name="registrationExpireDate"  class="form-control">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="mb-3">
-                                                                <label class="form-label">License Number</label>
-                                                                <input type="text" name="licenseNumber"  class="form-control add-payment-method-input">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="mb-3">
-                                                                <label class="form-label">Registration Year</label>
-                                                                <input type="text" name="registrationYear"  class="form-control add-payment-method-input">
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                     
                                                     
                                                     
                                                 </div>

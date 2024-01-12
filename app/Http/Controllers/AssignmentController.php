@@ -114,7 +114,7 @@ class AssignmentController extends Controller
         }
 
 
-        return redirect()->route('contracts.create')->with('success', 'Assignment created successfully!');
+        return back()->with('success', 'Assignments done successfully!'); 
     }
 
     public function routesasset(){

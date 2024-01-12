@@ -49,7 +49,7 @@
                             <td><span class="inv-amount"> <p class="align-self-center mb-0 user-name">{{ $route->to }}</p></span></td>
                             <td><span class="inv-email"> {{ $route->activity }}</span></td>
                             <td>
-                            <span class="inv-amount">{{ $route->distance }}</span>
+                            <span class="inv-amount">{{ number_format($route->distance, 2) }}</span>
                              </td>  
                                                                       
                             <td>
