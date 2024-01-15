@@ -239,7 +239,7 @@ class ContractController extends Controller
         $forecastStore = MonthlyForecast::create([
 
             'horizon' => 'Route',   
-            'contract' => $route->id,
+            'route' => $route->id,
             'forecastValue' => $request->forecastValue1,
             'month' => $request->month1,
             'description' => $request->description1,
@@ -251,7 +251,7 @@ class ContractController extends Controller
         $forecastStore = MonthlyForecast::create([
 
             'horizon' => 'Route',   
-            'contract' => $route->id,
+            'route' => $route->id,
             'forecastValue' => $request->forecastValue2,
             'month' => $request->month2,
             'description' => $request->description2,
@@ -264,7 +264,7 @@ class ContractController extends Controller
         $forecastStore = MonthlyForecast::create([
 
             'horizon' => 'Route',   
-            'contract' => $route->id,
+            'route' => $route->id,
             'forecastValue' => $request->forecastValue3,
             'month' => $request->month3,
             'description' => $request->description3,

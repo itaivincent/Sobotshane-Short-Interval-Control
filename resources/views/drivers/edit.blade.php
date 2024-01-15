@@ -12,7 +12,7 @@
                         <nav class="breadcrumb-style-one" aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="#">Drivers</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Update Status</li>
+                                <li class="breadcrumb-item active" aria-current="page">Update Driver Details</li>
                             </ol>
                         </nav>
                     </div>
@@ -40,7 +40,7 @@
                                                             // properties to JavaScript -->
                                         
                                                             <div class="invoice-title">
-                                                        <input type="text" class="form-control" placeholder="Invoice Label" value="Update driver Record">
+                                                       
                                                     </div>
                                         
                                                         </div>
@@ -193,7 +193,7 @@
     
                                             <div class="invoice-action-tax">
                                             
-                                                <h5>Reason for Change</h5>
+                                                <h5>Reason For Change</h5>
     
                                                 <div class="invoice-action-tax-fields">
     

@@ -1,6 +1,6 @@
-  <div class="sidebar-wrapper sidebar-theme">
+  <div class="sidebar-wrapper sidebar-theme" style="background-color:#EEF0E5;">
             
-            <nav id="sidebar">
+            <nav id="sidebar" >
 
                 <div class="navbar-nav theme-brand flex-row  text-center">
                     <div class="nav-logo">
@@ -10,29 +10,18 @@
                             </a>
                         </div>
                         <div class="nav-item theme-text">
-                            <a href="#" class="nav-link"> Sobotshane SIC </a>
+                            <a href="/dashboard" class="nav-link"> Sobotshane </a>
                         </div>
                     </div>
                     <div class="nav-item sidebar-toggle">
-                        <div class="btn-toggle sidebarCollapse">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-left"><polyline points="11 17 6 12 11 7"></polyline><polyline points="18 17 13 12 18 7"></polyline></svg>
-                        </div>
+                        
                     </div>
                 </div>
 
                 <ul class="list-unstyled menu-categories" id="accordionExample">
-
-                    <li class="menu active">
-                        <a href="/dashboard" aria-expanded="true" class="dropdown-toggle">
-                            <div class="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-columns"><path d="M12 3h7a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-7m0-18H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h7m0-18v18"></path></svg>
-                                <span>Dashboard</span>
-                            </div>
-                        </a>
-                    </li>
-                    
+                  
                     <li class="menu menu-heading">
-                        <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg><span>SIC Modules</span></div>
+                        <div class="heading"><span>SIC Modules</span></div>
                     </li>
 
                     @if(Auth::user()->userRole == 1 || Auth::user()->userRole == 5 )
@@ -84,9 +73,7 @@
                             <li>
                                 <a href="/assets/index"> Manage Assets </a>
                             </li>
-                            <li>
-                                <a href="#"> Parameters</a>
-                            </li>
+                         
                         </ul>
                     </li>
                     @endif
@@ -109,9 +96,7 @@
                             <li>
                                 <a href="/drivers/index"> Manage Drivers</a>
                             </li>
-                            <li>
-                                <a href="#"> Parameters </a>
-                            </li>
+                           
                         </ul>
                     </li>
                     @endif
@@ -153,9 +138,7 @@
                             </div>
                         </a>
                         <ul class="collapse submenu list-unstyled" id="assignments" data-bs-parent="#accordionExample">
-                             <li>
-                                <a href="/assignments/create"> Contracts and Routes </a>
-                            </li>
+                            
                             <li>
                                 <a href="/assignments/routesasset"> Routes and Assets </a>
                             </li>
@@ -165,9 +148,7 @@
                             <li>
                                 <a href="/assignments/index"> Manage Assignments </a>
                             </li>
-                            <li>
-                                <a href="/assignments/parameters"> Parameters </a>
-                            </li>
+                            
                         </ul>
                     </li>
                     @endif
