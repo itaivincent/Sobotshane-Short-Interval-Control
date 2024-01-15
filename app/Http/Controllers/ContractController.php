@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Response;
 use App\Models\Userrole;
 use App\Models\User;
+use App\Models\MonthlyForecast;
 use App\Models\Asset;
 use App\Models\Contract;
 use App\Models\Formula;
@@ -100,6 +101,188 @@ class ContractController extends Controller
     {
         //
     }
+
+
+
+
+    
+    /**
+     * Display the specified resource.
+     */
+    public function forecast(string $id)
+    {
+        $contract = Contract::where('id', $id)->first();
+    
+        return view('contracts.monthlyforecast', compact('contract'));
+    }
+
+
+
+    public function storeforecast(Request $request)
+    {
+        $user = auth()->user();
+        $contract = Contract::where('id', $request->contract)->first();
+
+        $checkMonth1 = MonthlyForecast::where('month', $request->month1)->where('contract', $contract->id)->count();
+        $checkMonth2 = MonthlyForecast::where('month', $request->month2)->where('contract', $contract->id)->count();
+        $checkMonth3 = MonthlyForecast::where('month', $request->month3)->where('contract', $contract->id)->count();
+
+        if($checkMonth1 > 0){
+
+            return back()->with('error', 'That month '.$request->month1.' already has a forecast set'); 
+
+        }
+
+        if($checkMonth2 > 0){
+
+            return back()->with('error', 'That month '.$request->month2.' already has a forecast set'); 
+
+        }
+
+        if($checkMonth3 > 0){
+
+            return back()->with('error', 'That month '.$request->month3.' already has a forecast set'); 
+
+        }
+
+        $forecastStore = MonthlyForecast::create([
+
+            'horizon' => 'Contract',   
+            'contract' => $contract->id,
+            'forecastValue' => $request->forecastValue1,
+            'month' => $request->month1,
+            'description' => $request->description1,
+            'createdBy' => $user->name 
+
+        ]);
+
+
+        
+        $forecastStore = MonthlyForecast::create([
+
+            'horizon' => 'Contract',   
+            'contract' => $contract->id,
+            'forecastValue' => $request->forecastValue2,
+            'month' => $request->month2,
+            'description' => $request->description2,
+            'createdBy' => $user->name 
+
+        ]);
+
+
+
+
+        
+        $forecastStore = MonthlyForecast::create([
+
+            'horizon' => 'Contract',   
+            'contract' => $contract->id,
+            'forecastValue' => $request->forecastValue3,
+            'month' => $request->month3,
+            'description' => $request->description3,
+            'createdBy' => $user->name 
+
+        ]);
+       // dd($request->contract);
+    
+        if($forecastStore){
+
+            return back()->with('success', ' 3 Month Forecast Saved Successfully'); 
+        }
+        return back()->with('error', 'Invalid Input!');
+    }
+
+
+
+
+      /**
+     * Display the specified resource.
+     */
+    public function routeforecast(string $id)
+    {
+        $route = Route::where('id', $id)->first();
+    
+        return view('contracts.routemonthlyforecast', compact('route'));
+    }
+
+
+
+
+    
+    public function storerouteforecast(Request $request)
+    {
+        $user = auth()->user();
+        $route = Route::where('id', $request->route)->first();
+
+        $checkMonth1 = MonthlyForecast::where('month', $request->month1)->where('contract', $route->id)->count();
+        $checkMonth2 = MonthlyForecast::where('month', $request->month2)->where('contract', $route->id)->count();
+        $checkMonth3 = MonthlyForecast::where('month', $request->month3)->where('contract', $route->id)->count();
+
+        if($checkMonth1 > 0){
+
+            return back()->with('error', 'That month '.$request->month1.' already has a forecast set'); 
+
+        }
+
+        if($checkMonth2 > 0){
+
+            return back()->with('error', 'That month '.$request->month2.' already has a forecast set'); 
+
+        }
+
+        if($checkMonth3 > 0){
+
+            return back()->with('error', 'That month '.$request->month3.' already has a forecast set'); 
+
+        }
+
+        $forecastStore = MonthlyForecast::create([
+
+            'horizon' => 'Route',   
+            'contract' => $route->id,
+            'forecastValue' => $request->forecastValue1,
+            'month' => $request->month1,
+            'description' => $request->description1,
+            'createdBy' => $user->name 
+
+        ]);
+
+       
+        $forecastStore = MonthlyForecast::create([
+
+            'horizon' => 'Route',   
+            'contract' => $route->id,
+            'forecastValue' => $request->forecastValue2,
+            'month' => $request->month2,
+            'description' => $request->description2,
+            'createdBy' => $user->name 
+
+        ]);
+
+
+      
+        $forecastStore = MonthlyForecast::create([
+
+            'horizon' => 'Route',   
+            'contract' => $route->id,
+            'forecastValue' => $request->forecastValue3,
+            'month' => $request->month3,
+            'description' => $request->description3,
+            'createdBy' => $user->name 
+
+        ]);
+       // dd($request->contract);
+    
+        if($forecastStore){
+
+            return back()->with('success', ' 3 Month Forecast Saved Successfully'); 
+        }
+        return back()->with('error', 'Invalid Input!');
+    }
+
+
+
+
 
     public function formulaStore(Request $request)
     {
@@ -405,8 +588,9 @@ class ContractController extends Controller
     {
         $contract = Contract::where('id',$id)->first();
         $escalationformulas = Escalationformula::where('contract','=', $id)->get();
-     //   dd($routes);
-        return view('contracts.edit', compact('contract','escalationformulas'));
+        $forecast = Monthlyforecast::where('contract', $id)->get();
+      //  dd($routes);
+        return view('contracts.edit', compact('contract','escalationformulas', 'forecast'));
     }
 
 
@@ -637,6 +821,13 @@ class ContractController extends Controller
         //
     }
 
+    public function routeEdit(string $id)
+    {
+        $route = Route::where('id',$id)->first();
+        $forecast = Monthlyforecast::where('route', $id)->get();
+      //  dd($routes);
+        return view('contracts.routeEdit', compact('route', 'forecast'));
+    }
     /**
      * Remove the specified resource from storage.
      */

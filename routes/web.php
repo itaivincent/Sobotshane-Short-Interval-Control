@@ -57,6 +57,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/contracts/escalationFormula', [ContractController::class, 'escalationFormula'])->name('contracts.escalationFormula');
     Route::post('/contracts/formulaStore', [ContractController::class, 'formulaStore'])->name('contracts.formulaStore');
     Route::get('/contracts/edit/{id}', [ContractController::class, 'edit'])->name('contracts.edit');
+    Route::get('/parameters/routeEdit/{id}', [ContractController::class, 'routeEdit'])->name('contracts.routeEdit');
+    Route::get('/contracts/forecast/{id}', [ContractController::class, 'forecast'])->name('contracts.forecast');
+    Route::get('/contracts/routeforecast/{id}', [ContractController::class, 'routeforecast'])->name('contracts.routeforecast');
+    Route::post('/contracts/storeforecast', [ContractController::class, 'storeforecast'])->name('contracts.storeforecast');
+    Route::post('/contracts/storerouteforecast', [ContractController::class, 'storerouteforecast'])->name('contracts.storerouteforecast');
     Route::put('/contracts/update/{id}', [ContractController::class, 'update'])->name('contracts.update');
     Route::put('/contracts/updateformula/{id}', [ContractController::class, 'updateformula'])->name('contracts.updateformula');
     Route::get('/download-pdf/{id}', [ContractController::class, 'pdf'])->name('contracts.pdf');
@@ -95,12 +100,10 @@ Route::middleware('auth')->group(function () {
 
     Route::delete('/planning/editroutemonthlyplandriver/{id}', [PlanningController::class, 'editroutemonthlyplandriver'])->name('assignments.editroutemonthlyplandriver');
     Route::delete('/planning/editroutemonthlyplanasset/{id}', [PlanningController::class, 'editroutemonthlyplanasset'])->name('assignments.editroutemonthlyplanasset');
-
-    
+  
     Route::delete('/planning/editrouteweeklyplandriver/{id}', [PlanningController::class, 'editrouteweeklyplandriver'])->name('assignments.editrouteweeklyplandriver');
     Route::delete('/planning/editrouteweeklyplanasset/{id}', [PlanningController::class, 'editrouteweeklyplanasset'])->name('assignments.editrouteweeklyplanasset');
 
-    
     Route::delete('/planning/editroutedailyplandriver/{id}', [PlanningController::class, 'editroutedailyplandriver'])->name('assignments.editroutedailyplandriver');
     Route::delete('/planning/editroutedailyplanasset/{id}', [PlanningController::class, 'editroutedailyplanasset'])->name('assignments.editroutedailyplanasset');
 

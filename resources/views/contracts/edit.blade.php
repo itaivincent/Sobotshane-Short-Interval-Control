@@ -226,6 +226,10 @@
                                         
                                     </div>
                                 </div></br>
+
+
+
+                                
                                 
                                 
 
@@ -282,20 +286,46 @@
                                             </div>
                                             </div>
 
-
-
                             </div>
                             </div>
     
+                           
                         </div>
 
-
-
-
-
-
+                        
                     </div>
 
+
+                                             <div class="card">   
+                                             <div class="row">
+                                          
+                                              <div class="table-responsive">
+                                            <table class="table table-hover table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                     
+                                                        <th scope="col">Month </th>
+                                                        <th scope="col">Foreast</th>
+                                                        <th class="text-center" scope="col">Description</th>
+                                            
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                @foreach ($forecast as $forecast)    
+                                                    <tr>
+                                                        <td>{{$forecast->month}}</td>                           
+                                                        <td>{{$forecast->forecastValue}}</td>
+                                                        <td>{{$forecast->description}}</td>                                        
+                                                                                         
+                                                    </tr>
+                                                                                               
+                                                </tbody>
+                                                @endforeach
+                                            </table>
+
+                                           
+                                            </div>
+                                            </div>
                 </div>
                 
             </div>
