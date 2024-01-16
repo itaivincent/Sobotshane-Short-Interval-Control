@@ -12,7 +12,7 @@
                         <nav class="breadcrumb-style-one" aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="#">Contracts</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Update Details</li>
+                                <li class="breadcrumb-item active" aria-current="page">Update Contract Details</li>
                             </ol>
                         </nav>
                     </div>
@@ -40,7 +40,7 @@
                                                             // properties to JavaScript -->
                                         
                                                             <div class="invoice-title">
-                                                        <input type="text" class="form-control" placeholder="Invoice Label" value="Update Contract Record">
+                                                       
                                                     </div>
                                         
                                                         </div>
@@ -55,7 +55,7 @@
                                                     <div class="row justify-content-between">
                                                         <div class="col-xl-5 invoice-address-company">
     
-                                                            <h4>contract Details:</h4>
+                                                            <h4>Contract Details:</h4>
     
                                                             <form method="post" action="/contracts/update/{{$contract->id}}">
                                                             @csrf 
@@ -161,8 +161,7 @@
                                                 </div>
     
                                                 <div class="invoice-detail-terms">
-    
-                 
+                  
                                                 <div class="row justify-content-between">
                                                         <div class="col-md-3"> 
                                                             <div class="form-group mb-4">

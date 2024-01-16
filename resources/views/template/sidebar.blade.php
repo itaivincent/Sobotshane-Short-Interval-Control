@@ -42,9 +42,7 @@
                             <li>
                                 <a href="/planning/routeplan"> Route Plan </a>
                             </li>                     
-                            <li>
-                                <a href="javascript:void(0);"> Parameters </a>
-                            </li>
+                         
                         </ul>
                     </li>
                     @endif
