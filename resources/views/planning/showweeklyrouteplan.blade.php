@@ -27,32 +27,65 @@
         <div class="col-xl-12 col-lg-12 col-sm-12 layout-top-spacing layout-spacing">
             <div class="widget-content widget-content-area br-8">
                 <table id="invoice-list" class="table dt-table-hover" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th class="checkbox-column"> Record no. </th>
+                <thead>
+                        <tr>                        
+                            <th>Contract</th>
                             <th>From</th>
-                            <th>To</th>
-                            <th>Activity</th>
-                            <th>Type</th>
-                            <th>Category</th>                    
-                            <th>Rate</th>
-                     
+                            <th>To</th>                       
+                            <th>Distance</th>
+                            <th>Type</th> 
+                            <th>Rate</th>   
+                            <th>Contract Vol</th> 
+                            <th>Monthly Contract Vol</th> 
+                            <th>Forecast Vol</th>    
+                            <th>Possible Vol</th>                                         
+                            <th>Variance</th>
                         </tr>
                     </thead>
                     
                     <tbody>
                         @foreach ($routes as $route)                                         
                         <tr>
-                            <td class="checkbox-column"> <input type="checkbox"  name="routeIds[]" value="{{ $route->id }}"> </td>
-                            <td><a href="./app-invoice-preview.html"><span class="inv-number">{{ $route->from }}</span></a></td>
-                         
-                            <td><span class="inv-amount"> <p class="align-self-center mb-0 user-name">{{ $route->to }}</p></span></td>
-                            <td><span class="inv-email"> {{ $route->activity }}</span></td>
-                            <td> {{$route->Type}}</td>                                                                     
+                               
+                           <td>
+                            <span>{{ $route->Type }}</span>
+                            </td> 
+                           
                             <td>
-                            <span class="inv-amount">{{ $route->routeCategory }}</span>
-                           </td>  
-                            <td><span class="inv-date"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> {{ $route->rate }}</span></td>                          
+                            <span>{{ $route->from }}</span>
+                            </td> 
+                            <td>
+                            <span>{{ $route->to }}</span>
+                           </td> 
+                           <td>
+                            <span>{{ number_format($route->distance, 2) }}</span>
+                           </td> 
+                           <td>
+                            <span>{{ $route->Type }}</span>
+                           </td> 
+                           <td>
+                            <span>{{ $route->rate }}</span>
+                           </td> 
+                           <td>
+                            <span>{{ $route->totalQuantity }}</span>
+                           </td> 
+                           <td>
+                            <span>{{ $route->totalforecast }}</span>
+                           </td> 
+                           <td>
+                            <span>{{ $route->monthlyforecast }}</span>
+                           </td> 
+                           <td>
+                            <span>{{ $route->capacity }}</span>
+                           </td> 
+                            
+                            <td>
+                                @if ($route->monthlyforecast == 0)
+                                <span>{{$route->totalforecast -  $route->capacity }}</span>        
+                                @else
+                                <span>{{$route->monthlyforecast - $route->capacity }}</span>      
+                                @endif                                       
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -111,10 +144,8 @@
                     </div>
             
                 </div>
-            
-   </div>
 
-   <div class="row" id="cancel-row">
+                <div class="row" id="cancel-row">
                     
                     <div class="col-xl-12 col-lg-12 col-sm-12 layout-top-spacing layout-spacing">
                         <div class="widget-content widget-content-area br-8">
@@ -161,6 +192,10 @@
                 </div>
             
    </div>
+            
+   </div>
+
+ 
 
 
 
