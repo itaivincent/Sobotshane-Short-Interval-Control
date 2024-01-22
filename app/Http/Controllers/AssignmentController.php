@@ -13,6 +13,7 @@ use App\Models\Formula;
 use App\Models\Contractasset;
 use App\Models\Capability;
 use App\Models\Assetdriver;
+use App\Models\Monthlyforecast;
 use App\Models\Escalationformula;
 use App\Models\Route;
 use DB;
@@ -63,6 +64,18 @@ class AssignmentController extends Controller
         $contract = Contract::where('id', $id)->first();
         $routes = Route::where('contractId',$contract->id)->get();
         $contractassets = Contractasset::where('contract', $id)->get();
+
+        $date = Carbon::now();
+        $totalmothlyforecast = 0;
+        foreach($routes as $route){
+            
+
+            $currentmonthforecast  = Monthlyforecast::where('route', $route->id)->where('month', '=', $date->format('F') )->latest()->first();
+            $totalmothlyforecast +=  $currentmonthforecast->forecastValue;
+
+        }
+
+       // dd($totalmothlyforecast);      
      
         $assets = [];
         $capability = 0;
@@ -81,7 +94,7 @@ class AssignmentController extends Controller
     
         );
 
-        return view('assignments.show', compact('contract','routes','assets','capability'));
+        return view('assignments.show', compact('contract','routes','assets','capability','totalmothlyforecast'));
     }
 
     public function store(Request $request)

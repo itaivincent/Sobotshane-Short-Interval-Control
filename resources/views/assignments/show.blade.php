@@ -50,7 +50,7 @@
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
                                                                 <label class="form-label">Forecast Monthly Volume</label>
-                                                                <input type="text" name="registration" class="form-control"  value="{{$contract->totalrequiredMonthlyVolume}}" readonly>
+                                                                <input type="text" name="registration" class="form-control"  value="{{$totalmothlyforecast}}" readonly>
                                                             </div>
                                                         </div>
                                              

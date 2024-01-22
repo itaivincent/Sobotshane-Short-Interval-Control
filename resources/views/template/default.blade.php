@@ -40,6 +40,10 @@
     <link href="{!! asset('template/src/plugins/css/dark/flatpickr/custom-flatpickr.css') !!}" rel="stylesheet" type="text/css" />
     <link href="{!! asset('template/src/assets/css/dark/apps/invoice-edit.css') !!}" rel="stylesheet" type="text/css" />
 
+    <link href="{!! asset('template/src/plugins/src/tomSelect/tom-select.default.min.css') !!}" rel="stylesheet" type="text/css" />
+    <link href="{!! asset('template/src/plugins/css/light/tomSelect/custom-tomSelect.css') !!}" rel="stylesheet" type="text/css" />
+    <link href="{!! asset('template/src/plugins/css/dark/tomSelect/custom-tomSelect.css') !!}" rel="stylesheet" type="text/css" />
+
     <link href="{!! asset('template/src/plugins/css/light/flatpickr/custom-flatpickr.css') !!}" rel="stylesheet" type="text/css" />
     <link href="{!! asset('template/src/assets/css/light/apps/invoice-edit.css') !!}" rel="stylesheet" type="text/css" />
 
@@ -109,6 +113,11 @@
 
     <script src="{!! asset('template/src/assets/js/apps/invoice-edit.js') !!}"></script>
     <script src="{!! asset('template/src/plugins/src/flatpickr/flatpickr.js') !!}"></script>
+
+
+    <script src="{!! asset('template/src/plugins/src/tomSelect/tom-select.base.js') !!}"></script>
+    <script src="{!! asset('template/src/plugins/src/tomSelect/custom-tom-select.js') !!}"></script>
+
 
 
     <script type="text/javascript">
@@ -229,6 +238,16 @@
         });
 
         multiCheck(c3);
+    </script>
+
+    <script>
+        new TomSelect("#select-beast",{
+    create: true,
+    sortField: {
+        field: "text",
+        direction: "asc"
+    }
+});
     </script>
 
     <!-- <script>

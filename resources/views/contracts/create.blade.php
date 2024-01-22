@@ -43,56 +43,56 @@
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
                                                                 <label class="form-label">Contract Number</label>
-                                                                <input type="text" name="number" class="form-control add-billing-address-input">
+                                                                <input type="text" id="number" name="number" value="{{ old('number') }}" class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
                                                                 <label class="form-label">Service Provider</label>
-                                                                <input type="text" name="provider" class="form-control">
+                                                                <input type="text"  id="provider" name="provider"  value="{{ old('provider') }}" class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="col-4">
                                                             <div class="mb-3">
                                                                 <label class="form-label">Client </label>
-                                                                <input type="text" name="client"  class="form-control">
+                                                                <input type="text"  id="client" name="client"  value="{{ old('client') }}"  class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
                                                                 <label class="form-label">Duration (Months)</label>
-                                                                <input type="text"  name="duration" class="form-control">
+                                                                <input type="text"  id="duration" name="duration" value="{{ old('duration') }}"  class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
                                                                 <label class="form-label">Product delivered</label>                                              
-                                                                <input type="text"  name="commodity" class="form-control">
+                                                                <input type="text"  id="commodity"  name="commodity" value="{{ old('commodity') }}"  class="form-control">
                                                                                                                       
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
                                                                 <label class="form-label">Effective Date</label>
-                                                                <input type="date"   name="date"  class="form-control">
+                                                                <input type="date"   id="date" name="date"  value="{{ old('date') }}"  class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
                                                                 <label class="form-label">Contract Value(R)</label>
-                                                                <input type="text"  name="contractValue" class="form-control">
+                                                                <input type="text"  id="contractValue" name="contractValue"  value="{{ old('contractValue') }}" class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
                                                                 <label class="form-label">Forecast Monthly Volume(Ton)</label>
-                                                                <input type="text" name="forecastMonthlyVolume" class="form-control add-billing-address-input">
+                                                                <input type="text"  id="forecastMonthlyVolume" name="forecastMonthlyVolume" value="{{ old('forecastMonthlyVolume') }}"  class="form-control add-billing-address-input">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
                                                                 <label class="form-label">Forecast Weekly Volume(Ton)</label>
-                                                                <input type="text" name="forecastWeeklyVolume" class="form-control">
+                                                                <input type="text"  id="forecastWeeklyVolume" name="forecastWeeklyVolume" value="{{ old('forecastWeeklyVolume') }}"  class="form-control">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -102,26 +102,26 @@
                                                         <div class="col-4">
                                                             <div class="mb-3">
                                                                 <label class="form-label">Forecast Daily Volume(Ton)</label>
-                                                                <input type="text" name="forecastDailyVolume"  class="form-control">
+                                                                <input type="text"  id="forecastDailyVolume" name="forecastDailyVolume"  value="{{ old('forecastDailyVolume') }}"  class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
                                                                 <label class="form-label">Required Monthly Distance(km)</label>
-                                                                <input type="text"  name="requiredMonthlyDistance" class="form-control">
+                                                                <input type="text"   id="requiredMonthlyDistance" name="requiredMonthlyDistance"  value="{{ old('requiredMonthlyDistance') }}" class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
                                                                 <label class="form-label">Required Monthly Volume(Ton)</label>                                              
-                                                                <input type="text"  name="requiredMonthlyVolume" class="form-control">
+                                                                <input type="text"   id="requiredMonthlyVolume" name="requiredMonthlyVolume"  value="{{ old('requiredMonthlyVolume') }}" class="form-control">
                                                                                                                       
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
                                                                 <label class="form-label">Upload Contract</label>                                              
-                                                                <input type="file" id="contractImage" name="contractImage" class="form-control">                                                                                                                  
+                                                                <input type="file" id="contractImage" name="contractImage"  class="form-control">                                                                                                                  
                                                             </div>
                                                         </div>
 

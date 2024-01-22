@@ -44,9 +44,9 @@
                                                             <label class="form-label">Assets</label>
                                                                 <div class="invoice-action-currency">
                                                                     <div class="dropdown selectable-dropdown cardName-select">
-                                                                    <select name="asset" class="form-select">
-                                                                    <option selected="">Choose an Asset</option>
+                                                                    <select name="asset" id="select-beast"  placeholder="Select an Asset..." class="form-select">                                                                 
                                                                     @foreach ( $assets as $asset)
+                                                                    <option value="">Select an Asset...</option>
                                                                     <option value="{{$asset->id}}"> {{$asset->make}}  {{$asset->model}}  {{ $asset->assetType }} Capacity {{$asset->payloadCapacity}}</option>                                                                                                       
                                                                     @endforeach                                                                               
                                                                    </select>  

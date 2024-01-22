@@ -47,7 +47,7 @@
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
                                                                 <label class="form-label">Make</label>
-                                                                <input type="text" name="make" class="form-control add-billing-address-input">
+                                                                <input type="text" id="make" name="make"  value="{{ old('make') }}" class="form-control" required>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
