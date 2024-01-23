@@ -22,11 +22,11 @@
                     <!-- /BREADCRUMB -->
 
     
-    <div class="row" id="cancel-row">
+    <div class="row" id="cancel-row" style="width:110%">
                     
-        <div class="col-xl-12 col-lg-12 col-sm-12 layout-top-spacing layout-spacing">
+        <div class="col-xl-14 col-lg-14 col-sm-14 layout-top-spacing layout-spacing">
             <div class="widget-content widget-content-area br-8">
-                <table id="invoice-list" class="table dt-table-hover" style="width:100%">
+                <table id="invoice-list" class="table dt-table-hover" >
                     <thead>
                         <tr> 
                           <th></th>                       

@@ -47,7 +47,7 @@
                                                                     <select name="route" id="select-beast"  placeholder="Select a Route..." class="form-select">                                                                  
                                                                     @foreach ( $routes as $route)
                                                                     <option value="">Select a Route...</option>
-                                                                    <option value="{{$route->id}}">{{$route->from}} to {{$route->to}} and activity is {{$route->activity}}</option>                                                                                                       
+                                                                    <option value="{{$route->id}}">@foreach ($contracts as $contract)  @if($contract->id == $route->contractId)  {{ $contract->client }} @endif    @endforeach: {{$route->from}} -  {{$route->to}}</option>                                                                                                       
                                                                     @endforeach
                                                                                                                            
                                                                    </select>  
@@ -62,6 +62,12 @@
 
 
                     <!-- Assets -->
+                    <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"> Unassigned Assets</h5>
+                        <p class="mb-0">List of unassigned assets </p>
+                    </div>
+                   </div></br>
                                     
                                     <h6 class="">Select Assets</h6>                                     
                     
@@ -72,17 +78,17 @@
                                     <thead>
                                         <tr>
                                             <th class="checkbox-column dt-no-sorting"> Record Id </th>
-                                            <th>Make</th>
+                                            <th class="text-center">Make</th>
                                             <th class="text-center">Model</th>
-                                            <th>Registration</th>
-                                            <th>Type</th>
-                                            <th>Capacity</th>                          
+                                            <th class="text-center">Asset Number</th>
+                                            <th class="text-center">Registration</th>
+                                            <th class="text-center">Capacity</th>                          
                                             <th class="text-center">Status</th>
                                         
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($assets as $asset)
+                                        @foreach ($unassignedAssets as $asset)
                                         <tr>
                                             <td class="text-center">
                                             <input type="checkbox"  name="assetIds[]" value="{{ $asset->id }}">
@@ -90,7 +96,55 @@
                                             <td class="text-center">{{$asset->make}}</td>
                                             <td class="text-center">{{$asset->model}}</td>
                                             <td class="text-center">{{$asset->registration}}</td>
-                                            <td class="text-center">{{$asset->assetType}}</td>
+                                            <td class="text-center">{{$asset->licenseNumber}}</td>
+                                            <td class="text-center">{{$asset->payloadCapacity}}</td>
+                                            <td class="text-center"><span class="shadow-none badge badge-primary">Approved</span></td>
+                                        </tr> 
+                                        @endforeach                                                                                                                       
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div></br>
+              
+
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"> Assigned Assets</h5>
+                        <p class="mb-0">List of assigned assets </p>
+                    </div>
+                </div></br>
+                         
+                <h6 class="">Select Assets</h6>                                     
+                    
+                    <div class="col-lg-12" id="assets" >
+                        <div class="statbox widget box box-shadow">
+                            <div class="widget-content widget-content-area">
+                                <table id="styl-1" class="table style-2 dt-table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="checkbox-column dt-no-sorting"> Record Id </th>
+                                            <th class="text-center">Make</th>
+                                            <th class="text-center">Model</th>
+                                            <th class="text-center">Asset Number</th>
+                                            <th class="text-center">Registration</th>
+                                            <th class="text-center">Capacity</th>                          
+                                            <th class="text-center">Status</th>
+                                        
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($assignedAssets as $asset)
+                                        <tr>
+                                            <td class="text-center">
+                                            <input type="checkbox"  name="assetIds[]" value="{{ $asset->id }}">
+                                            </td>
+                                            <td class="text-center">{{$asset->make}}</td>
+                                            <td class="text-center">{{$asset->model}}</td>
+                                            <td class="text-center">{{$asset->registration}}</td>
+                                            <td class="text-center">{{$asset->licenseNumber}}</td>
                                             <td class="text-center">{{$asset->payloadCapacity}}</td>
                                             <td class="text-center"><span class="shadow-none badge badge-primary">Approved</span></td>
                                         </tr> 
@@ -101,7 +155,6 @@
                         </div>
                     </div>
                 </div>
-              
                                           
                                     
                                         <button type="submit" onclick="getSelectedCheckboxes()" class="btn btn-primary  float-end mt-3">Make Assignments</button>

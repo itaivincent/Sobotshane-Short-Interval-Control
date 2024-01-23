@@ -24,6 +24,7 @@ class Driver extends Model
         'vehicleType',
         'availability',
         'status',
+        'isAssigned',
         'statusReason',
         'createdBy',
         'updatedBy',

@@ -47,7 +47,7 @@
                                                                     <select name="asset" id="select-beast"  placeholder="Select an Asset..." class="form-select">                                                                 
                                                                     @foreach ( $assets as $asset)
                                                                     <option value="">Select an Asset...</option>
-                                                                    <option value="{{$asset->id}}"> {{$asset->make}}  {{$asset->model}}  {{ $asset->assetType }} Capacity {{$asset->payloadCapacity}}</option>                                                                                                       
+                                                                    <option value="{{$asset->id}}"> {{$asset->registration}} : {{$asset->make}} - {{$asset->model}} </option>                                                                                                       
                                                                     @endforeach                                                                               
                                                                    </select>  
                                                                     </div>
@@ -60,6 +60,12 @@
                                         </br>
 
 
+                                        <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"> Unassigned Drivers</h5>
+                        <p class="mb-0">List of unassigned drivers </p>
+                    </div>
+                </div></br>
                     <!-- Assets -->
                                     
                                     <h6 class="">Select Driver</h6>                                     
@@ -81,7 +87,55 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ( $drivers as $asset)
+                                        @foreach ( $unassignedDrivers as $asset)
+                                        <tr>
+                                            <td class="text-center">
+                                            <input type="checkbox"  name="driverIds[]" value="{{ $asset->id }}">
+                                            </td>
+                                            <td class="text-center">{{$asset->name}}</td>
+                                            <td class="text-center">{{$asset->surname}}</td>
+                                            <td class="text-center">{{$asset->group}}</td>
+                                            <td class="text-center">{{$asset->licenseExpireDate}}</td>
+                                            <td class="text-center">{{$asset->vehicleType}}</td>
+                                            <td class="text-center"><span class="shadow-none badge badge-primary">Approved</span></td>
+                                        </tr> 
+                                        @endforeach                                                                                                                       
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div></br>
+
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"> Assigned Drivers</h5>
+                        <p class="mb-0">List of assigned drivers </p>
+                    </div>
+                </div></br>
+
+
+                <h6 class="">Select Driver</h6>                                     
+                    
+                    <div class="col-lg-12" id="assets" >
+                        <div class="statbox widget box box-shadow">
+                            <div class="widget-content widget-content-area">
+                                <table id="styl-1" class="table style-2 dt-table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="checkbox-column dt-no-sorting"> Record Id </th>
+                                            <th>Name</th>
+                                            <th class="text-center">Surname</th>
+                                            <th>Group</th>
+                                            <th>Licence Exp Date</th>
+                                            <th>Vehicle Type</th>                          
+                                            <th class="text-center">Status</th>
+                                        
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ( $assignedDrivers as $asset)
                                         <tr>
                                             <td class="text-center">
                                             <input type="checkbox"  name="driverIds[]" value="{{ $asset->id }}">

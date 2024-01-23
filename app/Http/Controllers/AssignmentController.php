@@ -134,9 +134,10 @@ class AssignmentController extends Controller
 
         $contracts = Contract::all();
         $routes = Route::all();
-        $assets = Asset::all();
+        $assignedAssets = Asset::where('isAssigned', '=', 1)->get();
+        $unassignedAssets = Asset::where('isAssigned', '=', null)->get();
 
-        return view('assignments.routesasset', compact('contracts','routes','assets'));
+        return view('assignments.routesasset', compact('contracts','routes','assignedAssets','unassignedAssets'));
     }
 
     public function storeroutesasset(Request $request)
@@ -162,6 +163,13 @@ class AssignmentController extends Controller
                 'createdBy' =>  $user->name
 
             ]);
+
+
+            $assetAssigned = Asset::where('id', $assets[$key] )->update([
+
+                'isAssigned' => 1,
+
+            ]);
         }
 
 
@@ -172,10 +180,12 @@ class AssignmentController extends Controller
     public function assetdriver(){
 
      
-        $drivers = Driver::all();
+        $assignedDrivers = Driver::where('isAssigned', '=', 1)->get();
+        $unassignedDrivers = Driver::where('isAssigned', '=', null)->get();
         $assets = Asset::all();
+       // dd($assignedDrivers, $unassignedDrivers);
 
-        return view('assignments.assetdriver', compact('drivers','assets'));
+        return view('assignments.assetdriver', compact('assignedDrivers','unassignedDrivers','assets'));
     }
 
     public function storeassetdriver(Request $request)
@@ -194,6 +204,13 @@ class AssignmentController extends Controller
                 'driver' => $driver->id,
                 'asset' => $asset,
                 'createdBy' =>  $user->name
+
+            ]);
+
+
+            $driverAssigned = Driver::where('id', $drivers[$key] )->update([
+
+                'isAssigned' => 1,
 
             ]);
         }

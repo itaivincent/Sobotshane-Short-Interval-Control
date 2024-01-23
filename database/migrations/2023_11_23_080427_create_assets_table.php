@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->string('assetType')->nullable();
             $table->integer('weight')->nullable();
+            $table->integer('isAssigned')->nullable();
+
 
 
             $table->string('assetType')->nullable();

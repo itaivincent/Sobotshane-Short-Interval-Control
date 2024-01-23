@@ -52,7 +52,7 @@
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
-                                                                <label class="form-label">Registration</label>
+                                                                <label class="form-label">Asset Number</label>
                                                                 <input type="text" name="registration" class="form-control">
                                                             </div>
                                                         </div>

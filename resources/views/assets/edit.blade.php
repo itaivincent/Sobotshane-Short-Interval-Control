@@ -70,7 +70,7 @@
                                                                 </div>
     
                                                                 <div class="form-group row">
-                                                                    <label for="company-email" class="col-sm-3 col-form-label col-form-label-sm">Registration</label>
+                                                                    <label for="company-email" class="col-sm-3 col-form-label col-form-label-sm">Asset #</label>
                                                                     <div class="col-sm-9">
                                                                         <input type="text" class="form-control form-control-sm" name="registration" id="company-email" placeholder="" value="{{$asset->registration}}">
                                                                     </div>

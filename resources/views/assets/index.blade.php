@@ -30,7 +30,7 @@
                     <thead>
                         <tr>
                             <th class="checkbox-column"> Record no. </th>
-                            <th>Registration</th>
+                            <th>Asset Number</th>
                             <th>Make</th>
                             <th>Capacity (Tons)</th>
                             <th>Status</th>
