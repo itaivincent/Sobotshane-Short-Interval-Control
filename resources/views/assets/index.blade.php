@@ -53,7 +53,7 @@
                             @elseif ($asset->status == 2)
                             <span class="badge badge-light-danger inv-status">Not Available</span>   
                             @else
-                            <span class="badge badge-light-info inv-status">Not Assigned</span>   
+                            <span class="badge badge-light-info inv-status">No Status</span>   
                             @endif
                              </td>                                           
                             <td>

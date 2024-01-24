@@ -213,7 +213,7 @@
                                                         <div class="col-md-3"> 
                                                             <div class="form-group mb-4">
                                                                 <label for="number">Payload Capacity (Tons)</label>
-                                                                <input type="text" class="form-control form-control-sm" name="mileage" id="number" placeholder="#0001" value="{{$asset->payloadCapacity}}">
+                                                                <input type="text" class="form-control form-control-sm" name="payloadCapacity" id="number" placeholder="#0001" value="{{$asset->payloadCapacity}}">
                                                             </div>
                                                         </div>
     

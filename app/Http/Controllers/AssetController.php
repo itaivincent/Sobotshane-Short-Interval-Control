@@ -92,26 +92,25 @@ class AssetController extends Controller
      */
     public function update(Request $request, string $id)
     {
-       // dd($request->make,$id);
+      //      dd($request->payloadCapacity);
 
         $assetUpdate = Asset::where('id',$id)->update([
 
-            'make'    =>$request->make, 
-            'registration'    =>$request->registration, 
+            'make'               =>$request->make, 
+            'registration'       =>$request->registration, 
             'assetDescription'    =>$request->assetDescription, 
-            'vinNumber'    =>$request->vinNumber, 
-            'assetType'    =>$request->assetType, 
-            'weight'    =>$request->weight,    
-            'statusReason'    =>$request->statusReason,     
-            'licenseNumber'    =>$request->licenseNumber, 
-            'payloadCapacity'    =>$request->payloadCapacity, 
-            'status'    =>$request->status, 
-            'mileage'    =>$request->mileage, 
-            'fueltype'    =>$request->fueltype, 
-
-            'truckType'      =>$request->truckType,
-            'trailerType'    =>$request->trailerType,
-            'model'           =>$request->model,
+            'vinNumber'           =>$request->vinNumber, 
+            'assetType'           =>$request->assetType, 
+            'weight'              =>$request->weight,    
+            'statusReason'        =>$request->statusReason,     
+            'licenseNumber'       =>$request->licenseNumber, 
+            'payloadCapacity'    => $request->payloadCapacity, 
+            'status'             =>$request->status, 
+            'mileage'            =>$request->mileage, 
+            'fueltype'           =>$request->fueltype, 
+            'truckType'          =>$request->truckType,
+            'trailerType'         =>$request->trailerType,
+            'model'               =>$request->model,
             'registrationYear'    =>$request->registrationYear,
             'engineCapacity'    =>$request->engineCapacity,
             'expectedFuelConsumption'    =>$request->expectedFuelConsumption,

@@ -1,5 +1,16 @@
 @extends('template.guest')
-
+<style>
+        /* Optional CSS styles for styling the image */
+        body {
+            text-align: center;
+        }
+        img {
+            max-width: 2000%;
+            height: auto;
+            margin: 30px;
+            width: 600px;
+        }
+    </style>
 @section('content')
 
     <div id="load_screen"> <div class="loader"> <div class="loader-content">
@@ -34,10 +45,9 @@
 
                             <div class="row">
                                 <div class="col-md-12 mb-3">
-                                    
-                                    <h2>Sign In</h2>
-                                    <p>Enter your email and password to login</p>
-                                    
+
+                                <img src="{!! asset('template/src/assets/img/logo.png') !!}" alt="Description of the image">
+    </br>                                    
                                 </div>
                                 <div class="col-md-12">
                                     <div class="mb-3">

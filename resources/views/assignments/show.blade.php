@@ -10,8 +10,8 @@
                     <div class="page-meta">
                         <nav class="breadcrumb-style-one" aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Assets</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Create an asset</li>
+                                <li class="breadcrumb-item"><a href="#">Assignments</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Contracts and Assignment Summary</li>
                             </ol>
                         </nav>
                     </div>
@@ -22,7 +22,7 @@
                         <div class="account-content">
                             <div class="row mb-3">
                                 <div class="col-md-12">
-                                    <h2>Assignments</h2>
+                                 
 
                                 </div>
                             </div>
