@@ -98,7 +98,14 @@
                                             <td class="text-center">{{$asset->registration}}</td>
                                             <td class="text-center">{{$asset->licenseNumber}}</td>
                                             <td class="text-center">{{$asset->payloadCapacity}}</td>
-                                            <td class="text-center"><span class="shadow-none badge badge-primary">Approved</span></td>
+                                            <td>@if ($asset->status == 1)
+                           <span class="badge badge-light-success inv-status">Available</span> 
+                            @elseif ($asset->status == 2)
+                            <span class="badge badge-light-danger inv-status">Not Available</span>   
+                            @else
+                            <span class="badge badge-light-info inv-status">No Status</span>   
+                            @endif
+                             </td>   
                                         </tr> 
                                         @endforeach                                                                                                                       
                                     </tbody>
@@ -146,7 +153,14 @@
                                             <td class="text-center">{{$asset->registration}}</td>
                                             <td class="text-center">{{$asset->licenseNumber}}</td>
                                             <td class="text-center">{{$asset->payloadCapacity}}</td>
-                                            <td class="text-center"><span class="shadow-none badge badge-primary">Approved</span></td>
+                                            <td>@if ($asset->status == 1)
+                           <span class="badge badge-light-success inv-status">Available</span> 
+                            @elseif ($asset->status == 2)
+                            <span class="badge badge-light-danger inv-status">Not Available</span>   
+                            @else
+                            <span class="badge badge-light-info inv-status">No Status</span>   
+                            @endif
+                             </td>   
                                         </tr> 
                                         @endforeach                                                                                                                       
                                     </tbody>

@@ -85,45 +85,14 @@
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
-                                                                <label class="form-label">Forecast Monthly Volume(Ton)</label>
-                                                                <input type="text"  id="forecastMonthlyVolume" name="forecastMonthlyVolume" value="{{ old('forecastMonthlyVolume') }}"  class="form-control add-billing-address-input">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="mb-3">
-                                                                <label class="form-label">Forecast Weekly Volume(Ton)</label>
-                                                                <input type="text"  id="forecastWeeklyVolume" name="forecastWeeklyVolume" value="{{ old('forecastWeeklyVolume') }}"  class="form-control">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row mt-4">
-                                                  
-                                                        <div class="col-4">
-                                                            <div class="mb-3">
-                                                                <label class="form-label">Forecast Daily Volume(Ton)</label>
-                                                                <input type="text"  id="forecastDailyVolume" name="forecastDailyVolume"  value="{{ old('forecastDailyVolume') }}"  class="form-control">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="mb-3">
-                                                                <label class="form-label">Required Monthly Distance(km)</label>
-                                                                <input type="text"   id="requiredMonthlyDistance" name="requiredMonthlyDistance"  value="{{ old('requiredMonthlyDistance') }}" class="form-control">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="mb-3">
-                                                                <label class="form-label">Required Monthly Volume(Ton)</label>                                              
-                                                                <input type="text"   id="requiredMonthlyVolume" name="requiredMonthlyVolume"  value="{{ old('requiredMonthlyVolume') }}" class="form-control">
-                                                                                                                      
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="mb-3">
                                                                 <label class="form-label">Upload Contract</label>                                              
                                                                 <input type="file" id="contractImage" name="contractImage"  class="form-control">                                                                                                                  
                                                             </div>
                                                         </div>
+
+                                                    <div class="row mt-4">
+                                                  
+                                                       
 
                                                 
                                                 </div>

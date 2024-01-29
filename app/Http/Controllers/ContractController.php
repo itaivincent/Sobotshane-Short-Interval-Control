@@ -47,7 +47,7 @@ class ContractController extends Controller
     {
 
         $request->validate([
-            'contractImage' => 'required|mimes:pdf,xlx,csv|max:2048',
+            'contractImage' => 'required|mimes:pdf,xlx,csv|max:10240',
         ]);
 
         $file = $request->file('contractImage');
@@ -115,7 +115,6 @@ class ContractController extends Controller
     
         return view('contracts.monthlyforecast', compact('contract'));
     }
-
 
 
     public function storeforecast(Request $request)
@@ -192,9 +191,6 @@ class ContractController extends Controller
         return back()->with('error', 'Invalid Input!');
     }
 
-
-
-
       /**
      * Display the specified resource.
      */
@@ -204,9 +200,6 @@ class ContractController extends Controller
     
         return view('contracts.routemonthlyforecast', compact('route'));
     }
-
-
-
 
     
     public function storerouteforecast(Request $request)
@@ -279,9 +272,6 @@ class ContractController extends Controller
         }
         return back()->with('error', 'Invalid Input!');
     }
-
-
-
 
 
     public function formulaStore(Request $request)
@@ -409,26 +399,32 @@ class ContractController extends Controller
     {
         $user = auth()->user();
         $route = $request->route;
-        $routeDetails =  Route::where('id', '=' , $route )->first();
-        $contract = $routeDetails->contractId;
-        if($contract == null){
+        $contract = $request->contract;
+        $routeDetails =  Route::where('contractId', '=' , $contract )->get();
+      //  dd($routeDetails);
+     //   $contract = $routeDetails->contractId;
+        if($routeDetails == null){
 
-            return back()->with('warning', 'This route is not linked to a contract!');  
+            return back()->with('warning', 'There are no routes linked to this contract!');  
         }    
-        $expression = $request->input('userInput');
-        $explodedforumla =  $request->input('userInput');
-        $storeFormula = json_encode($explodedforumla);
-        $equationString =  implode($expression);
-      // dd($equationString);
-        $dummy = 10;
-      //  dd($expression);
+       
+
+        foreach($routeDetails as $routedetail){
+
+            $expression = $request->input('userInput');
+            $explodedforumla =  $request->input('userInput');
+            $storeFormula = json_encode($explodedforumla);
+            $equationString =  implode($expression);
+          // dd($equationString);
+            $dummy = 10;
+       // dd($routedetail);
         foreach($expression as $key => $number){
 
             //  $getnumber = Parameters::where( $number, '!=' , null )->first();
             if($expression[$key] != '+' &  $expression[$key] != '-' & $expression[$key] != '*' & $expression[$key] != '/'  & $expression[$key] != '('  & $expression[$key] != ')'){
 
                 if($expression[$key] == 'OR'){
-                    $rate = Route::where('id', '=' , $route )->first();
+                    $rate = Route::where('id', '=' , $routedetail->id )->first();
                     $expression[$key] = $rate->rate;
                  //   dd($rate);
                 }elseif($expression[$key] == 'L1'){
@@ -541,25 +537,23 @@ class ContractController extends Controller
 
         return back()->with('warning', 'You make a mistake in your formula! Try again');
     }
-
-       
-       
+           
         $currentDateTime = Carbon::now();
 
         $userrole = new Formula();
         $userrole->formula = $expression;
         $userrole->equation = $storeFormula;
         $userrole->contract = $contract;
-        $userrole->route = $route;
+        $userrole->route = $routedetail->id;
         $userrole->result = $result;
         $userrole->equationString = $equationString;
         $userrole->createdBy = $user->name;
         $userrole->save();
 
         $routeratetracker = new Routeratetracker();
-        $routeratetracker->route = $route;
+        $routeratetracker->route = $routedetail->id;
         $routeratetracker->rate =  $result ;
-        $routeratetracker->previousRate = $routeDetails->rate ;
+        $routeratetracker->previousRate = $routedetail->rate ;
         $routeratetracker->contract = $contract;
         $routeratetracker->formula =  $storeFormula;
         $routeratetracker->activeMonth = date('F')." ".date('Y');
@@ -568,15 +562,17 @@ class ContractController extends Controller
         $routeratetracker->save();
 
 
-        $updateRouteRate = Route::where('id', $route )->update([
+        $updateRouteRate = Route::where('id', $routedetail->id )->update([
 
             'rate' => $result,
         ]);
 
+    }
+
        // dd($result);
      
 
-        return back()->with('success', 'Formula calculated and your rate is '.$result.'');
+        return back()->with('success', 'All routes for the selected contract have been assigned a new rate');
 
     }
 

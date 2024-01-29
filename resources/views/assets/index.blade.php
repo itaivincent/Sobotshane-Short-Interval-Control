@@ -14,8 +14,8 @@
                     <div class="page-meta">
                         <nav class="breadcrumb-style-one" aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Users</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Manage Users</li>
+                                <li class="breadcrumb-item"><a href="#">Assets</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Manage Assets</li>
                             </ol>
                         </nav>
                     </div>

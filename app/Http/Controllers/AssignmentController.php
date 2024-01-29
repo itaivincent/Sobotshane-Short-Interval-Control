@@ -62,16 +62,29 @@ class AssignmentController extends Controller
     public function show(Request $request, $id){
 
         $contract = Contract::where('id', $id)->first();
+       
         $routes = Route::where('contractId',$contract->id)->get();
-        $contractassets = Contractasset::where('contract', $id)->get();
+      
+        $contractassets = Routeasset::where('contract', $id)->get();
+
+  //  dd($contractassets);
 
         $date = Carbon::now();
         $totalmothlyforecast = 0;
         foreach($routes as $route){
-            
 
-            $currentmonthforecast  = Monthlyforecast::where('route', $route->id)->where('month', '=', $date->format('F') )->latest()->first();
-            $totalmothlyforecast +=  $currentmonthforecast->forecastValue;
+            $currentmonthforecastcount  = Monthlyforecast::where('route', $route->id)->where('month', '=', $date->format('F') )->count();
+
+            if($currentmonthforecastcount > 0){
+
+                $currentmonthforecast  = Monthlyforecast::where('route', $route->id)->where('month', '=', $date->format('F') )->latest()->first();
+                $totalmothlyforecast +=  $currentmonthforecast->forecastValue;
+
+            }else{
+
+                $totalmothlyforecast +=  0; 
+            }
+
 
         }
 

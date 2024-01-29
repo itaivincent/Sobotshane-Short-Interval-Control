@@ -269,7 +269,7 @@
                                     
                                                             <span class="table-inner-text">{{ $formula->weightage * 100}}</span>
                                                         </td>                                        
-                                                        <td> <input type="text" class="form-control form-control-sm" name="endIndices[]" value="{{number_format($formula->endIndices, 1)}}" > </td>
+                                                        <td> <input type="text" class="form-control form-control-sm" name="endIndices[]" value="{{number_format($formula->baseIndices, 1)}}" > </td>
                                                         <td> <input type="date" class="form-control form-control-sm" name="endDates[]" value="{{$formula->endDate}}" > </td>
                                                         <td class="text-center">{{$formula->frequency}}</td>
                                                     </tr>

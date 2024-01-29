@@ -460,8 +460,6 @@ class PlanningController extends Controller
         return view('planning.routeplan', compact('allroutes','contracts'));
     }
 
-
-
     public function showrouteplan($id)
     {
    
@@ -645,9 +643,8 @@ class PlanningController extends Controller
        
                   $unplandriver = Driver::where('id', '=', $driver->driver)->where('status', '=', '2')->first();
     
-                  if($plandriver){
-
-                    
+                  if($unplandriver){
+       
                     $unavailabledrivers[] = $unplandriver;
 
                     }
@@ -977,9 +974,10 @@ class PlanningController extends Controller
 
            
             $asset = Planassets::where('assetId', $id)->latest()->first();
+            $contracts = Contract::all();
             $routes = Route::all();
        
-            return view('planning.reassignasset', compact('asset','routes'));
+            return view('planning.reassignasset', compact('asset','contracts','routes'));
             
             }
 

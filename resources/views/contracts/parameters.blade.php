@@ -214,20 +214,13 @@
                                                             <input type="text" name="rate" class="form-control" placeholder="Rate" aria-label="password">
                                                         </div>
                                                     </div> 
-                                                    <div class="form-group">
-                                                        <div class="input-group mb-3">
-                                                            <span class="input-group-text">
                                               
-                                                            </span>
-                                                            <input type="text" name="unit" class="form-control" placeholder="Unit" aria-label="password">
-                                                        </div>
-                                                    </div> 
 
                                                     <div class="form-group">
                                                         <div class="input-group mb-3">
                                                             <span class="input-group-text">                                         
                                                             </span>
-                                                            <input type="text" name="totalQuantity" class="form-control" placeholder="Forecast Quantity" aria-label="password">
+                                                            <input type="text" name="totalQuantity" class="form-control" placeholder="Total Forecast Quantity" aria-label="password">
                                                         </div>
                                                     </div> 
 
@@ -575,7 +568,7 @@
                                                         </td>
                                                         <td>
                                                            @foreach ($contracts as $role)  
-                                                           @if($role->id == $asset->contractId)<span class="inv-amount"> {{ $role->provider }} - {{ $role->client}}</span> @endif  
+                                                           @if($role->id == $asset->contractId)<span class="inv-amount">{{ $role->client}}</span> @endif  
                                                            @endforeach
                                                         </td>
 
@@ -653,10 +646,10 @@
 
                                                               <div class="form-group">
                                                                  <div class="input-group mb-3">                                                       
-                                                                    <select name="route" class="form-select" required>
-                                                                    <option selected="">Choose Route</option>
-                                                                    @foreach ($routes as $route)  
-                                                                    <option value="{{ $route->id }}">{{$route->from}} - {{$route->to}} - {{ $route->activity}} </option>
+                                                                    <select name="contract" class="form-select" required>
+                                                                    <option selected="">Choose Contract</option>
+                                                                    @foreach ($contracts as $contract)  
+                                                                    <option value="{{ $contract->id }}">{{$contract->provider}} - {{$contract->client}} - {{ $contract->number}} </option>
                                                                     @endforeach                                                                                                                                                                             
                                                                    </select>                                                                   
                                                                  </div>

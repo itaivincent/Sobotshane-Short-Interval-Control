@@ -80,13 +80,13 @@
                                                                 <label class="form-label">Route</label>                                              
                                                                 <div class="invoice-action-currency">
                                                                     <div class="dropdown selectable-dropdown cardName-select">
-                                                                    <select name="route" class="form-select">
-                                                                        
-                                                                    <option selected="">Choose a Route</option>
+                                                                                                                                
+                                                                   <select name="route" id="select-beast"  placeholder="Select a Route..." class="form-select">                                                                  
                                                                     @foreach ( $routes as $route)
-                                                                    <option value="{{$route->id}}">{{$route->from}} to {{$route->to}} and activity is {{$route->activity}}</option>                                                                                                       
+                                                                    <option value="">Select a Route...</option>
+                                                                    <option value="{{$route->id}}">@foreach ($contracts as $contract)  @if($contract->id == $route->contractId)  {{ $contract->client }} @endif    @endforeach: {{$route->from}} -  {{$route->to}}</option>                                                                                                       
                                                                     @endforeach
-                                                                                                                                                                                 
+                                                                                                                           
                                                                    </select>  
                                                                     </div>
                                                                 </div>
