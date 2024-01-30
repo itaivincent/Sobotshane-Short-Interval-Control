@@ -610,6 +610,8 @@ class ContractController extends Controller
         // now adjust the rates for all routes assosiates with this contract
          $formulaYachos = Formula::where('contract', $id)->get();
 
+
+         
          foreach($formulaYachos as $formulaYacho){
      //   dd($formulaYacho);
          $contract = $id;

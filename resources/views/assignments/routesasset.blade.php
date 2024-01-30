@@ -141,6 +141,8 @@
                                             <th class="text-center">Status</th>
                                         
                                         </tr>
+
+                                        
                                     </thead>
                                     <tbody>
                                         @foreach ($assignedAssets as $asset)
