@@ -16,11 +16,13 @@
         <div class="spinner-grow align-self-center"></div>
     </div></div></div>
 
-    
+
    <div class="auth-container d-flex">
 
         <div class="container mx-auto align-self-center">
     
+
+        
             <div class="row">
     
                 <div class="col-6 d-lg-flex d-none h-100 my-auto top-0 start-0 text-center justify-content-center flex-column">
